@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "@material-solid/monorepo",
+  "repository": "https://github.com/deminearchiver/material-solid",
+  "homepage": "https://material-solid.pages.dev",
+  "packageManager": "yarn@4.3.1",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    ":": "yarn workspace",
+    ":components": "yarn : @material-solid/components",
+    ":vanilla-extract": "yarn : @material-solid/vanilla-extract",
+    ":utils": "yarn : @material-solid/utils",
+    ":dev": "yarn : @material-solid/dev",
+    "dev": "yarn :dev dev",
+    ":docs": "yarn : @material-solid/docs"
+  }
+}

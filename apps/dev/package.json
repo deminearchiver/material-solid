@@ -1,0 +1,40 @@
+{
+  "private": true,
+  "name": "@material-solid/dev",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/fira-code": "^5.0.18",
+    "@fontsource-variable/material-symbols-rounded": "^5.0.35",
+    "@fontsource-variable/material-symbols-sharp": "^5.0.35",
+    "@fontsource-variable/roboto-flex": "^5.0.15",
+    "@material-solid/components": "workspace:^",
+    "@material-solid/utils": "workspace:^",
+    "@material-solid/vanilla-extract": "workspace:^",
+    "@solid-primitives/context": "^0.2.3",
+    "@solid-primitives/intersection-observer": "^2.1.6",
+    "@solid-primitives/media": "^2.2.9",
+    "@solid-primitives/platform": "^0.1.2",
+    "@solid-primitives/presence": "^0.0.6",
+    "@solid-primitives/refs": "^1.0.8",
+    "@solid-primitives/scroll": "^2.0.23",
+    "@solid-primitives/storage": "^3.8.0",
+    "@solid-primitives/utils": "^6.2.3",
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.14.1",
+    "normalize.css": "^8.0.1",
+    "solid-js": "^1.8.18"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@vanilla-extract/vite-plugin": "^4.0.13",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.4",
+    "vite-plugin-solid": "^2.10.2"
+  }
+}

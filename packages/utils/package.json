@@ -1,0 +1,13 @@
+{
+  "name": "@material-solid/utils",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "packageManager": "yarn@4.3.1",
+  "dependencies": {
+    "@solid-primitives/context": "^0.2.3",
+    "@solid-primitives/refs": "^1.0.8",
+    "@solid-primitives/utils": "^6.2.3",
+    "solid-js": "^1.8.18"
+  }
+}
