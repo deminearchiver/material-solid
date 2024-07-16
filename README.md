@@ -5,6 +5,8 @@
 >
 > So, use this library at your own risk!
 
+---
+
 <div align="center">
   <img src=".github/images/banner.svg" height="144">
   <h3>Material Solid</h3>
@@ -101,6 +103,7 @@ The library is not yet published to NPM. You have to add the dependencies from g
   "dependencies": {
     "@material-solid/components": "git@github.com:deminearchiver/material-solid.git#workspace=@material-solid/components",
     "@material-solid/vanilla-extract": "git@github.com:deminearchiver/material-solid.git#workspace=@material-solid/vanilla-extract",
+    "@material-solid/utils": "git@github.com:deminearchiver/material-solid.git#workspace=@material-solid/utils",
   }
 }
 ```

@@ -3,6 +3,10 @@
   "name": "@material-solid/monorepo",
   "repository": "https://github.com/deminearchiver/material-solid",
   "homepage": "https://material-solid.pages.dev",
+  "author": {
+    "name": "deminearchiver",
+    "url": "https://github.com/deminearchiver"
+  },
   "packageManager": "yarn@4.3.1",
   "workspaces": [
     "apps/*",

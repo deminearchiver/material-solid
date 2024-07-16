@@ -1,5 +1,11 @@
 {
   "name": "@material-solid/components",
+  "description": "Material Components for SolidJS",
+  "version": "0.0.0",
+  "author": {
+    "name": "deminearchiver",
+    "url": "https://github.com/deminearchiver"
+  },
   "type": "module",
   "exports": {
     "./ripple": "./src/ripple/index.ts",
