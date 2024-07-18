@@ -6,12 +6,17 @@
     "url": "https://github.com/deminearchiver"
   },
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./string": "./src/string/index.ts"
   },
   "packageManager": "yarn@4.3.1",
   "dependencies": {
     "@solid-primitives/context": "^0.2.3",
+    "@solid-primitives/map": "^0.4.11",
+    "@solid-primitives/promise": "^1.0.17",
     "@solid-primitives/refs": "^1.0.8",
+    "@solid-primitives/set": "^0.4.11",
+    "@solid-primitives/static-store": "^0.0.8",
     "@solid-primitives/utils": "^6.2.3",
     "solid-js": "^1.8.18"
   }

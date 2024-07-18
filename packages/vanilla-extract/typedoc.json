@@ -1,0 +1,7 @@
+{
+  "entryPoints": [
+    "./contract/contract.css.ts",
+    "./theme/index.ts",
+  ],
+  "includeVersion": true,
+}

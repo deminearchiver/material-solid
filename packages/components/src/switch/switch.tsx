@@ -5,7 +5,7 @@ import { resolveFirst } from "@solid-primitives/refs";
 import clsx from "clsx/lite";
 import { Focus } from "../focus";
 
-interface SwitchProps extends JSX.HTMLAttributes<HTMLElement> {
+export interface SwitchProps extends JSX.HTMLAttributes<HTMLElement> {
   selected: boolean;
   onChanged: (value: boolean) => void;
   required?: boolean;

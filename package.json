@@ -20,5 +20,16 @@
     ":dev": "yarn : @material-solid/dev",
     "dev": "yarn :dev dev",
     ":docs": "yarn : @material-solid/docs"
+  },
+  "devDependencies": {
+    "@8hobbies/typedoc-plugin-404": "^3.0.0",
+    "typedoc": "^0.26.4",
+    "typedoc-plugin-coverage": "^3.3.0",
+    "typedoc-plugin-extras": "^3.1.0",
+    "typedoc-plugin-mdn-links": "^3.2.4",
+    "typedoc-plugin-missing-exports": "^3.0.0"
+  },
+  "dependencies": {
+    "typedoc-material-theme": "^1.1.0"
   }
 }

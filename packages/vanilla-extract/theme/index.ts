@@ -49,6 +49,9 @@ const SCHEMES_MAP = {
 
 export interface CreateMaterialThemeOptions<CustomColors extends string[]> {
   color: {
+    /**
+     * @defaultValue `true`
+     */
     variant?: keyof typeof SCHEMES_MAP,
     seed: number | Hct;
     custom?: CustomColors;

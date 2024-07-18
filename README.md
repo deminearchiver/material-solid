@@ -8,7 +8,9 @@
 ---
 
 <div align="center">
-  <img src=".github/images/banner.svg" height="144">
+  <a href="https://github.com/deminearchiver/material-solid">
+    <img src=".github/images/banner.svg" height="144">
+  </a>
   <h3>Material Solid</h3>
   Material Components for SolidJS
   <br>

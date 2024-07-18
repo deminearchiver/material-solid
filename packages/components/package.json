@@ -20,7 +20,8 @@
     "./list": "./src/list/index.ts",
     "./card": "./src/card/index.ts",
     "./slider": "./src/slider/index.ts",
-    "./tooltip": "./src/tooltip/index.ts"
+    "./tooltip": "./src/tooltip/index.ts",
+    "./tabs": "./src/tabs/index.ts"
   },
   "packageManager": "yarn@4.3.1",
   "dependencies": {
@@ -33,9 +34,11 @@
     "@solid-primitives/map": "^0.4.11",
     "@solid-primitives/media": "^2.2.9",
     "@solid-primitives/presence": "^0.0.6",
+    "@solid-primitives/promise": "^1.0.17",
     "@solid-primitives/refs": "^1.0.8",
     "@solid-primitives/resize-observer": "^2.0.26",
     "@solid-primitives/set": "^0.4.11",
+    "@solid-primitives/static-store": "^0.0.8",
     "@solid-primitives/utils": "^6.2.3",
     "@vanilla-extract/css": "^1.15.3",
     "@vanilla-extract/dynamic": "^2.1.1",
@@ -43,7 +46,7 @@
     "clsx": "^2.1.1",
     "cssesc": "^3.0.0",
     "dedent": "^1.5.3",
-    "material-symbols": "^0.21.1",
+    "material-symbols": "^0.21.2",
     "solid-js": "^1.8.18"
   },
   "devDependencies": {

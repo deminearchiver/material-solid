@@ -12,13 +12,13 @@ import {
   on,
   onMount,
 } from "solid-js";
-import { setRef, type Ref, type RefCallback } from "@material-solid/utils";
+import { assignRef, type Ref, type RefCallback } from "@material-solid/utils";
 
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { createPresence } from "@solid-primitives/presence";
 import { Focus } from "../focus";
 import type { MaybeAccessor } from "@solid-primitives/utils";
-import { createStore } from "solid-js/store";
+import { createStaticStore } from "@solid-primitives/static-store";
 
 import {
   containerStyle,
@@ -79,12 +79,12 @@ export const Slider: Component<SliderProps> = (props) => {
     "steps",
   ]);
 
-  setRef(local.ref, {});
+  assignRef(local.ref, {});
 
   let containerRef!: HTMLElement;
   let inputRef!: HTMLInputElement;
 
-  const [state, setState] = createStore<SliderState>({
+  const [state, setState] = createStaticStore<SliderState>({
     pressed: false,
   });
   const setPressed = (value: boolean) => {

@@ -1,6 +1,6 @@
 import { createComponent, type JSX, type Context, type Component, type ParentComponent, type FlowProps, type ContextProviderComponent } from "solid-js";
 
-type MultiProviderItem<T extends unknown> =
+export type MultiProviderItem<T extends unknown> =
   T extends Component<infer U extends { children?: JSX.Element }>
     ? Partial<U> extends U
       ? Omit<U, "children"> extends Record<string, never>
@@ -11,6 +11,9 @@ type MultiProviderItem<T extends unknown> =
       ? [context: T, value: V]
       : never;
 
+/**
+ * @interface
+ */
 export type MultiProviderProps<T extends readonly [unknown, ...unknown[]]> = {
   providers: {
     [K in keyof T]: MultiProviderItem<T[K]>;

@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+:root {
+  --font-sans: "Roboto Flex", system-ui, sans-serif !important;
+  --font-mono: "Fira Code", monospace !important;
+}

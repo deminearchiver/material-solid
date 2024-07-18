@@ -2,7 +2,6 @@ import { createMemo, createSignal, onMount, splitProps, type Component, type JSX
 import { listItemContentStyle, listItemStyle, listItemSubtitleStyle, listItemTitleStyle } from "./list-item.css";
 import { Ripple } from "../ripple";
 import { Dynamic } from "solid-js/web";
-import type { HTMLAttributes } from "astro/types";
 import { mergeRefs } from "@solid-primitives/refs";
 import clsx from "clsx/lite";
 import { Focus } from "../focus";
