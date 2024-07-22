@@ -16,6 +16,7 @@
     "./button": "./src/button/index.ts",
     "./icon": "./src/icon/index.ts",
     "./icon-button": "./src/icon-button/index.ts",
+    "./icon-button/theme": "./src/icon-button/theme.css.ts",
     "./segmented-button": "./src/segmented-button/index.ts",
     "./list": "./src/list/index.ts",
     "./card": "./src/card/index.ts",
@@ -25,7 +26,7 @@
   },
   "packageManager": "yarn@4.3.1",
   "dependencies": {
-    "@floating-ui/dom": "^1.6.7",
+    "@floating-ui/dom": "^1.6.8",
     "@material-solid/utils": "workspace:^",
     "@material-solid/vanilla-extract": "workspace:^",
     "@solid-primitives/context": "^0.2.3",

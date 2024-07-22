@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@fontsource-variable/fira-code": "^5.0.18",
-    "@fontsource-variable/material-symbols-rounded": "^5.0.35",
-    "@fontsource-variable/material-symbols-sharp": "^5.0.35",
+    "@fontsource-variable/material-symbols-rounded": "^5.0.36",
+    "@fontsource-variable/material-symbols-sharp": "^5.0.36",
     "@fontsource-variable/roboto-flex": "^5.0.15",
     "@material-solid/components": "workspace:^",
     "@material-solid/utils": "workspace:^",

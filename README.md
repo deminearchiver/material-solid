@@ -45,7 +45,8 @@
   - [Regarding library choices](#regarding-library-choices)
 - [Usage](#usage)
   - [Installation](#installation)
-    - [Using Yarn](#using-yarn)
+    - [npm \& pnpm](#npm--pnpm)
+    - [Yarn](#yarn)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -98,7 +99,19 @@ I chose SolidJS over React because the former is more performant, offers fine-gr
 
 The library is not yet published to NPM. You have to add the dependencies from git directly.
 
-#### Using Yarn
+#### npm & pnpm
+```json
+{
+  "dependencies": {
+    "@material-solid/components": "https://github.com/deminearchiver/material-solid/tree/main/packages/components",
+    "@material-solid/vanilla-extract": "https://github.com/deminearchiver/material-solid/tree/main/packages/vanilla-extract",
+    "@material-solid/utils": "https://github.com/deminearchiver/material-solid/tree/main/packages/utils"
+  }
+}
+```
+
+
+#### Yarn
 
 ```json
 {

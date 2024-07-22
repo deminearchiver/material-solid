@@ -1,4 +1,4 @@
-import { type JSX, splitProps, type ParentComponent, createMemo, createSignal, type Signal } from "solid-js";
+import { type JSX, splitProps, type ParentComponent, createMemo, createSignal, type Signal, mergeProps } from "solid-js";
 import { iconButtonStyle } from "./icon-button.css";
 import { Ripple} from "../ripple";
 import clsx from "clsx/lite";
@@ -8,23 +8,30 @@ import { Dynamic } from "solid-js/web";
 type IconButtonVariant =
   | "regular"
   | "filled"
-  | "tonal"
+  | "filledTonal"
   | "outlined";
 
 export type IconButtonProps = {
   variant?: IconButtonVariant;
+  selected?: boolean;
+  children: JSX.Element;
 } & (
   | JSX.ButtonHTMLAttributes<HTMLButtonElement>
   | JSX.AnchorHTMLAttributes<HTMLAnchorElement>
 );
 
 export const IconButton: ParentComponent<IconButtonProps> = (props) => {
-  const [localProps, otherProps] = splitProps(
+  const mergedProps = mergeProps(
+    { variant: "regular" as IconButtonVariant, selected: false },
     props,
+  );
+  const [local, others] = splitProps(
+    mergedProps,
     [
       "ref",
       "class",
       "variant",
+      "selected",
       "children",
     ],
   );
@@ -33,26 +40,27 @@ export const IconButton: ParentComponent<IconButtonProps> = (props) => {
 
 
   const tag = createMemo(() => {
-    return "href" in otherProps ? "a" : "button";
+    return "href" in others ? "a" : "button";
   });
 
   return (
     <Dynamic
       component={tag()}
-      ref={mergeRefs(localProps.ref as HTMLElement, setRef)}
+      ref={mergeRefs(setRef, local.ref as HTMLElement)}
       class={
         clsx(
           iconButtonStyle({
-            variant: localProps.variant,
+            variant: local.variant,
+            selected: local.selected,
           }),
-          localProps.class
+          local.class
         )
       }
-      {...otherProps}>
+      {...others}>
         <Ripple
           for={ref}
           disabled={"disabled" in props && props.disabled} />
-        {localProps.children}
+        {local.children}
     </Dynamic>
   );
 }

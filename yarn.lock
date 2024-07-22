@@ -309,38 +309,49 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-darwin-64@npm:1.20240712.0":
-  version: 1.20240712.0
-  resolution: "@cloudflare/workerd-darwin-64@npm:1.20240712.0"
+"@cloudflare/workerd-darwin-64@npm:1.20240718.0":
+  version: 1.20240718.0
+  resolution: "@cloudflare/workerd-darwin-64@npm:1.20240718.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-darwin-arm64@npm:1.20240712.0":
-  version: 1.20240712.0
-  resolution: "@cloudflare/workerd-darwin-arm64@npm:1.20240712.0"
+"@cloudflare/workerd-darwin-arm64@npm:1.20240718.0":
+  version: 1.20240718.0
+  resolution: "@cloudflare/workerd-darwin-arm64@npm:1.20240718.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-linux-64@npm:1.20240712.0":
-  version: 1.20240712.0
-  resolution: "@cloudflare/workerd-linux-64@npm:1.20240712.0"
+"@cloudflare/workerd-linux-64@npm:1.20240718.0":
+  version: 1.20240718.0
+  resolution: "@cloudflare/workerd-linux-64@npm:1.20240718.0"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-linux-arm64@npm:1.20240712.0":
-  version: 1.20240712.0
-  resolution: "@cloudflare/workerd-linux-arm64@npm:1.20240712.0"
+"@cloudflare/workerd-linux-arm64@npm:1.20240718.0":
+  version: 1.20240718.0
+  resolution: "@cloudflare/workerd-linux-arm64@npm:1.20240718.0"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@cloudflare/workerd-windows-64@npm:1.20240712.0":
-  version: 1.20240712.0
-  resolution: "@cloudflare/workerd-windows-64@npm:1.20240712.0"
+"@cloudflare/workerd-windows-64@npm:1.20240718.0":
+  version: 1.20240718.0
+  resolution: "@cloudflare/workerd-windows-64@npm:1.20240718.0"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@corvu/utils@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@corvu/utils@npm:0.4.0"
+  dependencies:
+    "@floating-ui/dom": "npm:^1.6.7"
+  peerDependencies:
+    solid-js: ^1.8
+  checksum: 10c0/c3e8ad35c47e79ee0d1f809719b268e6c450c07407f9afe396da2d19e9e0eeb5e3143088ed72a5db033e7124e48cfc1fc4de3d816cf1a3c99f9eaaacc4a91d07
   languageName: node
   linkType: hard
 
@@ -712,13 +723,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/dom@npm:^1.6.7":
-  version: 1.6.7
-  resolution: "@floating-ui/dom@npm:1.6.7"
+"@floating-ui/dom@npm:^1.6.7, @floating-ui/dom@npm:^1.6.8":
+  version: 1.6.8
+  resolution: "@floating-ui/dom@npm:1.6.8"
   dependencies:
     "@floating-ui/core": "npm:^1.6.0"
-    "@floating-ui/utils": "npm:^0.2.4"
-  checksum: 10c0/5255f522534e0022b554c366b969fa26951677a1cf39ddd58614071a909a340c5e1ffe645501037b221808f01bfac4e7edba14728978ee7e2438e8432c1a163f
+    "@floating-ui/utils": "npm:^0.2.5"
+  checksum: 10c0/d52e257bbf1f04da7882d847dfe128783966a19e6d6a9e6d09d57d32bdc7255efce7ae15c3be781e349ae3b18c4575e910afde3e73ae57c31763e8a799f19f45
   languageName: node
   linkType: hard
 
@@ -729,6 +740,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@floating-ui/utils@npm:^0.2.5":
+  version: 0.2.5
+  resolution: "@floating-ui/utils@npm:0.2.5"
+  checksum: 10c0/9e1c7330433c3a8f226c5a44ed1dcdda13b313c4126ce3281f970d1e471b1c9fd9e1559cc76a0592af25d55a3f81afe1a5778aa7b80e51c9fa01930cd1d5557e
+  languageName: node
+  linkType: hard
+
 "@fontsource-variable/fira-code@npm:^5.0.18":
   version: 5.0.18
   resolution: "@fontsource-variable/fira-code@npm:5.0.18"
@@ -736,17 +754,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource-variable/material-symbols-rounded@npm:^5.0.35":
-  version: 5.0.35
-  resolution: "@fontsource-variable/material-symbols-rounded@npm:5.0.35"
-  checksum: 10c0/22e64c0a02f37a78e589a6da15d1a919b01ced20f591516f653434b441a92fdd685a5115a078cca20f476085a6843651d252f2e3e5735ac65b1ab837c1672f4c
+"@fontsource-variable/material-symbols-rounded@npm:^5.0.36":
+  version: 5.0.36
+  resolution: "@fontsource-variable/material-symbols-rounded@npm:5.0.36"
+  checksum: 10c0/2715f0fa72e26bb112b26ea90265cfc018396d92d96fdde3b48266db772df78a1b4c9cb15be6f9a10b3bd4f7cc85543f236b064cfd9452368ac720ec8951a5df
   languageName: node
   linkType: hard
 
-"@fontsource-variable/material-symbols-sharp@npm:^5.0.35":
-  version: 5.0.35
-  resolution: "@fontsource-variable/material-symbols-sharp@npm:5.0.35"
-  checksum: 10c0/294c398b8bf7248eb3d18c68e9d7a1e2592aecdbcdec689c14a74b5fabc50b19d163b03fa4414470b603214a03de5e4a7afe9087d466c6e979cad95b3dc32fc5
+"@fontsource-variable/material-symbols-sharp@npm:^5.0.36":
+  version: 5.0.36
+  resolution: "@fontsource-variable/material-symbols-sharp@npm:5.0.36"
+  checksum: 10c0/430cb4be92a6b222d62b6a13a93581b3b71ba5d9070e7e1c88f59cc31f0c35829e631ef4ff182fe4574b44358ba1524f3cc4d200e7aeed03d2e78f8ea463e673
   languageName: node
   linkType: hard
 
@@ -827,7 +845,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@material-solid/components@workspace:packages/components"
   dependencies:
-    "@floating-ui/dom": "npm:^1.6.7"
+    "@floating-ui/dom": "npm:^1.6.8"
     "@material-solid/utils": "workspace:^"
     "@material-solid/vanilla-extract": "workspace:^"
     "@solid-primitives/context": "npm:^0.2.3"
@@ -859,8 +877,8 @@ __metadata:
   resolution: "@material-solid/dev@workspace:apps/dev"
   dependencies:
     "@fontsource-variable/fira-code": "npm:^5.0.18"
-    "@fontsource-variable/material-symbols-rounded": "npm:^5.0.35"
-    "@fontsource-variable/material-symbols-sharp": "npm:^5.0.35"
+    "@fontsource-variable/material-symbols-rounded": "npm:^5.0.36"
+    "@fontsource-variable/material-symbols-sharp": "npm:^5.0.36"
     "@fontsource-variable/roboto-flex": "npm:^5.0.15"
     "@material-solid/components": "workspace:^"
     "@material-solid/utils": "workspace:^"
@@ -890,19 +908,22 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@material-solid/docs@workspace:apps/docs"
   dependencies:
+    "@corvu/utils": "npm:^0.4.0"
+    "@floating-ui/dom": "npm:^1.6.8"
     "@fontsource-variable/fira-code": "npm:^5.0.18"
-    "@fontsource-variable/material-symbols-rounded": "npm:^5.0.35"
-    "@fontsource-variable/material-symbols-sharp": "npm:^5.0.35"
+    "@fontsource-variable/material-symbols-rounded": "npm:^5.0.36"
+    "@fontsource-variable/material-symbols-sharp": "npm:^5.0.36"
     "@fontsource-variable/roboto-flex": "npm:^5.0.15"
     "@material-solid/components": "workspace:^"
     "@material-solid/utils": "workspace:^"
     "@material-solid/vanilla-extract": "workspace:^"
-    "@solid-primitives/context": "npm:^0.2.3"
+    "@solid-primitives/event-listener": "npm:^2.3.3"
     "@solid-primitives/media": "npm:^2.2.9"
     "@solid-primitives/platform": "npm:^0.1.2"
     "@solid-primitives/presence": "npm:^0.0.6"
     "@solid-primitives/refs": "npm:^1.0.8"
     "@solid-primitives/scroll": "npm:^2.0.23"
+    "@solid-primitives/static-store": "npm:^0.0.8"
     "@solid-primitives/storage": "npm:^3.8.0"
     "@solid-primitives/utils": "npm:^6.2.3"
     "@solidjs/meta": "npm:^0.29.4"
@@ -913,13 +934,14 @@ __metadata:
     "@vanilla-extract/recipes": "npm:^0.5.3"
     "@vanilla-extract/sprinkles": "npm:^1.6.2"
     "@vanilla-extract/vite-plugin": "npm:^4.0.13"
+    clsx: "npm:^2.1.1"
     lightningcss: "npm:^1.25.1"
     normalize.css: "npm:^8.0.1"
     solid-js: "npm:^1.8.18"
     typescript: "npm:^5.5.3"
     vite: "npm:^5.3.4"
     vite-plugin-solid: "npm:^2.10.2"
-    wrangler: "npm:^3.65.0"
+    wrangler: "npm:^3.65.1"
   languageName: unknown
   linkType: soft
 
@@ -928,12 +950,13 @@ __metadata:
   resolution: "@material-solid/monorepo@workspace:."
   dependencies:
     "@8hobbies/typedoc-plugin-404": "npm:^3.0.0"
-    typedoc: "npm:^0.26.4"
+    typedoc: "npm:^0.26.5"
     typedoc-material-theme: "npm:^1.1.0"
     typedoc-plugin-coverage: "npm:^3.3.0"
     typedoc-plugin-extras: "npm:^3.1.0"
-    typedoc-plugin-mdn-links: "npm:^3.2.4"
+    typedoc-plugin-mdn-links: "npm:^3.2.5"
     typedoc-plugin-missing-exports: "npm:^3.0.0"
+    typescript: "npm:^5.5.3"
   languageName: unknown
   linkType: soft
 
@@ -948,6 +971,7 @@ __metadata:
     "@solid-primitives/set": "npm:^0.4.11"
     "@solid-primitives/static-store": "npm:^0.0.8"
     "@solid-primitives/utils": "npm:^6.2.3"
+    clsx: "npm:^2.1.1"
     solid-js: "npm:^1.8.18"
   languageName: unknown
   linkType: soft
@@ -2829,9 +2853,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"miniflare@npm:3.20240712.0":
-  version: 3.20240712.0
-  resolution: "miniflare@npm:3.20240712.0"
+"miniflare@npm:3.20240718.0":
+  version: 3.20240718.0
+  resolution: "miniflare@npm:3.20240718.0"
   dependencies:
     "@cspotcode/source-map-support": "npm:0.8.1"
     acorn: "npm:^8.8.0"
@@ -2841,13 +2865,13 @@ __metadata:
     glob-to-regexp: "npm:^0.4.1"
     stoppable: "npm:^1.1.0"
     undici: "npm:^5.28.4"
-    workerd: "npm:1.20240712.0"
+    workerd: "npm:1.20240718.0"
     ws: "npm:^8.17.1"
     youch: "npm:^3.2.2"
     zod: "npm:^3.22.3"
   bin:
     miniflare: bootstrap.js
-  checksum: 10c0/b458813348da463f911794216b96ad5169f78663977e052922b4e786448a6d9c0a426cfee3526c1f58676bdaeb34b9944ac95a984dea736a9e709f059de94a67
+  checksum: 10c0/bea17491a2d2515f8e308660ef99795842fc33d702af1b2aa89abd9e2c9e8c32f186252306f64b7230717cd94c3eaa1c9330157d4b8c2eda0d6761940b0fc441
   languageName: node
   linkType: hard
 
@@ -3690,12 +3714,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc-plugin-mdn-links@npm:^3.2.4":
-  version: 3.2.4
-  resolution: "typedoc-plugin-mdn-links@npm:3.2.4"
+"typedoc-plugin-mdn-links@npm:^3.2.5":
+  version: 3.2.5
+  resolution: "typedoc-plugin-mdn-links@npm:3.2.5"
   peerDependencies:
     typedoc: ">= 0.23.14 || 0.24.x || 0.25.x || 0.26.x"
-  checksum: 10c0/43a65d9b88cebbe5aa789333fed3e9f62d393b325900c4e430f17c35fc0fd3396a0556d6058a15d1cf10302154cab843f9898390c430a937c2e347ab4c89e3d9
+  checksum: 10c0/f3ca6f88ce42bf8175ef56baca1fa8acbdc79258c6bfb9a5f443c454d4302487e0a63d5bafa4710d83e10bb316f6b4bf6251b31d32460b4791b3b80f472bd1d7
   languageName: node
   linkType: hard
 
@@ -3708,9 +3732,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc@npm:^0.26.4":
-  version: 0.26.4
-  resolution: "typedoc@npm:0.26.4"
+"typedoc@npm:^0.26.5":
+  version: 0.26.5
+  resolution: "typedoc@npm:0.26.5"
   dependencies:
     lunr: "npm:^2.3.9"
     markdown-it: "npm:^14.1.0"
@@ -3721,7 +3745,7 @@ __metadata:
     typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x
   bin:
     typedoc: bin/typedoc
-  checksum: 10c0/41da973bc42bcce86b0fdbff69673f5d51f3a753109aed670807f600d26ab5b557ebbc965d6a2d13c1813b79008be4e310bf8c4c28c59e01eb0ebff56f29f633
+  checksum: 10c0/c3ca06e7496276d6c14af6c9ed7afe48477117093fa4723b30c73b902adba5821fd58bb19139be9322980de0f279ec688600ac4d6da31792c1654675068f1352
   languageName: node
   linkType: hard
 
@@ -3978,15 +4002,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"workerd@npm:1.20240712.0":
-  version: 1.20240712.0
-  resolution: "workerd@npm:1.20240712.0"
+"workerd@npm:1.20240718.0":
+  version: 1.20240718.0
+  resolution: "workerd@npm:1.20240718.0"
   dependencies:
-    "@cloudflare/workerd-darwin-64": "npm:1.20240712.0"
-    "@cloudflare/workerd-darwin-arm64": "npm:1.20240712.0"
-    "@cloudflare/workerd-linux-64": "npm:1.20240712.0"
-    "@cloudflare/workerd-linux-arm64": "npm:1.20240712.0"
-    "@cloudflare/workerd-windows-64": "npm:1.20240712.0"
+    "@cloudflare/workerd-darwin-64": "npm:1.20240718.0"
+    "@cloudflare/workerd-darwin-arm64": "npm:1.20240718.0"
+    "@cloudflare/workerd-linux-64": "npm:1.20240718.0"
+    "@cloudflare/workerd-linux-arm64": "npm:1.20240718.0"
+    "@cloudflare/workerd-windows-64": "npm:1.20240718.0"
   dependenciesMeta:
     "@cloudflare/workerd-darwin-64":
       optional: true
@@ -4000,13 +4024,13 @@ __metadata:
       optional: true
   bin:
     workerd: bin/workerd
-  checksum: 10c0/01df3d2ef164125a96eb538e9897f6e6d9fbadbf773ced10fcb56758dee2c72b4fdeebbce516e0cbb51d87b9814e97a743bf495be87a21dc4b2e26f640711adb
+  checksum: 10c0/e943ad68317bfb10e7599a3cef07e851396d32acae64ab39c02bcb4fafe45d635ac7166afc1274611e92ee37cf6dcff0db36bcb0728fde06ef7538231f418f90
   languageName: node
   linkType: hard
 
-"wrangler@npm:^3.65.0":
-  version: 3.65.0
-  resolution: "wrangler@npm:3.65.0"
+"wrangler@npm:^3.65.1":
+  version: 3.65.1
+  resolution: "wrangler@npm:3.65.1"
   dependencies:
     "@cloudflare/kv-asset-handler": "npm:0.3.4"
     "@esbuild-plugins/node-globals-polyfill": "npm:^0.2.3"
@@ -4016,7 +4040,7 @@ __metadata:
     date-fns: "npm:^3.6.0"
     esbuild: "npm:0.17.19"
     fsevents: "npm:~2.3.2"
-    miniflare: "npm:3.20240712.0"
+    miniflare: "npm:3.20240718.0"
     nanoid: "npm:^3.3.3"
     path-to-regexp: "npm:^6.2.0"
     resolve: "npm:^1.22.8"
@@ -4026,7 +4050,7 @@ __metadata:
     unenv: "npm:unenv-nightly@1.10.0-1717606461.a117952"
     xxhash-wasm: "npm:^1.0.1"
   peerDependencies:
-    "@cloudflare/workers-types": ^4.20240712.0
+    "@cloudflare/workers-types": ^4.20240718.0
   dependenciesMeta:
     fsevents:
       optional: true
@@ -4036,7 +4060,7 @@ __metadata:
   bin:
     wrangler: bin/wrangler.js
     wrangler2: bin/wrangler.js
-  checksum: 10c0/f7e73f107a0cb2b27e17035b4d3b78ac86d953e90fde196d0149799d550c0f5714918beae53ef2506f142bba47eca801b14c26ea16bfa4289ba0b6d31f6d239d
+  checksum: 10c0/4091cead4cc461e3aa4398a685d39584db22a3127d6cf38a9a5313f1c54b9f243875c619ee377623d1a6fb2a5099d3546be4dc9c13c6af58f2569c89507a609c
   languageName: node
   linkType: hard
 

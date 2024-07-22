@@ -49,11 +49,15 @@ const SCHEMES_MAP = {
 
 export interface CreateMaterialThemeOptions<CustomColors extends string[]> {
   color: {
-    /**
-     * @defaultValue `true`
-     */
-    variant?: keyof typeof SCHEMES_MAP,
     seed: number | Hct;
+    /**
+     * @defaultValue "tonalSpot"
+     */
+    variant?: keyof typeof SCHEMES_MAP;
+    /**
+     * @defaultValue 0
+     */
+    contrastLevel?: -1 | 0 | 1;
     custom?: CustomColors;
   }
 }
@@ -65,14 +69,40 @@ const parseHct = (color: number | Hct): Hct => {
   return color;
 }
 
+type CreateColorSchemeOptions = {
+  brightness: "light" | "dark";
+  seed?: number | Hct;
+  variant?: keyof typeof SCHEMES_MAP;
+  contrastLevel?: -1 | 0 | 1;
+}
+
 
 export const createMaterialTheme = <const CustomColors extends string[]>(options: CreateMaterialThemeOptions<CustomColors>) => {
   const variant = options.color.variant ?? "tonalSpot";
-  const scheme = SCHEMES_MAP[variant];
+  const Scheme = SCHEMES_MAP[variant];
   const seed = parseHct(options.color.seed);
 
-  const lightScheme = new scheme(seed, false, 0);
-  const darkScheme = new scheme(seed, true, 0);
+  const contrast = options.color.contrastLevel ?? 0;
+
+  const lightScheme = new Scheme(seed, false, contrast);
+  const darkScheme = new Scheme(seed, true, contrast);
+
+  const runtime = (overrides: CreateColorSchemeOptions) => {
+    const resolvedSeed = parseHct(overrides.seed ?? seed);
+    const resolvedVariant = overrides.variant ?? variant;
+    const Scheme = SCHEMES_MAP[resolvedVariant];
+    const resolvedContrast = overrides.contrastLevel ?? contrast;
+
+    const colorScheme = new Scheme(resolvedSeed, overrides.brightness === "dark", resolvedContrast);
+    const defaultColors = schemeToColors(colorScheme);
+    return {
+      color: defaultColors,
+      shape: DEFAULT_SHAPE,
+      easing: DEFAULT_EASING,
+      duration: DEFAULT_DURATION,
+      text: DEFAULT_TYPOGRAPHY,
+    } as const;
+  }
 
   const factory = (scheme: DynamicScheme) => {
     return (customColors?: ColorRoles<CustomColors, string>) => {
@@ -121,7 +151,8 @@ export const createMaterialTheme = <const CustomColors extends string[]>(options
     },
     light: factory(lightScheme),
     dark: factory(darkScheme),
-  };
+    custom: runtime,
+  } as const;
 }
 
 type ContractOptions =

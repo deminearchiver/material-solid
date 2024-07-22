@@ -2,6 +2,8 @@ import { THEME } from "@material-solid/vanilla-extract/contract";
 import { createVar, fallbackVar, style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
+// TODO: primaryContainer OR secondaryContainer
+
 
 export const containerStyle = style({
   width: "100%",
@@ -59,12 +61,14 @@ export const segmentShapeStyle = recipe({
     insetBlock: 0,
     borderRadius: THEME.shape.extraSmall,
 
+    insetInline: 6,
+
     transition: `inset-inline 100ms ${THEME.easing.standard}`,
   },
   variants: {
     active: {
       false: {
-        backgroundColor: THEME.color.secondaryContainer,
+        backgroundColor: THEME.color.primaryContainer,
         "::before": {
           backgroundColor: THEME.color.primary,
         },
@@ -72,7 +76,7 @@ export const segmentShapeStyle = recipe({
       true: {
         backgroundColor: THEME.color.primary,
         "::before": {
-          backgroundColor: THEME.color.secondaryContainer,
+          backgroundColor: THEME.color.primaryContainer,
         },
       },
     },
@@ -258,7 +262,7 @@ export const labelTextStyle = recipe({
   variants: {
     visible: {
       false: {
-        translate: "0 -100%",
+        translate: "0 -66.6666%",
         transitionTimingFunction: THEME.easing.standardAccelerate,
       },
       true: {
@@ -272,34 +276,34 @@ export const labelTextStyle = recipe({
 });
 
 
-
-export const stopsStartInset = createVar();
-export const stopsEndInset = createVar();
-
-const stopsOffset = createVar();
-
+export const stopsPolygon = createVar();
 export const stopsStyle = recipe({
   base: {
     userSelect: "none",
     pointerEvents: "none",
 
+    zIndex: 1,
     position: "absolute",
-    top: "50%",
-    translate: "0 -50%",
     left: 0,
     right: 0,
+    top: "50%",
     height: 4,
-    zIndex: 1,
+    translate: "0 -50%",
 
-    clipPath: `inset(
-      0
-      ${fallbackVar(stopsEndInset, "0")}
-      0
-      ${fallbackVar(stopsStartInset, "0")}
-    )`,
-    // transitionProperty: "clip-path",
-    // transitionDuration: "300ms",
-    // transitionTimingFunction: "linear",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingInline: 4, // TODO: decide 4 or 6
+
+    clipPath: `polygon(${stopsPolygon})`,
+  },
+});
+
+export const stopStyle = recipe({
+  base: {
+    width: 4,
+    height: 4,
+    borderRadius: THEME.shape.full,
   },
   variants: {
     active: {
@@ -307,24 +311,11 @@ export const stopsStyle = recipe({
         backgroundColor: THEME.color.primary,
       },
       true: {
-        backgroundColor: THEME.color.secondaryContainer,
-      },
-    },
-    pressed: {
-      false: {
-        vars: {
-          [stopsOffset]: "8px",
-        },
-      },
-      true: {
-        vars: {
-          [stopsOffset]: "7px",
-        },
+        backgroundColor: THEME.color.primaryContainer,
       },
     }
   },
   defaultVariants: {
     active: false,
-    pressed: false,
-  },
+  }
 })

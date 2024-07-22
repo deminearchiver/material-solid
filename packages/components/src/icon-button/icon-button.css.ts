@@ -1,7 +1,9 @@
-import { fallbackVar, style } from "@vanilla-extract/css";
+import { createTheme, createThemeContract, fallbackVar, style } from "@vanilla-extract/css";
 import { rippleTheme } from "../ripple/theme.css";
 import { THEME } from "@material-solid/vanilla-extract/contract";
 import { recipe } from "@vanilla-extract/recipes";
+import { iconButtonTheme } from "./theme.css";
+
 
 export const iconButtonStyle = recipe({
   base: {
@@ -26,7 +28,7 @@ export const iconButtonStyle = recipe({
       cursor: "none",
       pointerEvents: "none",
     },
-    // TODO: this code causes scroll overflows
+    // TODO: this code causes scroll overflows (fine probably, just add more customization options!!!)
     "::before": {
       content: "",
       position: "absolute",
@@ -36,32 +38,110 @@ export const iconButtonStyle = recipe({
   },
   variants: {
     variant: {
-      regular: {
-        color: THEME.color.onSurfaceVariant,
+      regular: {},
+      filled: {},
+      filledTonal: {},
+      outlined: {},
+    },
+    selected: {
+      false: {},
+      true: {},
+    },
+  },
+  defaultVariants: {
+    variant: "regular",
+  },
+  compoundVariants: [
+    {
+      variants: {
+        variant: "regular",
+        selected: false,
+      },
+      style: {
+        color: fallbackVar(iconButtonTheme.unselectedColor, THEME.color.onSurfaceVariant),
         vars: {
           [rippleTheme.hoverColor]: THEME.color.onSurfaceVariant,
           [rippleTheme.pressedColor]: THEME.color.onSurfaceVariant,
         },
       },
-      filled: {
+    },
+    {
+      variants: {
+        variant: "regular",
+        selected: true,
+      },
+      style: {
+        color: fallbackVar(iconButtonTheme.selectedColor, THEME.color.primary),
+        vars: {
+          [rippleTheme.hoverColor]: THEME.color.primary,
+          [rippleTheme.pressedColor]: THEME.color.primary,
+        },
+      },
+    },
+    {
+      variants: {
+        variant: "filled",
+        selected: false,
+      },
+      style: {
+        backgroundColor: THEME.color.surfaceContainerHighest,
+        color: fallbackVar(iconButtonTheme.unselectedColor, THEME.color.primary),
+        vars: {
+          [rippleTheme.hoverColor]: THEME.color.primary,
+          [rippleTheme.pressedColor]: THEME.color.primary,
+        },
+      },
+    },
+    {
+      variants: {
+        variant: "filled",
+        selected: true,
+      },
+      style: {
         backgroundColor: THEME.color.primary,
-        color: THEME.color.onPrimary,
+        color: fallbackVar(iconButtonTheme.selectedColor, THEME.color.onPrimary),
         vars: {
           [rippleTheme.hoverColor]: THEME.color.onPrimary,
           [rippleTheme.pressedColor]: THEME.color.onPrimary,
         },
       },
-      tonal: {
+    },
+    {
+      variants: {
+        variant: "filledTonal",
+        selected: false,
+      },
+      style: {
+        backgroundColor: THEME.color.surfaceContainerHighest,
+        color: fallbackVar(iconButtonTheme.unselectedColor, THEME.color.onSurfaceVariant),
+        vars: {
+          [rippleTheme.hoverColor]: THEME.color.onSurfaceVariant,
+          [rippleTheme.pressedColor]: THEME.color.onSurfaceVariant,
+        },
+      },
+    },
+    {
+      variants: {
+        variant: "filledTonal",
+        selected: true,
+      },
+      style: {
         backgroundColor: THEME.color.secondaryContainer,
-        color: THEME.color.onSecondaryContainer,
+        color: fallbackVar(iconButtonTheme.selectedColor, THEME.color.onSecondaryContainer),
         vars: {
           [rippleTheme.hoverColor]: THEME.color.onSecondaryContainer,
           [rippleTheme.pressedColor]: THEME.color.onSecondaryContainer,
         },
       },
-      outlined: {
+    },
+    {
+      variants: {
+        variant: "outlined",
+        selected: false,
+      },
+      style: {
         backgroundColor: THEME.color.surface,
-        color: THEME.color.onSurfaceVariant,
+        color: fallbackVar(iconButtonTheme.unselectedColor, THEME.color.onSurfaceVariant),
         "::after": {
           content: "",
           position: "absolute",
@@ -75,9 +155,19 @@ export const iconButtonStyle = recipe({
         },
       },
     },
-  },
-  defaultVariants: {
-    variant: "regular",
-  },
+    {
+      variants: {
+        variant: "outlined",
+        selected: true,
+      },
+      style: {
+        backgroundColor: THEME.color.inverseSurface,
+        color: fallbackVar(iconButtonTheme.selectedColor, THEME.color.inverseOnSurface),
+        vars: {
+          [rippleTheme.hoverColor]: THEME.color.inverseOnSurface,
+          [rippleTheme.pressedColor]: THEME.color.inverseOnSurface,
+        },
+      },
+    },
+  ],
 });
-

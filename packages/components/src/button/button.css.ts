@@ -5,6 +5,7 @@ import { style } from "@vanilla-extract/css";
 
 export const buttonStyle = recipe({
   base: {
+    WebkitTapHighlightColor: "transparent",
     position: "relative",
     minWidth: "max-content",
     height: 40,

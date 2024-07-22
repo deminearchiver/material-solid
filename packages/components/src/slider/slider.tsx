@@ -11,13 +11,16 @@ import {
   createEffect,
   on,
   onMount,
+  type Accessor,
+  type ComponentProps,
+  For,
 } from "solid-js";
 import { assignRef, type Ref, type RefCallback } from "@material-solid/utils";
 
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { createPresence } from "@solid-primitives/presence";
 import { Focus } from "../focus";
-import type { MaybeAccessor } from "@solid-primitives/utils";
+import { asAccessor, type MaybeAccessor } from "@solid-primitives/utils";
 import { createStaticStore } from "@solid-primitives/static-store";
 
 import {
@@ -31,10 +34,42 @@ import {
   segmentFraction,
   segmentShapeStyle,
   segmentStyle,
-  stopsEndInset,
-  stopsStartInset,
+  stopsPolygon,
   stopsStyle,
+  stopStyle,
 } from "./slider.css";
+import { createElementSize, createResizeObserver } from "@solid-primitives/resize-observer";
+import { createContextProvider } from "@solid-primitives/context";
+import { createStore } from "solid-js/store";
+import { ReactiveSet } from "@solid-primitives/set";
+
+
+
+
+
+
+type SliderState = {
+  pressed: boolean;
+}
+type SliderStateProviderProps = {
+  state: SliderState;
+}
+const createSliderState = () => {
+  return createStore<SliderState>({
+    pressed: false,
+  });
+}
+
+const [
+  SliderStateProvider,
+  useSliderState
+] = createContextProvider<
+  SliderState,
+  SliderStateProviderProps
+>(props => props.state);
+
+
+
 
 const normalize = (value: number, min: number, max: number) => {
   return (value - min) / (max - min);
@@ -61,10 +96,6 @@ export type SliderProps = {
   onChanged?: (value: number) => void;
 };
 
-type SliderState = {
-  pressed: boolean;
-}
-
 export const Slider: Component<SliderProps> = (props) => {
   const mergedProps = mergeProps({ from: 0, to: 1 }, props);
 
@@ -81,12 +112,11 @@ export const Slider: Component<SliderProps> = (props) => {
 
   assignRef(local.ref, {});
 
-  let containerRef!: HTMLElement;
+  let ref!: HTMLElement;
   let inputRef!: HTMLInputElement;
 
-  const [state, setState] = createStaticStore<SliderState>({
-    pressed: false,
-  });
+  const [state, setState] = createSliderState();
+
   const setPressed = (value: boolean) => {
     setState("pressed", value);
     showLabel(value);
@@ -125,9 +155,74 @@ export const Slider: Component<SliderProps> = (props) => {
     showLabel();
   }
 
+  const [data, setData] = createStore<{
+    segments: {
+      inactive: HTMLElement[];
+      active: HTMLElement[];
+    };
+    polygons: {
+      inactive: string;
+      active: string;
+    };
+  }>({
+    segments: {
+      inactive: [],
+      active: [],
+    },
+    polygons: {
+      inactive: "",
+      active: "",
+    },
+  });
+
+  const getPolygon = (segments: HTMLElement[]): string => {
+    const containerRect = ref.getBoundingClientRect();
+
+    return segments.reduce<string[]>(
+      (polygon, segment) => {
+        const segmentRect = segment.children.item(0)!.getBoundingClientRect();
+        const left = segmentRect.left - containerRect.left;
+        const right = segmentRect.right - containerRect.left;
+
+
+        const next = [
+          `${left}px 0%`,
+          `${left}px 100%`,
+          `${right}px 100%`,
+          `${right}px 0%`,
+        ];
+
+        polygon.push(...next);
+        return polygon;
+      },
+      [],
+    ).join(",");
+  }
+
+  createResizeObserver(
+    () => data.segments.inactive,
+    (rect, element, entry) => {
+      setData(
+        "polygons",
+        "inactive",
+        getPolygon(data.segments.inactive),
+      );
+    },
+  );
+  createResizeObserver(
+    () => data.segments.active,
+    (rect, element, entry) => {
+      setData(
+        "polygons",
+        "active",
+        getPolygon(data.segments.active),
+      );
+    },
+  );
+
   return (
     <div
-      ref={containerRef as HTMLDivElement}
+      ref={ref as HTMLDivElement}
       class={containerStyle}>
         <input
           ref={inputRef}
@@ -154,91 +249,102 @@ export const Slider: Component<SliderProps> = (props) => {
           aria-valuetext={`${local.value}`}
           aria-label="Slider"
         />
-        {/* <SliderStops
-          state={state}
-          fromFraction={0}
-          toFraction={fraction()}
-          active /> */}
-        <SliderSegment
-          edge="start"
-          active
-          fraction={fraction()}
-          state={state} />
-        <SliderHandle
-          for={inputRef}
-          state={state}
-          label={label()}
-          labelVisible={labelVisible()} />
-        <SliderSegment
-          edge="end"
-          stop
-          fraction={1 - fraction()}
-          state={state} />
+        <SliderStateProvider state={state}>
+          <SliderSegment
+            ref={element => setData("segments", "inactive", 0, element)}
+            active
+            edge="start"
+            fraction={fraction()} />
+          <SliderHandle
+            for={inputRef}
+            label={label()}
+            labelVisible={labelVisible()} />
+          <SliderSegment
+            ref={element => setData("segments", "active", 0, element)}
+            edge="end"
+            fraction={1 - fraction()} />
+      </SliderStateProvider>
     </div>
   );
 };
 
 
 type SliderStopsProps = {
-  state: SliderState;
   active?: boolean;
-  fromFraction: number;
-  toFraction: number;
+  polygon: string;
 }
 const SliderStops: Component<SliderStopsProps> = (props) => {
-  const offset = createMemo(
-    () => props.state.pressed ? 6 : 8,
+  const state = useSliderState()!;
+
+  const mergedProps = mergeProps(
+    { active: false },
+    props,
   );
-  const startInset = createMemo(
-    () => props.fromFraction
-      ? `calc(${(props.fromFraction) * 100}%)`
-      : undefined
+  const [local, others] = splitProps(
+    mergedProps,
+    ["active", "polygon"],
   );
-  const endInset = createMemo(
-    () => props.toFraction
-      ? `calc(${(1 - props.toFraction) * 100}% + ${offset()}px)`
-      : undefined
-  );
+
   return (
     <div
-      class={stopsStyle({
-        active: props.active
-      })}
+      class={stopsStyle()}
       style={
         assignInlineVars({
-          [stopsStartInset]: startInset(),
-          [stopsEndInset]: endInset(),
+          [stopsPolygon]: local.polygon,
         })
       }>
-
+        <For each={new Array(10).fill(true)}>{
+          (item, index) => (
+            <div class={stopStyle({ active: local.active })} />
+          )
+        }</For>
     </div>
   );
 }
 
-type SliderSegmentProps = {
-  state: SliderState;
-  fraction: number;
-  edge: "start" | "end";
-  active?: boolean;
-  stop?: boolean;
-  shapeRef?: Ref<HTMLElement>;
-}
+type SliderSegmentProps =
+  & {
+    fraction: number;
+    edge?: "start" | "end";
+    active?: boolean;
+    stop?: boolean;
+  }
+  & JSX.HTMLAttributes<HTMLElement>;
+
 const SliderSegment: Component<SliderSegmentProps> = (props) => {
+  const mergedProps = mergeProps(
+    { active: false, stop: false },
+    props,
+  );
+  const [local, others] = splitProps(
+    mergedProps,
+    [
+      "ref",
+      "fraction",
+      "edge",
+      "active",
+      "stop",
+    ],
+  );
+
+  const state = useSliderState()!;
+
   return (
     <div
+      ref={local.ref as Ref<HTMLDivElement>}
       class={segmentStyle}
       style={
         assignInlineVars({
           [segmentFraction]: `${props.fraction}`,
         })
-      }>
+      }
+      {...others}>
         <div
-          ref={props.shapeRef as Ref<HTMLDivElement>}
           class={
             segmentShapeStyle({
               edge: props.edge,
               active: props.active,
-              pressed: props.state.pressed,
+              pressed: state.pressed,
               stop: props.stop,
             })
           } />
@@ -248,17 +354,18 @@ const SliderSegment: Component<SliderSegmentProps> = (props) => {
 
 type SliderHandleProps = {
   for: MaybeAccessor<HTMLElement>;
-  state: SliderState;
   label: JSX.Element;
   labelVisible?: boolean;
 }
 const SliderHandle: Component<SliderHandleProps> = (props) => {
+  const state = useSliderState()!;
+
   return (
     <div class={handleStyle}>
       <Focus for={props.for} class={focusStyle} />
       <div class={
         handleIndicatorStyle({
-          pressed: props.state.pressed
+          pressed: state.pressed
         })
       } />
 

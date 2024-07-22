@@ -2,8 +2,9 @@ import { createMaterialTheme, Hct } from "@material-solid/vanilla-extract/theme"
 
 const { contract, light, dark } = createMaterialTheme({
   color: {
-    seed: Hct.fromInt(0xFF0000FF),
-    variant: "tonalSpot",
+    // seed: Hct.fromInt(0xFF2C4F7C), // SolidJS Primary
+    seed: Hct.fromInt(0xFF4F88C6), // SolidJS Light
+    variant: "vibrant",
   },
 });
 

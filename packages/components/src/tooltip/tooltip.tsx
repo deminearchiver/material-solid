@@ -43,21 +43,19 @@ export const tooltipFactory = <T extends "plain" | "rich">(variant: T) => {
       const anchor = access(localProps.for);
       const cleanup = autoUpdate(
         anchor, ref,
-        () => {
-          void computePosition(
-            anchor, ref,
-            {
-              placement: "top",
-              middleware: [
-                flip(),
-                shift(),
-                offset(8),
-              ],
-            },
-          ).then(
-            ({ x, y }) => setFloatingState({ x, y })
-          );
-        },
+        () => void computePosition(
+          anchor, ref,
+          {
+            placement: "top",
+            middleware: [
+              flip(),
+              shift(),
+              offset(8),
+            ],
+          },
+        ).then(
+          ({ x, y }) => setFloatingState({ x, y })
+        ),
       );
       onCleanup(cleanup);
     });

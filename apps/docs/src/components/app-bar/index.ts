@@ -1,1 +1,1 @@
-export * from "./app-bar";
+export * from "./top-app-bar";

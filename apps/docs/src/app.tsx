@@ -3,12 +3,14 @@ import { lazy, Suspense, type Component } from "solid-js";
 import { MetaProvider, Title} from "@solidjs/meta";
 import { MultiProvider } from "@material-solid/utils";
 import { MaterialSymbolController } from "@material-solid/components/icon";
+import { ThemeProvider } from "./components/theme";
 
 const Layout: Component<RouteSectionProps> = (props) => {
   return (
     <MultiProvider
       providers={[
         MetaProvider,
+        ThemeProvider,
         [MaterialSymbolController, { defaultVariant: "rounded" }],
       ]}>
         <Title>Material Solid</Title>

@@ -6,8 +6,8 @@ import { resolve } from "path";
 
 export default defineConfig({
   plugins: [
-    vanillaExtract(),
     solid(),
+    vanillaExtract(),
   ],
   css: {
     transformer: "lightningcss",

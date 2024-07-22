@@ -4,6 +4,7 @@
     "module": "ESNext",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "moduleResolution": "bundler",
+    "skipLibCheck": true,
 
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
