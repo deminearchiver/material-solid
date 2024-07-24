@@ -43,7 +43,9 @@ type CardComponent =
     [Variant in CardVariant]: CardVariantComponent;
   };
 
-
+/**
+ * @category Component
+ */
 const proxy = new Proxy(
   Card,
   {

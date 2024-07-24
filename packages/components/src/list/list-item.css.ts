@@ -11,7 +11,8 @@ export const listItemStyle = style({
   outline: "none",
   alignItems: "center",
   gap: 16,
-  padding: fallbackVar(listItemTheme.padding, "8px 16px"),
+  paddingInline: fallbackVar(listItemTheme.paddingInline, "16px"),
+  paddingBlock: 8,
   color: THEME.color.onSurfaceVariant,
   textDecoration: "none",
   width: "100%",
@@ -22,13 +23,14 @@ export const listItemStyle = style({
   }
 });
 export const listItemContentStyle = style({
+  flexGrow: 1,
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
   justifyContent: "center",
 });
 
-export const listItemTitleStyle = style({
+export const listItemHeadlineStyle = style({
   color: THEME.color.onSurface,
   fontFamily: THEME.text.body.large.family,
   fontSize: THEME.text.body.large.size,

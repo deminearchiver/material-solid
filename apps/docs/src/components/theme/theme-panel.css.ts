@@ -1,3 +1,4 @@
+import { listItemTheme } from "@material-solid/components/list/theme";
 import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { THEME } from "~/theme";
@@ -22,7 +23,7 @@ export const panelStyle = recipe({
     isolation: "isolate",
 
     backgroundColor: THEME.color.surfaceContainer,
-    padding: 24,
+    paddingBlock: 24,
 
     scale: 0.35,
     opacity: 0,
@@ -30,7 +31,16 @@ export const panelStyle = recipe({
     borderRadius: 56,
     transformOrigin: "top right",
 
-    transitionProperty: "scale, opacity, border-radius",
+    transitionProperty: "scale, border-radius, opacity",
+
+    vars: {
+      [listItemTheme.paddingInline]: "24px",
+    },
+
+    "::backdrop": {
+      backgroundColor: THEME.color.scrim,
+      transitionProperty: "opacity",
+    },
   },
   variants: {
     mounted: {
@@ -40,25 +50,42 @@ export const panelStyle = recipe({
     },
     visible: {
       false: {
-
+        "::backdrop": {
+          opacity: 0,
+        }
       },
       true: {
         scale: 1,
         opacity: 1,
         borderRadius: 28,
+
+        "::backdrop": {
+          opacity: 0.32,
+        }
       },
     },
     entering: {
       true: {
-        transitionDuration: "500ms",
+        transitionDuration: "500ms, 500ms, 300ms",
         transitionTimingFunction: THEME.easing.emphasizedDecelerate,
+
+        "::backdrop": {
+          transitionDuration: "500ms",
+          transitionTimingFunction: THEME.easing.emphasizedDecelerate,
+        },
       },
     },
     exiting: {
       true: {
         scale: 0.35,
-        transitionDuration: "300ms",
+        transitionDuration: "300ms, 150ms",
+        transitionDelay: "0ms, 150ms",
         transitionTimingFunction: THEME.easing.emphasizedAccelerate,
+
+        "::backdrop": {
+          transitionDuration: "300ms",
+          transitionTimingFunction: THEME.easing.emphasizedAccelerate,
+        },
       },
     },
   },
@@ -83,7 +110,7 @@ export const panelWrapperStyle = recipe({
   variants: {
     visible: {
       false: {
-        translate: "0 -50%",
+        translate: "0 -80px",
         opacity: 0,
       },
       true: {
@@ -93,7 +120,7 @@ export const panelWrapperStyle = recipe({
     },
     entering: {
       true: {
-        transitionDuration: "500ms",
+        transitionDuration: "500ms, 300ms",
         transitionDelay: "0ms, 100ms",
         transitionTimingFunction: THEME.easing.emphasizedDecelerate,
       },
@@ -117,4 +144,5 @@ export const panelActionsStyle = style({
   justifyContent: "flex-end",
   flexWrap: "wrap",
   gap: 8,
+  paddingInline: 24,
 });

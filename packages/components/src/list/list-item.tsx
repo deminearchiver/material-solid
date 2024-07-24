@@ -1,5 +1,5 @@
 import { createMemo, createSignal, onMount, splitProps, type Component, type JSX, type ParentComponent, type Signal } from "solid-js";
-import { listItemContentStyle, listItemStyle, listItemSubtitleStyle, listItemTitleStyle } from "./list-item.css";
+import { listItemContentStyle, listItemStyle, listItemSubtitleStyle, listItemHeadlineStyle } from "./list-item.css";
 import { Ripple } from "../ripple";
 import { Dynamic } from "solid-js/web";
 import { mergeRefs } from "@solid-primitives/refs";
@@ -10,7 +10,7 @@ export type ListItemType = "text" | "button" | "link";
 type BaseListItemProps = {
   type?: ListItemType;
   leading?: JSX.Element;
-  title: JSX.Element;
+  headline: JSX.Element;
   subtitle?: JSX.Element;
   trailing?: JSX.Element;
 }
@@ -29,7 +29,7 @@ export const ListItem: Component<ListItemProps> = (props) => {
       "class",
       "type",
       "leading",
-      "title",
+      "headline",
       "subtitle",
       "trailing",
     ],
@@ -52,13 +52,14 @@ export const ListItem: Component<ListItemProps> = (props) => {
         <Ripple for={ref} disabled={type() === "text"} />
         {local.leading}
         <div class={listItemContentStyle}>
-          <div class={listItemTitleStyle}>
-            {props.title}
-          </div>
-          <div class={listItemSubtitleStyle}>
+          <span class={listItemHeadlineStyle}>
+            {props.headline}
+          </span>
+          <span class={listItemSubtitleStyle}>
             {props.subtitle}
-          </div>
+          </span>
         </div>
+        {local.trailing}
     </Dynamic>
   )
   // switch(tag()) {

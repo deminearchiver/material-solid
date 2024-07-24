@@ -11,6 +11,16 @@ globalStyle(
 );
 
 globalStyle(
+  "html",
+  {
+    WebkitTextSizeAdjust: "none",
+    MozTextSizeAdjust: "none",
+    textSizeAdjust: "none",
+  },
+);
+
+
+globalStyle(
   "body",
   {
     colorScheme: "light dark",
@@ -18,6 +28,7 @@ globalStyle(
 
     backgroundColor: THEME.color.surface,
 
+    WebkitFontSmoothing: "antialised",
     fontFamily: THEME.text.body.large.family,
     fontSize: THEME.text.body.large.size,
     fontWeight: THEME.text.body.large.weight,
@@ -28,8 +39,31 @@ globalStyle(
 );
 
 globalStyle(
-  "h1, h2, h3, h4, h5, h6",
+  "h1, h2, h3, h4", // TODO: decide whether to include h5 and h6. ref: https://piccalil.li/blog/a-more-modern-css-reset/
   {
     textWrap: "balance",
+  },
+);
+
+globalStyle(
+  `ul[role="list"], ol[role="list"]`,
+  {
+    listStyle: "none",
+  },
+);
+
+globalStyle(
+  "img, picture, video, canvas, svg",
+  {
+    maxWidth: "100%",
+    display: "block",
+  },
+);
+
+// https://www.joshwcomeau.com/css/custom-css-reset/
+globalStyle(
+  "#root", // TODO: add something like #__next
+  {
+    isolation: "isolate",
   },
 );

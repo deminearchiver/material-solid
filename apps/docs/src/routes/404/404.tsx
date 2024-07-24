@@ -1,4 +1,4 @@
-import { A } from "@solidjs/router";
+import { A, type RouteSectionProps } from "@solidjs/router";
 import { Title } from "@solidjs/meta";
 
 import { Button } from "@material-solid/components/button";
@@ -7,8 +7,9 @@ import { MaterialSymbol } from "@material-solid/components/icon";
 import { layoutStyle, headlineStyle, imageStyle, contentStyle } from "./404.css";
 
 import image from "~/assets/404.png";
+import type { Component } from "solid-js";
 
-export default function NotFound() {
+export const NotFound: Component<RouteSectionProps> = (props) => {
   return (
     <main class={layoutStyle}>
       <Title>404 | Material Solid</Title>

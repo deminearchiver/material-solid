@@ -1,23 +1,19 @@
 import { MaterialSymbol } from "@material-solid/components/icon";
 import { IconButton } from "@material-solid/components/icon-button";
 import { ButtonSegment, SegmentedButton } from "@material-solid/components/segmented-button";
-import { makePersisted } from "@solid-primitives/storage";
-import { createEffect, createMemo, createSignal, type JSX, mergeProps, on, onCleanup, Show, splitProps, type Component, type ParentComponent, type Signal } from "solid-js";
-import { createStore } from "solid-js/store";
-import { panelActionsStyle, panelWrapperStyle, panelStyle, } from "./theme.css";
+import { createEffect, createMemo, createSignal, type JSX, mergeProps, on, splitProps, type Component, type Signal, type ComponentProps } from "solid-js";
+import { panelActionsStyle, panelWrapperStyle, panelStyle, } from "./theme-panel.css";
 import { Button } from "@material-solid/components/button";
-import { Slider } from "@material-solid/components/slider";
-import { usePrefersDark } from "@solid-primitives/media";
 import { access, type MaybeAccessor } from "@solid-primitives/utils";
-import createFloating from "@corvu/utils/create/floating";
 import { mergeRefs } from "@solid-primitives/refs";
 import { createPresence } from "@solid-primitives/presence";
 import { clsx } from "@material-solid/utils/clsx";
 import { useTheme, type ThemeBrightness } from ".";
-import { SliderListItem } from "../lists";
-import { createEventListener } from "@solid-primitives/event-listener";
-import type { Accessor } from "solid-js";
+import { SliderListItem, SwitchListItem } from "../list";
+import { ListItem } from "@material-solid/components/list";
+import { Switch } from "@material-solid/components/switch";
 
+import { createFloating } from "@material-solid/utils/floating";
 
 
 
@@ -27,16 +23,11 @@ const roundByDPR = (value: number) => {
 }
 
 
-export const ThemeSwitcher = () => {
+export const ThemePanelTrigger = () => {
   const [theme, setTheme] = useTheme()!;
   const [buttonRef, setButtonRef] = createSignal() as Signal<HTMLElement>;
 
   const [visible, setVisible] = createSignal(false);
-
-  createEffect(() => {
-    console.log(visible());
-  })
-
   return (
     <>
       <IconButton
@@ -54,29 +45,33 @@ export const ThemeSwitcher = () => {
         for={buttonRef}
         visible={visible()}
         onVisibilityChanged={setVisible}>
-          <SegmentedButton
-            selected={theme.brightness}
-            onSelectionChange={value => setTheme("brightness", value)}>
-            <ButtonSegment<ThemeBrightness>
-              value="auto"
-              icon={<MaterialSymbol name="auto_mode" />}
-              label="Auto" />
-            <ButtonSegment<ThemeBrightness>
-              value="light"
-              icon={<MaterialSymbol name="light_mode" />}
-              label="Light" />
-            <ButtonSegment<ThemeBrightness>
-              value="dark"
-              icon={<MaterialSymbol name="dark_mode" />}
-              label="Dark" />
-          </SegmentedButton>
+          <SwitchListItem
+            onSelectedChanged={value => setTheme("useSystemBrightness", value)}
+            selected={theme.useSystemBrightness}
+            icon={<MaterialSymbol name="auto_mode" />}
+            headline="Auto brightness"
+            subtitle="Automatically determine brightness" />
+          <div style={{ "padding-inline": "24px" }}>
+            <SegmentedButton
+              selected={theme.brightness}
+              onSelectionChange={value => setTheme("brightness", value)}>
+                <ButtonSegment<ThemeBrightness>
+                  value="light"
+                  icon={<MaterialSymbol name="light_mode" />}
+                  label="Light" />
+                <ButtonSegment<ThemeBrightness>
+                  value="dark"
+                  icon={<MaterialSymbol name="dark_mode" />}
+                  label="Dark" />
+            </SegmentedButton>
+          </div>
           <SliderListItem
             icon={<MaterialSymbol name="contrast_circle" />}
             label="Contrast level"
             value={0.5} />
-          <div class={panelActionsStyle}>
+          <footer class={panelActionsStyle}>
             <Button.text onClick={() => setVisible(false)} label="Close"  />
-          </div>
+          </footer>
       </ThemePanel>
     </>
   );
@@ -134,9 +129,8 @@ const ThemePanel: Component<ThemePanelProps> = (props) => {
     },
   );
   const translate = createMemo(() => {
-    const state = floatingState();
-    const x = roundByDPR(state.x)
-    const y = roundByDPR(state.y);
+    const x = roundByDPR(floatingState.x)
+    const y = roundByDPR(floatingState.y);
     return `${x}px ${y}px`
   });
 
@@ -205,4 +199,12 @@ const ThemePanel: Component<ThemePanelProps> = (props) => {
         </div>
     </dialog>
   );
+}
+
+const ThemeSettings: Component = () => {
+  return (
+    <div>
+
+    </div>
+  )
 }

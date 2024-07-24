@@ -7,6 +7,11 @@
     "url": "https://github.com/deminearchiver"
   },
   "type": "module",
+  "packageManager": "yarn@4.3.1",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
   "exports": {
     "./ripple": "./src/ripple/index.ts",
     "./ripple/theme": "./src/ripple/theme.css.ts",
@@ -19,12 +24,12 @@
     "./icon-button/theme": "./src/icon-button/theme.css.ts",
     "./segmented-button": "./src/segmented-button/index.ts",
     "./list": "./src/list/index.ts",
+    "./list/theme": "./src/list/theme.css.ts",
     "./card": "./src/card/index.ts",
     "./slider": "./src/slider/index.ts",
     "./tooltip": "./src/tooltip/index.ts",
     "./tabs": "./src/tabs/index.ts"
   },
-  "packageManager": "yarn@4.3.1",
   "dependencies": {
     "@floating-ui/dom": "^1.6.8",
     "@material-solid/utils": "workspace:^",
@@ -51,6 +56,9 @@
     "solid-js": "^1.8.18"
   },
   "devDependencies": {
-    "@types/cssesc": "^3.0.2"
+    "@types/cssesc": "^3.0.2",
+    "@vanilla-extract/esbuild-plugin": "^2.3.8",
+    "tsup": "^8.2.2",
+    "tsup-preset-solid": "^2.2.0"
   }
 }

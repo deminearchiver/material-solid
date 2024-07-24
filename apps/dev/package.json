@@ -31,9 +31,9 @@
     "solid-js": "^1.8.18"
   },
   "devDependencies": {
-    "@types/node": "^20.14.11",
+    "@types/node": "^20.14.12",
     "@vanilla-extract/vite-plugin": "^4.0.13",
-    "typescript": "^5.5.3",
+    "typescript": "^5.5.4",
     "vite": "^5.3.4",
     "vite-plugin-solid": "^2.10.2"
   }

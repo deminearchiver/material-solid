@@ -15,7 +15,7 @@ export const buttonStyle = recipe({
     alignItems: "center",
     justifyContent: "center",
     gap: 8,
-    paddingInlineEnd: 24,
+    paddingInline: 24,
 
     appearance: "none",
     background: "none",
@@ -33,12 +33,12 @@ export const buttonStyle = recipe({
     letterSpacing: THEME.text.label.large.letterSpacing,
   },
   variants: {
-    withIcon: {
-      false: {
-        paddingInlineStart: 24,
-      },
-      true: {
+    iconAffinity: {
+      leading: {
         paddingInlineStart: 16,
+      },
+      trailing: {
+        paddingInlineEnd: 16,
       }
     },
     variant: {
@@ -91,7 +91,6 @@ export const buttonStyle = recipe({
     },
   },
   defaultVariants: {
-    withIcon: false,
     disabled: false,
   },
   compoundVariants: [

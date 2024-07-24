@@ -95,7 +95,7 @@
 //   );
 // }
 
-import { createMemo, createSignal, splitProps, type Component, type ComponentProps, type JSX, type Signal } from "solid-js";
+import { createMemo, createSignal, mergeProps, Show, splitProps, type Component, type ComponentProps, type JSX, type Signal } from "solid-js";
 import { useButtonTheme, type ButtonVariants } from "./theme";
 import { Dynamic } from "solid-js/web";
 import { clsx } from "clsx/lite";
@@ -118,6 +118,7 @@ type ButtonBaseProps<T extends keyof JSX.HTMLElementTags> = {
   as?: T;
   disabled?: boolean;
   icon?: JSX.Element;
+  iconAffinity?: "leading" | "trailing";
   label: JSX.Element;
 }
 
@@ -133,8 +134,12 @@ type ButtonFullProps<T extends keyof JSX.HTMLElementTags> = ButtonVariantProps<T
 const Button = <
   T extends keyof JSX.HTMLElementTags = "button",
 >(props: ButtonFullProps<T>): JSX.Element => {
+  const mergedProps = mergeProps(
+    { iconAffinity: "leading" as const },
+    props,
+  );
   const [local, others] = splitProps(
-    props as any,
+    mergedProps as any,
     [
       "variant",
       "as",
@@ -142,6 +147,7 @@ const Button = <
       "ref",
       "disabled",
       "icon",
+      "iconAffinity",
       "label"
     ]
   );
@@ -168,7 +174,7 @@ const Button = <
       class={
         clsx(
           buttonStyle({
-            withIcon: !!local.icon,
+            iconAffinity: !!local.icon ? local.iconAffinity : undefined,
             variant: local.variant,
             disabled: local.disabled,
           }),
@@ -182,12 +188,17 @@ const Button = <
       {...others}>
         <Focus for={ref} />
         <Ripple for={ref} />
-
-        <MaterialSymbolController
-          class={buttonIconStyle}
-          children={local.icon} />
+        <Show when={local.icon && local.iconAffinity === "leading"}>
+          <MaterialSymbolController
+            class={buttonIconStyle}
+            children={local.icon} />
+        </Show>
         {local.label}
-
+        <Show when={local.icon && local.iconAffinity === "trailing"}>
+          <MaterialSymbolController
+            class={buttonIconStyle}
+            children={local.icon} />
+        </Show>
         <div class={
           buttonOutlineStyle({
             variant: local.variant,
@@ -197,6 +208,10 @@ const Button = <
     </Dynamic>
   );
 }
+
+/**
+ * @category Component
+ */
 const proxy = new Proxy(
   Button,
   {

@@ -11,11 +11,20 @@
     "./contract": "./contract/contract.css.ts"
   },
   "packageManager": "yarn@4.3.1",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
   "dependencies": {
     "@material/material-color-utilities": "^0.3.0",
     "@vanilla-extract/css": "^1.15.3",
     "@vanilla-extract/dynamic": "^2.1.1",
     "@vanilla-extract/recipes": "^0.5.3",
     "svg-path-properties": "^1.3.0"
+  },
+  "devDependencies": {
+    "@vanilla-extract/esbuild-plugin": "^2.3.8",
+    "tsup": "^8.2.2",
+    "tsup-preset-solid": "^2.2.0"
   }
 }

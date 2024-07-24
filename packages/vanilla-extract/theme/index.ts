@@ -1,4 +1,4 @@
-import { DynamicColor, type DynamicScheme, Hct, MaterialDynamicColors, SchemeTonalSpot, SchemeVibrant, SchemeMonochrome, SchemeContent, SchemeExpressive, SchemeFidelity, SchemeFruitSalad, SchemeNeutral, SchemeRainbow } from "@material/material-color-utilities";
+import { DynamicColor, DynamicScheme, Hct, MaterialDynamicColors, SchemeTonalSpot, SchemeVibrant, SchemeMonochrome, SchemeContent, SchemeExpressive, SchemeFidelity, SchemeFruitSalad, SchemeNeutral, SchemeRainbow } from "@material/material-color-utilities";
 import { schemeToColors, type ColorsRecord, type MaterialDynamicColorsRecord } from "./color";
 import { createThemeContract } from "@vanilla-extract/css";
 import { THEME } from "../contract/contract.css";

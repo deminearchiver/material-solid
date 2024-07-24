@@ -4,7 +4,7 @@ const { contract, light, dark } = createMaterialTheme({
   color: {
     // seed: Hct.fromInt(0xFF2C4F7C), // SolidJS Primary
     seed: Hct.fromInt(0xFF4F88C6), // SolidJS Light
-    variant: "vibrant",
+    variant: "tonalSpot",
   },
 });
 

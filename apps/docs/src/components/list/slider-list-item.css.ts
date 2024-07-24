@@ -1,8 +1,9 @@
-import { style } from "@vanilla-extract/css";
+import { listItemTheme } from "@material-solid/components/list/theme";
+import { fallbackVar, style } from "@vanilla-extract/css";
 import { THEME } from "~/theme";
 
 export const materialSymbolStyle = style({
-  fontSize: 40,
+  fontSize: 32,
   color: THEME.color.onSurface,
 });
 
@@ -12,8 +13,9 @@ export const containerStyle = style({
   alignItems: "center",
   justifyContent: "center",
 
-  color: THEME.color.onSurface,
   gap: 16,
+  paddingInline: fallbackVar(listItemTheme.paddingInline, "16px"),
+  paddingBlock: 8,
 });
 
 export const labelStyle = style({
@@ -26,10 +28,10 @@ export const labelStyle = style({
   justifyContent: "center",
   // gap: 8,
 
-  fontFamily: THEME.text.title.large.family,
-  fontSize: THEME.text.title.large.size,
-  fontWeight: THEME.text.title.large.weight,
-  lineHeight: THEME.text.title.large.lineHeight,
-  letterSpacing: THEME.text.title.large.letterSpacing,
+  fontFamily: THEME.text.title.medium.family,
+  fontSize: THEME.text.title.medium.size,
+  fontWeight: THEME.text.title.medium.weight,
+  lineHeight: THEME.text.title.medium.lineHeight,
+  letterSpacing: THEME.text.title.medium.letterSpacing,
   color: THEME.color.onSurface,
 });
