@@ -20,7 +20,10 @@ export type ThemeProviderProps = {}
 const ThemeContext = createContext<ThemeStore>();
 export const useTheme = () => useContext(ThemeContext);
 
+const THEME_CHANGE_DELAY_MS = 300;
 const THEME_CHANGE_DURATION_MS = 200;
+
+type TimeoutId = Parameters<typeof clearTimeout>["0"];
 
 export const ThemeProvider: ParentComponent<ThemeProviderProps> = (props) => {
   const prefersDark = usePrefersDark();
@@ -39,13 +42,21 @@ export const ThemeProvider: ParentComponent<ThemeProviderProps> = (props) => {
     },
   );
 
-  const [styleTimeout, setStyleTimeout] = createSignal<number>();
+  const [durationTimeout, setDurationTimeout] = createSignal<TimeoutId>();
+  const [delayTimeout, setDelayTimeout] = createSignal<TimeoutId>();
 
 
-  const updateAttribute = (brightness?: "light" | "dark", animate: boolean = true) => {
+  const insertStyleTag = (brightness?: "light" | "dark", animate: boolean = true) => {
+
+  }
+
+  const updateAttribute = (
+    brightness: "auto" | "light" | "dark",
+    animate: boolean,
+    delay: boolean,
+  ) => {
     const style = document.createElement('style')
     style.setAttribute("type", "text/css");
-
 
     if(animate) {
       const transitionPrefixes = [
@@ -78,26 +89,32 @@ export const ThemeProvider: ParentComponent<ThemeProviderProps> = (props) => {
       }`;
     }
 
-    document.head.appendChild(style);
+    const changeTheme = () => {
+      document.head.appendChild(style);
+      if(brightness === "auto") {
+        delete document.documentElement.dataset.theme;
+      } else {
+        document.documentElement.dataset.theme = brightness;
+      }
+      window.getComputedStyle(style).opacity;
 
-    console.log(style);
-
-    if(brightness) {
-      document.documentElement.dataset.theme = brightness;
-    } else {
-      delete document.documentElement.dataset.theme;
-    }
-
-    window.getComputedStyle(style).opacity; // Force repaint
-    setStyleTimeout(
-      prev => {
+      setDurationTimeout(prev => {
         if(prev) clearTimeout(prev);
-        return setTimeout(
+        if(animate) return setTimeout(
           () => style.remove(),
           THEME_CHANGE_DURATION_MS,
-        ) as unknown as number;
-      }
-    );
+        );
+      });
+    }
+
+    if(!delay) changeTheme();
+    setDelayTimeout(prev => {
+      if(prev) clearTimeout(prev);
+      if(delay) return setTimeout(
+        changeTheme,
+        THEME_CHANGE_DELAY_MS,
+      );
+    });
   }
 
   createEffect(
@@ -126,8 +143,9 @@ export const ThemeProvider: ParentComponent<ThemeProviderProps> = (props) => {
         }
 
         updateAttribute(
-          !useSystemBrightness ? brightness : undefined,
+          !useSystemBrightness ? brightness : "auto",
           !!prevValues,
+          prevUseSystemBrightness !== useSystemBrightness,
         );
       },
     )
