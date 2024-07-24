@@ -102,7 +102,7 @@ export const createMaterialTheme = <
           },
           ...DEFAULT_TYPOGRAPHY,
         },
-      } satisfies Simplify<MapTree<MaterialThemeContract, string>>;
+      };
     },
   };
 }

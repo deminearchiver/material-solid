@@ -1,5 +1,6 @@
 import type { Hct } from "@material/material-color-utilities";
 import type { MaterialDurationThemeContract, MaterialEasingThemeContract, MaterialThemeContract } from "./contract/export";
+import type { Simplify } from "@material-solid/utils/types";
 
 export type SchemeVariant =
   | "monochrome"
@@ -48,7 +49,7 @@ export type MaterialTheme<T extends MaterialThemeOptions> = {
   /**
    * Fills in the contract created with {@link createContract}
    */
-  createTheme: (brightness: "light" | "dark") => void;
+  createTheme: (brightness: "light" | "dark") => Simplify<MapTree<MaterialThemeContract, string>>;
 }
 
 export type MapTree<T extends Record<string, unknown>, U> = {
