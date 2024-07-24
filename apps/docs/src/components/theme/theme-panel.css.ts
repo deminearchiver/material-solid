@@ -1,5 +1,5 @@
 import { listItemTheme } from "@material-solid/components/list/theme";
-import { style } from "@vanilla-extract/css";
+import { createVar, style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { THEME } from "~/theme";
 
@@ -17,18 +17,11 @@ export const panelStyle = recipe({
     outline: "none",
     border: "none",
     margin: 0,
-
     overflow: "auto",
-
     isolation: "isolate",
 
     backgroundColor: THEME.color.surfaceContainer,
-    paddingBlock: 24,
 
-    scale: 0.35,
-    opacity: 0,
-    // borderRadius: THEME.shape.medium,
-    borderRadius: 56,
     transformOrigin: "top right",
 
     transitionProperty: "scale, border-radius, opacity",
@@ -50,6 +43,9 @@ export const panelStyle = recipe({
     },
     visible: {
       false: {
+        scale: 0.35,
+        opacity: 0,
+        borderRadius: 80,
         "::backdrop": {
           opacity: 0,
         }
@@ -66,11 +62,11 @@ export const panelStyle = recipe({
     },
     entering: {
       true: {
-        transitionDuration: "500ms, 500ms, 300ms",
+        transitionDuration: "600ms, 600ms, 450ms",
         transitionTimingFunction: THEME.easing.emphasizedDecelerate,
 
         "::backdrop": {
-          transitionDuration: "500ms",
+          transitionDuration: "600ms",
           transitionTimingFunction: THEME.easing.emphasizedDecelerate,
         },
       },
@@ -78,8 +74,8 @@ export const panelStyle = recipe({
     exiting: {
       true: {
         scale: 0.35,
-        transitionDuration: "300ms, 150ms",
-        transitionDelay: "0ms, 150ms",
+        transitionDuration: "300ms, 300ms, 150ms",
+        transitionDelay: "0ms, 0ms, 150ms",
         transitionTimingFunction: THEME.easing.emphasizedAccelerate,
 
         "::backdrop": {
@@ -94,49 +90,30 @@ export const panelStyle = recipe({
   },
 });
 
-export const panelWrapperStyle = recipe({
-  base: {
-    width: "100%",
-    height: "100%",
+export const panelWrapperStyle = style({
+  width: "100%",
+  height: "100%",
 
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "stretch",
-    justifyContent: "center",
-    gap: 16,
-
-    transitionProperty: "translate, opacity"
-  },
-  variants: {
-    visible: {
-      false: {
-        translate: "0 -80px",
-        opacity: 0,
-      },
-      true: {
-        translate: 0,
-        opacity: 1,
-      },
-    },
-    entering: {
-      true: {
-        transitionDuration: "500ms, 300ms",
-        transitionDelay: "0ms, 100ms",
-        transitionTimingFunction: THEME.easing.emphasizedDecelerate,
-      },
-    },
-    exiting: {
-      true: {
-        transitionDuration: "300ms, 150ms",
-        transitionDelay: "0ms",
-        transitionTimingFunction: THEME.easing.emphasizedAccelerate,
-      },
-    },
-  },
-  defaultVariants: {
-    visible: false,
-  },
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "stretch",
+  justifyContent: "center",
 });
+
+export const panelHeadlineStyle = style({
+  paddingInline: 24,
+  paddingBlockStart: 24,
+  paddingBlockEnd: 16,
+
+  textAlign: "center",
+  fontFamily: THEME.text.headline.small.family,
+  fontSize: THEME.text.headline.small.size,
+  fontWeight: THEME.text.headline.small.weight,
+  lineHeight: THEME.text.headline.small.lineHeight,
+  letterSpacing: THEME.text.headline.small.letterSpacing,
+  color: THEME.color.onSurface,
+});
+
 
 export const panelActionsStyle = style({
   display: "flex",
@@ -144,5 +121,44 @@ export const panelActionsStyle = style({
   justifyContent: "flex-end",
   flexWrap: "wrap",
   gap: 8,
-  paddingInline: 24,
+  padding: 24
+});
+
+export const settingsItemIndex = createVar();
+export const settingsItemStyle = recipe({
+  base: {
+    transitionProperty: `translate, opacity`,
+
+  },
+  variants: {
+    visible: {
+      false: {
+        opacity: 0,
+        translate: "0 16px",
+      },
+      true: {
+        opacity: 1,
+        translate: 0,
+      },
+    },
+    entering: {
+      true: {
+        transitionDuration: "600ms",
+        transitionDelay: `calc(100ms * ${settingsItemIndex})`,
+        transitionTimingFunction: THEME.easing.emphasizedDecelerate,
+      },
+    },
+    exiting: {
+      true: {
+        translate: "0 -32px",
+
+        transitionDuration: "300ms, 150ms",
+        transitionDelay: "0ms, 50ms",
+        transitionTimingFunction: THEME.easing.emphasizedAccelerate,
+      },
+    },
+  },
+  defaultVariants: {
+    visible: false,
+  },
 });

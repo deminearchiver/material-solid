@@ -4,6 +4,7 @@ import { Ripple} from "../ripple";
 import clsx from "clsx/lite";
 import { mergeRefs } from "@solid-primitives/refs";
 import { Dynamic } from "solid-js/web";
+import { Focus } from "../focus";
 
 type IconButtonVariant =
   | "regular"
@@ -57,6 +58,7 @@ export const IconButton: ParentComponent<IconButtonProps> = (props) => {
         )
       }
       {...others}>
+        <Focus for={ref} />
         <Ripple
           for={ref}
           disabled={"disabled" in props && props.disabled} />
