@@ -106,11 +106,7 @@ export const panelHeadlineStyle = style({
   paddingBlockEnd: 16,
 
   textAlign: "center",
-  fontFamily: THEME.text.headline.small.family,
-  fontSize: THEME.text.headline.small.size,
-  fontWeight: THEME.text.headline.small.weight,
-  lineHeight: THEME.text.headline.small.lineHeight,
-  letterSpacing: THEME.text.headline.small.letterSpacing,
+  ...THEME.text.headline.small,
   color: THEME.color.onSurface,
 });
 

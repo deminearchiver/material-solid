@@ -1,8 +1,7 @@
 {
   "entryPoints": [
-    "./contract/contract.css.ts",
-    "./theme/index.ts",
-    "./theme/new/index.ts",
+    "./src/index.ts",
+    "./src/contract/export.ts",
   ],
   "includeVersion": true,
 }

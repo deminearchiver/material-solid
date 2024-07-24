@@ -29,11 +29,7 @@ globalStyle(
     backgroundColor: THEME.color.surface,
 
     WebkitFontSmoothing: "antialised",
-    fontFamily: THEME.text.body.large.family,
-    fontSize: THEME.text.body.large.size,
-    fontWeight: THEME.text.body.large.weight,
-    lineHeight: THEME.text.body.large.lineHeight,
-    letterSpacing: THEME.text.body.large.letterSpacing,
+    ...THEME.text.body.large,
     color: THEME.color.onSurface,
   },
 );

@@ -31,18 +31,10 @@ export const listItemContentStyle = style({
 });
 
 export const listItemHeadlineStyle = style({
+  ...THEME.text.body.large,
   color: THEME.color.onSurface,
-  fontFamily: THEME.text.body.large.family,
-  fontSize: THEME.text.body.large.size,
-  fontWeight: THEME.text.body.large.weight,
-  lineHeight: THEME.text.body.large.lineHeight,
-  letterSpacing: THEME.text.body.large.letterSpacing,
 });
 export const listItemSubtitleStyle = style({
+  ...THEME.text.body.medium,
   color: THEME.color.onSurfaceVariant,
-  fontFamily: THEME.text.body.medium.family,
-  fontSize: THEME.text.body.medium.size,
-  fontWeight: THEME.text.body.medium.weight,
-  lineHeight: THEME.text.body.medium.lineHeight,
-  letterSpacing: THEME.text.body.medium.letterSpacing,
 });

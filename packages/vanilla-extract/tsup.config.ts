@@ -22,14 +22,10 @@
 //   ],
 // };
 
-// export default defineConfig(
-//   config => {
-//     const watching = !!config.watch;
-//     const parsedData = preset.parsePresetOptions(presetOptions, watching);
-//     if (!watching) {
-//       const package_fields = preset.generatePackageExports(parsedData);
-//       preset.writePackageJson(package_fields);
-//     }
-//     return preset.generateTsupOptions(parsedData);
-//   }
-// );
+// export default defineConfig({
+//   esbuildPlugins: [
+//     vanillaExtract({
+//       identifiers: "short",
+//     }),
+//   ],
+// });

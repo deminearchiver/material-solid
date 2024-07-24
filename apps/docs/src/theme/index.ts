@@ -1,1 +1,2 @@
-export * from "./contract";
+export { THEME } from "./contract.css";
+export { createTheme } from "./theme";

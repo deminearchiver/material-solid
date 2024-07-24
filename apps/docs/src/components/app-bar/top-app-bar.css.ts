@@ -58,11 +58,7 @@ export const staticHeadlineStyle = recipe({
     display: "flex",
     alignItems: "center",
 
-    fontFamily: THEME.text.title.large.family,
-    fontSize: THEME.text.title.large.size,
-    fontWeight: THEME.text.title.large.weight,
-    lineHeight: THEME.text.title.large.lineHeight,
-    letterSpacing: THEME.text.title.large.letterSpacing,
+    ...THEME.text.title.large,
     color: THEME.color.onSurface,
   },
   variants: {

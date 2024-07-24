@@ -26,10 +26,6 @@ export const contentStyle = style({
 });
 
 export const headlineStyle = style({
-  fontFamily: THEME.text.headline.medium.family,
-  fontSize: THEME.text.headline.medium.size,
-  fontWeight: THEME.text.headline.medium.weight,
-  lineHeight: THEME.text.headline.medium.lineHeight,
-  letterSpacing: THEME.text.headline.medium.letterSpacing,
+  ...THEME.text.headline.medium,
   color: THEME.color.onSurface,
 });

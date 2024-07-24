@@ -26,11 +26,7 @@ export const buttonStyle = recipe({
     userSelect: "none",
     cursor: "pointer",
 
-    fontFamily: THEME.text.label.large.family,
-    fontSize: THEME.text.label.large.size,
-    fontWeight: THEME.text.label.large.weight,
-    lineHeight: THEME.text.label.large.lineHeight,
-    letterSpacing: THEME.text.label.large.letterSpacing,
+    ...THEME.text.label.large,
   },
   variants: {
     iconAffinity: {

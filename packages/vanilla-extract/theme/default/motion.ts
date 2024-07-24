@@ -5,8 +5,8 @@ export const DEFAULT_EASING = {
   emphasizedAccelerate: "cubic-bezier(0.3, 0.0, 0.8, 0.15)",
   emphasizedDecelerate: "cubic-bezier(0.05, 0.7, 0.1, 1.0)",
   standard: "cubic-bezier(0.2, 0, 0, 1)",
-  standardDecelerate: "cubic-bezier(0, 0, 0, 1);",
-  standardAccelerate: "cubic-bezier(0.3, 0, 1, 1);",
+  standardDecelerate: "cubic-bezier(0, 0, 0, 1)",
+  standardAccelerate: "cubic-bezier(0.3, 0, 1, 1)",
 };
 export const DEFAULT_DURATION = {
   short1: "50ms",

@@ -30,11 +30,7 @@ export const buttonSegmentStyle = recipe({
     textTransform: "inherit",
     backgroundColor: "transparent",
 
-    fontFamily: THEME.text.label.large.family,
-    fontSize: THEME.text.label.large.size,
-    fontWeight: THEME.text.label.large.weight,
-    lineHeight: THEME.text.label.large.lineHeight,
-    letterSpacing: THEME.text.label.large.letterSpacing,
+    ...THEME.text.label.large,
 
     cursor: "pointer",
     transitionProperty: "background-color, color",

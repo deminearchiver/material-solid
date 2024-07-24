@@ -1,4 +1,3 @@
-// Doesn't use @newtab/tsconfig because it's an "independent" library
 {
   "compilerOptions": {
     "target": "ESNext",

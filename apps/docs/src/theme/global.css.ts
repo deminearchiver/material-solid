@@ -1,5 +1,8 @@
 import { assignVars, createGlobalTheme, globalStyle } from "@vanilla-extract/css";
-import { DARK_THEME, LIGHT_THEME, THEME } from ".";
+import { THEME, createTheme } from ".";
+
+const LIGHT_THEME = createTheme("light");
+const DARK_THEME = createTheme("dark");
 
 const DATA_THEME_LIGHT = "light";
 const DATA_THEME_DARK = "dark";

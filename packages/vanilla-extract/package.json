@@ -7,8 +7,8 @@
   },
   "type": "module",
   "exports": {
-    "./theme": "./theme/index.ts",
-    "./contract": "./contract/contract.css.ts"
+    ".": "./src/index.ts",
+    "./contract": "./src/contract/export.ts"
   },
   "packageManager": "yarn@4.3.1",
   "scripts": {
@@ -20,7 +20,8 @@
     "@vanilla-extract/css": "^1.15.3",
     "@vanilla-extract/dynamic": "^2.1.1",
     "@vanilla-extract/recipes": "^0.5.3",
-    "svg-path-properties": "^1.3.0"
+    "svg-path-properties": "^1.3.0",
+    "@material-solid/utils": "workspace:^"
   },
   "devDependencies": {
     "@vanilla-extract/esbuild-plugin": "^2.3.8",

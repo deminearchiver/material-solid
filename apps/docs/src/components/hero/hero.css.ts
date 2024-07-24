@@ -43,11 +43,7 @@ export const heroContentStyle = style({
 });
 
 export const heroHeadlineStyle = style({
-  fontFamily: THEME.text.display.medium.family,
-  fontSize: THEME.text.display.medium.size,
-  fontWeight: 500,
-  lineHeight: THEME.text.display.medium.lineHeight,
-  letterSpacing: THEME.text.display.medium.letterSpacing,
+  ...THEME.text.display.medium,
   color: THEME.color.onSurface,
 });
 
@@ -55,11 +51,7 @@ export const heroSubtitleStyle = style({
   marginBlockStart: 4,
   marginBlockEnd: "1em",
 
-  fontFamily: THEME.text.body.large.family,
-  fontSize: THEME.text.body.large.size,
-  fontWeight: THEME.text.body.large.weight,
-  lineHeight: THEME.text.body.large.lineHeight,
-  letterSpacing: THEME.text.body.large.letterSpacing,
+  ...THEME.text.body.large,
   color: THEME.color.onSurfaceVariant,
 });
 

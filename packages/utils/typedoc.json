@@ -3,4 +3,5 @@
     "./src/index.ts"
   ],
   "includeVersion": true,
+  "alwaysCreateEntryPointModule": true,
 }

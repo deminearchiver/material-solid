@@ -249,11 +249,7 @@ export const labelStyle = recipe({
 export const labelTextStyle = recipe({
   base: {
     width: "max-content",
-    fontFamily: THEME.text.label.medium.family,
-    fontSize: THEME.text.label.medium.size,
-    fontWeight: THEME.text.label.medium.weight,
-    lineHeight: THEME.text.label.medium.lineHeight,
-    letterSpacing: THEME.text.label.medium.letterSpacing,
+    ...THEME.text.label.medium,
     color: THEME.color.inverseOnSurface,
 
     transitionProperty: "translate",

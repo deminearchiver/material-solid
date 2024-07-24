@@ -18,11 +18,7 @@ export const tabStyle = recipe({
 
     cursor: "pointer",
 
-    fontFamily: THEME.text.title.medium.family,
-    fontSize: THEME.text.title.medium.size,
-    fontWeight: THEME.text.title.medium.weight,
-    lineHeight: THEME.text.title.medium.lineHeight,
-    letterSpacing: THEME.text.title.medium.letterSpacing,
+    ...THEME.text.title.medium,
   },
   variants: {
     active: {

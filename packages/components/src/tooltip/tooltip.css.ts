@@ -28,11 +28,7 @@ export const tooltipStyle = recipe({
         backgroundColor: THEME.color.inverseSurface,
         borderRadius: THEME.shape.extraSmall,
 
-        fontFamily: THEME.text.body.small.family,
-        fontSize: THEME.text.body.small.size,
-        fontWeight: THEME.text.body.small.weight,
-        lineHeight: THEME.text.body.small.lineHeight,
-        letterSpacing: THEME.text.body.small.letterSpacing,
+        ...THEME.text.body.small,
         color: THEME.color.inverseOnSurface,
       },
       rich: {
@@ -41,11 +37,7 @@ export const tooltipStyle = recipe({
         backgroundColor: THEME.color.surfaceContainer,
         borderRadius: THEME.shape.medium,
 
-        fontFamily: THEME.text.body.medium.family,
-        fontSize: THEME.text.body.medium.size,
-        fontWeight: THEME.text.body.medium.weight,
-        lineHeight: THEME.text.body.medium.lineHeight,
-        letterSpacing: THEME.text.body.medium.letterSpacing,
+        ...THEME.text.body.medium,
         color: THEME.color.onSurfaceVariant,
       },
     },
