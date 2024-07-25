@@ -1,12 +1,12 @@
 {
-  "private": true,
-  "name": "@material-solid/docs",
-  "version": "0.0.0",
+  "name": "@material-solid/docs-next",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start",
+    "version": "vinxi version",
+    "deploy": "vercel deploy --prebuilt"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.8",
@@ -28,21 +28,23 @@
     "@solid-primitives/utils": "^6.2.3",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.14.1",
+    "@solidjs/start": "^1.0.6",
     "@vanilla-extract/css": "^1.15.3",
     "@vanilla-extract/dynamic": "^2.1.1",
     "@vanilla-extract/recipes": "^0.5.3",
     "@vanilla-extract/sprinkles": "^1.6.2",
     "clsx": "^2.1.1",
     "normalize.css": "^8.0.1",
-    "solid-js": "^1.8.18"
+    "solid-js": "^1.8.18",
+    "vinxi": "^0.4.1"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "devDependencies": {
     "@types/node": "^20.14.12",
     "@vanilla-extract/vite-plugin": "^4.0.13",
     "lightningcss": "^1.25.1",
-    "typescript": "^5.5.4",
-    "vite": "^5.3.4",
-    "vite-plugin-solid": "^2.10.2",
-    "wrangler": "^3.66.0"
+    "vercel": "^35.2.0"
   }
 }

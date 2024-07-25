@@ -16,12 +16,12 @@
     "dev": "tsup --watch"
   },
   "dependencies": {
+    "@material-solid/utils": "workspace:^",
     "@material/material-color-utilities": "^0.3.0",
     "@vanilla-extract/css": "^1.15.3",
     "@vanilla-extract/dynamic": "^2.1.1",
     "@vanilla-extract/recipes": "^0.5.3",
-    "svg-path-properties": "^1.3.0",
-    "@material-solid/utils": "workspace:^"
+    "svg-path-properties": "^1.3.0"
   },
   "devDependencies": {
     "@vanilla-extract/esbuild-plugin": "^2.3.8",
