@@ -1,0 +1,35 @@
+name: Vercel Preview
+on:
+  push:
+    branches-ignore: [main]
+  workflow_dispatch:
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: vercel-preview
+      url: ${{ steps.deploy.outputs.VERCEL_URL }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: "yarn workspaces focus @material-solid/docs-next"
+
+      - name: Pull Vercel environment information
+        run: "yarn : @material-solid/docs-next vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}"
+
+      - name: Build
+        run: "yarn : @material-solid/docs-next vercel build --token=${{ secrets.VERCEL_TOKEN }}"
+
+      - name: Deploy to Vercel
+        id: deploy
+        # yarn : @material-solid/docs-next vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > vercel-url.txt
+        # echo "url=VERCEL_URL" >> "$GITHUB_OUTPUT"
+        run: |
+          {
+            echo 'VERCEL_URL<<EOF'
+            yarn : @material-solid/docs-next vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
