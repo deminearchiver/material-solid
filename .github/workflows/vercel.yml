@@ -14,8 +14,13 @@ jobs:
       url: ${{ steps.deploy.outputs.VERCEL_URL }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
 
-      - run: "yarn workspaces focus @material-solid/docs-next"
+      - name: Install dependencies
+        run: "yarn workspaces focus @material-solid/docs-next"
 
       - name: Pull Vercel environment information
         run: "yarn : @material-solid/docs-next vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}"

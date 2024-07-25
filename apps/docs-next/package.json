@@ -41,7 +41,7 @@
     "vinxi": "^0.4.1"
   },
   "engines": {
-    "node": ">=18"
+    "node": "20.x"
   },
   "devDependencies": {
     "@types/node": "^20.14.12",
