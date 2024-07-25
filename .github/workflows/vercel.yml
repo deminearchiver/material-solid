@@ -30,11 +30,6 @@ jobs:
 
       - name: Deploy to Vercel
         id: deploy
-        # yarn : @material-solid/docs-next vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > vercel-url.txt
-        # echo "url=VERCEL_URL" >> "$GITHUB_OUTPUT"
         run: |
-          {
-            echo 'VERCEL_URL<<EOF'
-            yarn : @material-solid/docs-next vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-            echo EOF
-          } >> "$GITHUB_OUTPUT"
+          yarn : @material-solid/docs-next vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > vercel-url.txt
+          echo "VERCEL_URL=$(cat vercel-url.txt) >> "$GITHUB_OUTPUT"
