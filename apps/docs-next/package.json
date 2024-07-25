@@ -1,5 +1,7 @@
 {
+  "private": true,
   "name": "@material-solid/docs-next",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
