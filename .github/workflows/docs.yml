@@ -15,6 +15,10 @@ jobs:
           cache: yarn
       - run: yarn workspaces focus @material-solid/docs
       - run: yarn :docs build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifact
+          path: apps/docs/dist
 
   deploy:
     needs: build
@@ -23,6 +27,11 @@ jobs:
       name: cloudflare-pages
       url: ${{ steps.deploy.outputs.deployment-url }}
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: artifact
+          path: apps/docs/dist
       - id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
