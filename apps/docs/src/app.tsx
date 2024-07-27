@@ -89,7 +89,6 @@ const ComponentComponent: Component<ComponentComponentProps> = (props) => {
 export const App = () => {
   return (
     <Router root={Layout}>
-      {/* {routes} */}
       <Route path="/" component={lazy(() => import("~/routes"))} />
       <Route path="/components" component={lazy(() => import("~/routes/components"))}>
         <Route path="/" />

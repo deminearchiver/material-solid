@@ -4,6 +4,8 @@ on:
     branches: [main]
   workflow_dispatch:
 
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,6 +25,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    concurrency:
+      group: cloudflare-pages
+      cancel-in-progress: true
     environment:
       name: cloudflare-pages
       url: ${{ steps.deploy.outputs.deployment-url }}
@@ -37,4 +42,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy apps/docs/dist --project-name=material-solid
+          command: pages deploy apps/docs/dist --project-name=material-solid --commit-dirty=true
