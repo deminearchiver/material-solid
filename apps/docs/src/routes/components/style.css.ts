@@ -1,14 +1,9 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 import { THEME } from "~/theme";
 
-globalStyle(
-  "body",
-  {
-    backgroundColor: THEME.color.surfaceContainer,
-  }
-)
 
 export const containerStyle = style({
+  backgroundColor: THEME.color.surfaceContainer,
   width: "100%",
   height: ["100vh", "100dvh"],
   display: "grid",

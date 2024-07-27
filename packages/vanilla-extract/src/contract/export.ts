@@ -4,11 +4,16 @@
 
 import type { Simplify } from "@material-solid/utils/types";
 import { COLOR, DURATION, EASING, SHAPE, TEXT } from ".";
+import { TYPEFACE } from "./typeface.css";
 
 /**
  * @interface
  */
 export type MaterialColorThemeContract = Simplify<typeof COLOR>;
+/**
+ * @interface
+ */
+export type MaterialTypefaceThemeContract = Simplify<typeof TYPEFACE>;
 /**
  * @interface
  */
@@ -31,6 +36,7 @@ export type MaterialThemeContract = {
    * @see [Color roles](https://m3.material.io/styles/color/roles)
    */
   color: MaterialColorThemeContract;
+  typeface: MaterialTypefaceThemeContract;
   /**
    * @see [Fonts](https://m3.material.io/styles/typography/fonts)
    * @see [Type scale & tokens](https://m3.material.io/styles/typography/type-scale-tokens)
@@ -54,6 +60,7 @@ export type MaterialThemeContract = {
 
 export const THEME: MaterialThemeContract = {
   color: COLOR,
+  typeface: TYPEFACE,
   text: TEXT,
   shape: SHAPE,
   duration: DURATION,

@@ -8,12 +8,17 @@ const COLORS = {
   secondAccent: Hct.fromInt(0xFF0CDC73),
 } satisfies Record<string, Hct>;
 
+const TYPEFACE_PLAIN = ["Roboto Flex Variable", "Roboto Flex", "Roboto", "Open Sans", "system-ui", "sans-serif"];
+
 export const { createContract, createTheme } = createMaterialTheme({
   color: {
-    type: "dynamic",
     seed: COLORS.primary,
     variant: "tonalSpot",
   },
+  typeface: {
+    plain: TYPEFACE_PLAIN,
+    brand: ["Manrope Variable", ...TYPEFACE_PLAIN],
+  }
 });
 
 

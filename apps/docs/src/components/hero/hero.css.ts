@@ -43,7 +43,8 @@ export const heroContentStyle = style({
 });
 
 export const heroHeadlineStyle = style({
-  ...THEME.text.display.medium,
+  ...THEME.text.display.large,
+  fontWeight: 700,
   color: THEME.color.onSurface,
 });
 

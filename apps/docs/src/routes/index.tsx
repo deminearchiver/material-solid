@@ -34,6 +34,8 @@ export default function Index() {
           actions={
             <>
               <Button.filled
+                as="a"
+                href="/components"
                 icon={<MaterialSymbol name="east" />}
                 iconAffinity="trailing"
                 label="Explore all components" />

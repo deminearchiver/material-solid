@@ -301,21 +301,21 @@ export const DEFAULT_SHAPE = {
 export const DEFAULT_TYPOGRAPHY = {
   display: {
     large: {
-      fontFamily: THEME.text.typeface.brand,
+      fontFamily: THEME.typeface.brand,
       fontSize: "57px",
       fontWeight: "400",
       lineHeight: "64px",
       letterSpacing: "-0.25px",
     },
     medium: {
-      fontFamily: THEME.text.typeface.brand,
+      fontFamily: THEME.typeface.brand,
       fontSize: "45px",
       fontWeight: "400",
       lineHeight: "52px",
       letterSpacing: "0px",
     },
     small: {
-      fontFamily: THEME.text.typeface.brand,
+      fontFamily: THEME.typeface.brand,
       fontSize: "36px",
       fontWeight: "400",
       lineHeight: "44px",
@@ -324,21 +324,21 @@ export const DEFAULT_TYPOGRAPHY = {
   },
   headline: {
     large: {
-      fontFamily: THEME.text.typeface.brand,
+      fontFamily: THEME.typeface.brand,
       fontSize: "32px",
       fontWeight: "400",
       lineHeight: "40px",
       letterSpacing: "0px",
     },
     medium: {
-      fontFamily: THEME.text.typeface.brand,
+      fontFamily: THEME.typeface.brand,
       fontSize: "28px",
       fontWeight: "400",
       lineHeight: "36px",
       letterSpacing: "0px",
     },
     small: {
-      fontFamily: THEME.text.typeface.brand,
+      fontFamily: THEME.typeface.brand,
       fontSize: "24px",
       fontWeight: "400",
       lineHeight: "32px",
@@ -347,21 +347,21 @@ export const DEFAULT_TYPOGRAPHY = {
   },
   title: {
     large: {
-      fontFamily: THEME.text.typeface.brand,
+      fontFamily: THEME.typeface.brand,
       fontSize: "22px",
       fontWeight: "400",
       lineHeight: "28px",
       letterSpacing: "0px",
     },
     medium: {
-      fontFamily: THEME.text.typeface.plain,
+      fontFamily: THEME.typeface.plain,
       fontSize: "16px",
       fontWeight: "500",
       lineHeight: "24px",
       letterSpacing: "0.15px",
     },
     small: {
-      fontFamily: THEME.text.typeface.plain,
+      fontFamily: THEME.typeface.plain,
       fontSize: "14px",
       fontWeight: "500",
       lineHeight: "20px",
@@ -370,21 +370,21 @@ export const DEFAULT_TYPOGRAPHY = {
   },
   body: {
     large: {
-      fontFamily: THEME.text.typeface.plain,
+      fontFamily: THEME.typeface.plain,
       fontSize: "16px",
       fontWeight: "400",
       lineHeight: "24px",
       letterSpacing: "0.5px",
     },
     medium: {
-      fontFamily: THEME.text.typeface.plain,
+      fontFamily: THEME.typeface.plain,
       fontSize: "14px",
       fontWeight: "400",
       lineHeight: "20px",
       letterSpacing: "0.25px",
     },
     small: {
-      fontFamily: THEME.text.typeface.plain,
+      fontFamily: THEME.typeface.plain,
       fontSize: "12px",
       fontWeight: "400",
       lineHeight: "16px",
@@ -393,21 +393,21 @@ export const DEFAULT_TYPOGRAPHY = {
   },
   label: {
     large: {
-      fontFamily: THEME.text.typeface.plain,
+      fontFamily: THEME.typeface.plain,
       fontSize: "14px",
       fontWeight: "500",
       lineHeight: "20px",
       letterSpacing: "0.1px",
     },
     medium: {
-      fontFamily: THEME.text.typeface.plain,
+      fontFamily: THEME.typeface.plain,
       fontSize: "12px",
       fontWeight: "500",
       lineHeight: "16px",
       letterSpacing: "0.5px",
     },
     small: {
-      fontFamily: THEME.text.typeface.plain,
+      fontFamily: THEME.typeface.plain,
       fontSize: "11px",
       fontWeight: "500",
       lineHeight: "16px",

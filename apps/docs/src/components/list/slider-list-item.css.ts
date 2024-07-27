@@ -28,6 +28,6 @@ export const labelStyle = style({
   justifyContent: "center",
   // gap: 8,
 
-  ...THEME.text.title.medium,
+  ...THEME.text.title.large,
   color: THEME.color.onSurface,
 });

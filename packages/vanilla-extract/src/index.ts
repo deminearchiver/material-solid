@@ -3,11 +3,13 @@
  */
 
 import { Hct, SchemeAndroid, SchemeContent, SchemeExpressive, SchemeFidelity, SchemeFruitSalad, SchemeMonochrome, SchemeNeutral, SchemeRainbow, SchemeTonalSpot, SchemeVibrant, type DynamicScheme } from "@material/material-color-utilities";
-import { THEME, type MaterialThemeContract } from "./contract/export";
+import { THEME, type MaterialThemeContract, type MaterialTypefaceThemeContract } from "./contract/export";
 import type { MapTree, MaterialTheme, MaterialThemeOptions, SchemeVariant } from "./types";
 import { getSchemeColors } from "./color";
-import type { Simplify } from "@material-solid/utils/types";
+import type { Simplify, SimplifyLeaf } from "@material-solid/utils/types";
 import { DEFAULT_DURATION, DEFAULT_EASING, DEFAULT_SHAPE, DEFAULT_TYPOGRAPHY } from "./defaults";
+import { createThemeContract } from "@vanilla-extract/css";
+import type { CSSVarFunction } from "../theme/utils";
 
 interface SchemeConstructor {
   new (sourceColorHct: Hct, isDark: boolean, contrastLevel: number): DynamicScheme;
@@ -69,9 +71,33 @@ const SCHEMES_MAP: Record<SchemeVariant, SchemeConstructor> = {
 export const createMaterialTheme = <
   const T extends MaterialThemeOptions
 >(defaults: T): MaterialTheme<T> => {
+  const typefaceContract = Object.fromEntries(
+    Object.keys(defaults.typeface)
+      .map(name => [name, ""]) ,
+  ) as Record<keyof T["typeface"], string>;
   return {
     createContract: () => {
-      return THEME;
+      const defaultTypefaces = Object.keys(THEME.typeface);
+      const customTypefaces = Object.fromEntries(
+        Object.keys(defaults.typeface)
+          .filter(typeface => !defaultTypefaces.includes(typeface))
+          .map(typeface => [typeface, ""]),
+      ) as Record<Exclude<keyof T["typeface"], keyof MaterialTypefaceThemeContract>, string>;
+      const customTypefaceContract = createThemeContract(customTypefaces);
+
+      const typeface = {
+        ...customTypefaceContract,
+        ...THEME.typeface,
+      } as Record<keyof MaterialTypefaceThemeContract | keyof T["typeface"], CSSVarFunction>;
+
+      return {
+        color: THEME.color,
+        duration: THEME.duration,
+        easing: THEME.easing,
+        shape: THEME.shape,
+        text: THEME.text,
+        typeface,
+      };
     },
     createTheme: (brightness) => {
       const isDark = brightness === "dark";
@@ -81,27 +107,25 @@ export const createMaterialTheme = <
       const scheme = new Scheme(defaults.color.seed, isDark, contrastLevel);
       const colors = getSchemeColors(scheme);
 
-      const typeface: string = [
-        "Roboto Flex",
-        "Roboto",
-        "Open Sans",
-        "Noto Sans",
-        "system-ui",
-        "Sans Serif"
-      ].map(family => family.includes(" ") ? `"${family}"` : family).join(",");
+      const fontFamilies = Object.fromEntries(
+        Object.entries(defaults.typeface)
+          .map(
+            ([typeface, values]) => [
+              typeface,
+              values
+                .map(fontFamily => fontFamily.includes(" ") ? `"${fontFamily}"` : fontFamily)
+                .join(",")
+            ],
+          ),
+      ) as Record<keyof MaterialTypefaceThemeContract | keyof T["typeface"], string>;
 
       return {
         color: colors,
         duration: DEFAULT_DURATION,
         easing: DEFAULT_EASING,
         shape: DEFAULT_SHAPE,
-        text: {
-          typeface: {
-            plain: typeface,
-            brand: typeface,
-          },
-          ...DEFAULT_TYPOGRAPHY,
-        },
+        typeface: fontFamilies,
+        text: DEFAULT_TYPOGRAPHY,
       };
     },
   };

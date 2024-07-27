@@ -1,6 +1,7 @@
 import type { RouteSectionProps } from "@solidjs/router";
 import { containerStyle, panelStyle } from "./style.css";
 import { createScrollPosition } from "@solid-primitives/scroll";
+import type { Component } from "solid-js";
 
 export default function Components(props: RouteSectionProps) {
   let panelRef!: HTMLElement;

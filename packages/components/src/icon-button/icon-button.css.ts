@@ -7,6 +7,7 @@ import { iconButtonTheme } from "./theme.css";
 
 export const iconButtonStyle = recipe({
   base: {
+    userSelect: "none",
     WebkitTapHighlightColor: "transparent",
     display: "inline-flex",
     alignItems: "center",

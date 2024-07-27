@@ -26,6 +26,6 @@ export const contentStyle = style({
 });
 
 export const headlineStyle = style({
-  ...THEME.text.headline.medium,
+  ...THEME.text.headline.large,
   color: THEME.color.onSurface,
 });

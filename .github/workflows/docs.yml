@@ -7,9 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment:
-      name: cloudflare-pages
-      url: ${{ steps.deploy.outputs.deployment-url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -18,6 +15,14 @@ jobs:
           cache: yarn
       - run: yarn workspaces focus @material-solid/docs
       - run: yarn :docs build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: cloudflare-pages
+      url: ${{ steps.deploy.outputs.deployment-url }}
+    steps:
       - id: deploy
         uses: cloudflare/wrangler-action@v3
         with:

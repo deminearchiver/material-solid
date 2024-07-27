@@ -1,52 +1,106 @@
-import { Route, Router, type RouteDefinition, type RouteSectionProps } from "@solidjs/router";
-import { lazy, Suspense, type Component } from "solid-js";
+import { A, Route, Router, type RouteDefinition, type RouteSectionProps } from "@solidjs/router";
+import { For, lazy, Suspense, type Component } from "solid-js";
 import { MetaProvider, Title} from "@solidjs/meta";
 import { MultiProvider } from "@material-solid/utils";
 import { MaterialSymbolController } from "@material-solid/components/icon";
 import { ThemeProvider } from "./components/theme";
 
-const Layout: Component<RouteSectionProps> = (props) => {
-  return (
-    <MultiProvider
-      providers={[
-        MetaProvider,
-        ThemeProvider,
-        [MaterialSymbolController, { defaultVariant: "rounded" }],
-      ]}>
-        <Title>Material Solid</Title>
-        <Suspense>{props.children}</Suspense>
-    </MultiProvider>
-  );
+import { MDXProvider } from "solid-jsx";
+import { TopAppBar } from "./components/app-bar";
+import { Layout } from "./layout";
+
+
+const resolveComponentName = (path: string): string | undefined => {
+  const matches =  /.*\/(.*)\/.*\.mdx$/.exec(path);
+  return matches?.[1];
 }
 
-const routes: RouteDefinition[] = [
-  {
-    path: "/",
-    component: lazy(() => import("~/routes")),
-  },
-  {
-    path: "/components",
-    component: lazy(() => import("~/routes/components")),
-    children: [
-      {
-        path: "/",
-      },
-      {
-        path: "/slider",
-        component: lazy(() => import("~/routes/components/slider"))
-      },
-    ],
-  },
-  {
-    path: "*404",
-    component: lazy(() => import("~/routes/404")),
-  },
-];
+const components = Object.fromEntries(
+  Object.entries(
+    import.meta.glob<{
+      default: Component, title: string
+    }>("~/routes/components/*/index.mdx"),
+  )
+    .map(
+      ([path, module]) => [
+        resolveComponentName(path),
+        lazy(async () => {
+          const { default: Component, title } = await module();
+          return { default: () => {
+            return (
+              <>
+                <Title>{title}</Title>
+                <Component />
+              </>
+            )
+          } };
+        }),
+      ]
+    )
+) as Record<string, Component>;
+
+
+
+
+
+
+
+// const routes: RouteDefinition[] = [
+//   {
+//     path: "/",
+//     component: lazy(() => import("~/routes")),
+//   },
+//   {
+//     path: "/components",
+//     component: lazy(() => import("~/routes/components")),
+//     children: [
+//       {
+//         path: "/",
+//       },
+//       ...Object.entries(components)
+//         .map<RouteDefinition>(
+//           ([path, module]) => ({
+//             path: `/${resolveComponentName(path)}`,
+//             component: (),
+//           }),
+//         )
+//     ],
+//   },
+//   {
+//     path: "*404",
+//     component: lazy(() => import("~/routes/404")),
+//   },
+// ];
+
+
+type ComponentComponentProps = {
+  title: string;
+  component: Component;
+}
+const ComponentComponent: Component<ComponentComponentProps> = (props) => {
+  return (
+    <>
+
+      <props.component />
+    </>
+  );
+}
 
 export const App = () => {
   return (
     <Router root={Layout}>
-      {routes}
+      {/* {routes} */}
+      <Route path="/" component={lazy(() => import("~/routes"))} />
+      <Route path="/components" component={lazy(() => import("~/routes/components"))}>
+        <Route path="/" />
+        <For each={Object.entries(components)}>{
+          ([name, Component]) => (
+            <Route
+              path={`/${name}`}
+              component={Component} />
+          )
+        }</For>
+      </Route>
     </Router>
   );
 }

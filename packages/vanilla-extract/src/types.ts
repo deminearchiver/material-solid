@@ -1,6 +1,7 @@
 import type { Hct } from "@material/material-color-utilities";
-import type { MaterialDurationThemeContract, MaterialEasingThemeContract, MaterialThemeContract } from "./contract/export";
-import type { Simplify } from "@material-solid/utils/types";
+import type { MaterialDurationThemeContract, MaterialEasingThemeContract, MaterialTextThemeContract, MaterialThemeContract, MaterialTypefaceThemeContract } from "./contract/export";
+import type { Simplify, SimplifyLeaf } from "@material-solid/utils/types";
+import type { CSSVarFunction } from "../theme/utils";
 
 export type SchemeVariant =
   | "monochrome"
@@ -26,30 +27,48 @@ export type MaterialThemeColorOptions = {
   contrastLevel?: number;
 }
 
-type SimpleOverride<T extends Record<string, unknown>, U = string> = {
+type OptionalOverride<T extends Record<string, unknown>, U = string> = {
   [P in keyof T]?: U;
 } & Record<string, U>;
+type RequiredOverride<T extends Record<string, unknown>, U = string> = {
+  [P in keyof T]: U;
+} & Record<string, U>;
 
-export type MaterialThemeOptions<
-
-> = {
+export type MaterialThemeOptions = {
   color: MaterialThemeColorOptions;
   /**
    * @defaultValue `{}`
    */
-  easing?: SimpleOverride<MaterialEasingThemeContract>;
+  easing?: OptionalOverride<MaterialEasingThemeContract>;
   /**
    * @defaultValue `{}`
    */
-  duration?: SimpleOverride<MaterialDurationThemeContract>;
+  duration?: OptionalOverride<MaterialDurationThemeContract>;
+  typeface: RequiredOverride<MaterialTypefaceThemeContract, string[]>;
+}
+
+type MergeThemeContract<
+  T extends MaterialThemeOptions
+> =
+  & MaterialThemeContract
+  & {
+    typeface: MaterialTypefaceThemeContract & {
+      [P in keyof T["typeface"]]: CSSVarFunction;
+    };
+  };
+
+export type MaterialThemeBrightness = "light" | "dark";
+
+export type CreateThemeOptions<T extends MaterialThemeOptions> = {
+  brightness: MaterialThemeBrightness;
 }
 
 export type MaterialTheme<T extends MaterialThemeOptions> = {
-  createContract: () => MaterialThemeContract;
+  createContract: () => MergeThemeContract<T>;
   /**
    * Fills in the contract created with {@link createContract}
    */
-  createTheme: (brightness: "light" | "dark") => Simplify<MapTree<MaterialThemeContract, string>>;
+  createTheme: (brightness: "light" | "dark") => SimplifyLeaf<MapTree<MergeThemeContract<MaterialThemeOptions>, string>, string>;
 }
 
 export type MapTree<T extends Record<string, unknown>, U> = {
