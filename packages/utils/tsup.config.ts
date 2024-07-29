@@ -39,10 +39,10 @@ export default defineConfig(
     const watching = initialOptions.watch ?? false;
     const options: Options = {
       ...initialOptions,
-      entry: ["./src/**/*.{ts,tsx}"],
+      entry: ["src/**/*.{ts,tsx}"],
       platform: "browser",
       target: "esnext",
-      clean: false,
+      clean: initialOptions.watch ? false : true,
       format: watching ? "esm" : ["cjs", "esm"],
       splitting: false,
       bundle: false,
@@ -77,7 +77,7 @@ export default defineConfig(
           exports,
         });
 
-        if(watching) return runCommand("tsc");
+        if(initialOptions.watch) return runCommand("tsc");
       },
     };
     return options;
