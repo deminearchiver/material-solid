@@ -1,24 +1,12 @@
 {
+  "extends": [
+    "@material-solid/config/tsconfig/base",
+    "@material-solid/config/tsconfig/solid",
+    "@material-solid/config/tsconfig/dts",
+  ],
+  "references": [{ "path": "./tsconfig.build.json" }],
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-
-    "moduleResolution": "Bundler",
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "verbatimModuleSyntax": true,
-    "resolveJsonModule": true,
-    "noEmit": true,
-
-    "strict": true,
-    "noImplicitOverride": true,
-
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-  }
+    "declarationDir": "./dist",
+  },
+  "include": ["src"],
 }

@@ -3,7 +3,7 @@ import { solidPlugin } from "esbuild-plugin-solid";
 import { fdir } from "fdir";
 import { join } from "path";
 import type { PackageJsonExports } from "pkg-types";
-import { writePackageJson } from "@material-solid/scripts";
+import { runCommand, writePackageJson } from "@material-solid/scripts";
 
 const entryPointsCrawler = new fdir()
   .withRelativePaths()
@@ -38,15 +38,15 @@ export default defineConfig(
   async initialOptions => {
     const watching = initialOptions.watch ?? false;
     const options: Options = {
-      watch: initialOptions.watch,
+      ...initialOptions,
       entry: ["./src/**/*.{ts,tsx}"],
       platform: "browser",
       target: "esnext",
-      clean: true,
+      clean: false,
       format: watching ? "esm" : ["cjs", "esm"],
       splitting: false,
       bundle: false,
-      dts: true,
+      dts: initialOptions.watch ? false : true,
       treeshake: {
         preset: "safest",
       },
@@ -69,16 +69,15 @@ export default defineConfig(
           exports[specifier] = {
             import: `${path}.js`,
             require: `${path}.cjs`,
-            types: {
-              default: `${path}.d.ts`,
-              require: `${path}.d.cts`,
-            },
+            types: `${path}.d.ts`,
           };
         }
 
         await writePackageJson({
           exports,
         });
+
+        if(watching) return runCommand("tsc");
       },
     };
     return options;

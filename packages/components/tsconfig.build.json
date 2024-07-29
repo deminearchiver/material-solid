@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "@material-solid/config/tsconfig/base",
+    "@material-solid/config/tsconfig/build",
+  ],
+  "compilerOptions": {
+    "composite": true,
+  },
+  "include": ["tsup.config.ts"],
+}

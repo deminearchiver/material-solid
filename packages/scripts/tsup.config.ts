@@ -1,10 +1,12 @@
 import { defineConfig } from "tsup";
 
-export default defineConfig({
-  platform: "node",
-  target: "esnext",
-  entry: ["./src/index.ts"],
-  clean: true,
-  format: ["cjs", "esm"],
-  dts: true,
-});
+export default defineConfig(
+  async initialOptions => ({
+    ...initialOptions,
+    entry: ["./src/index.ts"],
+    clean: false,
+    format: ["cjs", "esm"],
+    dts: initialOptions.watch ? false : true,
+    onSuccess: initialOptions.watch ? "tsc" : undefined,
+  }),
+);

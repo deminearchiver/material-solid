@@ -40,6 +40,7 @@
     "solid-js": "^1.8.19"
   },
   "devDependencies": {
+    "@material-solid/config": "workspace:^",
     "@mdx-js/rollup": "^3.0.1",
     "@types/node": "^22.0.0",
     "@types/unist": "^3.0.2",

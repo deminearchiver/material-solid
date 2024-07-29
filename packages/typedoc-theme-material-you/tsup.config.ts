@@ -12,7 +12,7 @@ export default defineConfig(
     noExternal: [
       "@material/material-color-utilities"
     ],
-    clean: true,
+    clean: false,
     dts: true,
     minify: true,
     treeshake: {

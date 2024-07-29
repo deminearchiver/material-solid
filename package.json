@@ -22,11 +22,13 @@
     ":utils": "yarn : @material-solid/utils",
     ":scripts": "yarn : @material-solid/scripts",
     ":create": "yarn : create-material-solid",
-    "dev": "turbo watch dev --filter=@material-solid/docs...",
-    "build": "turbo build"
+    "docs:dev": "turbo watch dev --filter=@material-solid/docs...",
+    "docs:build": "turbo build --filter=@material-solid/docs...",
+    "packages:build": "turbo build --filter=./packages/*"
   },
   "devDependencies": {
     "@8hobbies/typedoc-plugin-404": "^3.0.0",
+    "@material-solid/config": "workspace:^",
     "turbo": "^2.0.9",
     "typedoc": "^0.26.5",
     "typedoc-plugin-coverage": "^3.3.0",

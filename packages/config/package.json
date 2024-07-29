@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "name": "@material-solid/config",
+  "type": "module",
+  "exports": {
+    "./tsconfig/*": "./tsconfig/*.json"
+  }
+}

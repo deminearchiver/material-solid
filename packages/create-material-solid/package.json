@@ -34,6 +34,7 @@
   ],
   "bin": "dist/cli.js",
   "devDependencies": {
+    "@material-solid/config": "workspace:^",
     "@material-solid/scripts": "workspace:^",
     "@types/node": "^22.0.0",
     "tsup": "^8.2.3",

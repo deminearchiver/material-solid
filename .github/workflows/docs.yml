@@ -29,7 +29,7 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: yarn turbo build --filter=@material-solid/docs...
+        run: yarn turbo run build --filter=@material-solid/docs...
 
       - uses: actions/upload-artifact@v4
         with:

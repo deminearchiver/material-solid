@@ -5,7 +5,7 @@ export default defineConfig(
     ...initialOptions,
     entry: ["src/cli.ts"],
     format: "cjs",
-    clean: true,
+    clean: false,
     minify: true,
   })
 );

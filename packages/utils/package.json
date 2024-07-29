@@ -33,74 +33,52 @@
     "./clsx": {
       "import": "./dist/clsx/index.js",
       "require": "./dist/clsx/index.cjs",
-      "types": {
-        "default": "./dist/clsx/index.d.ts",
-        "require": "./dist/clsx/index.d.cts"
-      }
+      "types": "./dist/clsx/index.d.ts"
     },
     "./floating": {
       "import": "./dist/floating/index.js",
       "require": "./dist/floating/index.cjs",
-      "types": {
-        "default": "./dist/floating/index.d.ts",
-        "require": "./dist/floating/index.d.cts"
-      }
+      "types": "./dist/floating/index.d.ts"
     },
     "./math": {
       "import": "./dist/math/index.js",
       "require": "./dist/math/index.cjs",
-      "types": {
-        "default": "./dist/math/index.d.ts",
-        "require": "./dist/math/index.d.cts"
-      }
+      "types": "./dist/math/index.d.ts"
     },
     "./multi-provider": {
       "import": "./dist/multi-provider/index.js",
       "require": "./dist/multi-provider/index.cjs",
-      "types": {
-        "default": "./dist/multi-provider/index.d.ts",
-        "require": "./dist/multi-provider/index.d.cts"
-      }
+      "types": "./dist/multi-provider/index.d.ts"
     },
     "./portal": {
       "import": "./dist/portal/index.js",
       "require": "./dist/portal/index.cjs",
-      "types": {
-        "default": "./dist/portal/index.d.ts",
-        "require": "./dist/portal/index.d.cts"
-      }
+      "types": "./dist/portal/index.d.ts"
+    },
+    "./presence": {
+      "import": "./dist/presence/index.js",
+      "require": "./dist/presence/index.cjs",
+      "types": "./dist/presence/index.d.ts"
     },
     "./refs": {
       "import": "./dist/refs/index.js",
       "require": "./dist/refs/index.cjs",
-      "types": {
-        "default": "./dist/refs/index.d.ts",
-        "require": "./dist/refs/index.d.cts"
-      }
+      "types": "./dist/refs/index.d.ts"
     },
     "./string": {
       "import": "./dist/string/index.js",
       "require": "./dist/string/index.cjs",
-      "types": {
-        "default": "./dist/string/index.d.ts",
-        "require": "./dist/string/index.d.cts"
-      }
+      "types": "./dist/string/index.d.ts"
     },
     "./types": {
       "import": "./dist/types/index.js",
       "require": "./dist/types/index.cjs",
-      "types": {
-        "default": "./dist/types/index.d.ts",
-        "require": "./dist/types/index.d.cts"
-      }
+      "types": "./dist/types/index.d.ts"
     },
     "./vanilla-extract": {
       "import": "./dist/vanilla-extract/index.js",
       "require": "./dist/vanilla-extract/index.cjs",
-      "types": {
-        "default": "./dist/vanilla-extract/index.d.ts",
-        "require": "./dist/vanilla-extract/index.d.cts"
-      }
+      "types": "./dist/vanilla-extract/index.d.ts"
     }
   },
   "packageManager": "yarn@4.3.1",
@@ -111,6 +89,7 @@
   "dependencies": {
     "@solid-primitives/context": "^0.2.3",
     "@solid-primitives/map": "^0.4.11",
+    "@solid-primitives/presence": "^0.0.6",
     "@solid-primitives/promise": "^1.0.17",
     "@solid-primitives/refs": "^1.0.8",
     "@solid-primitives/set": "^0.4.11",
@@ -120,6 +99,7 @@
     "solid-js": "^1.8.19"
   },
   "devDependencies": {
+    "@material-solid/config": "workspace:^",
     "@material-solid/scripts": "workspace:^",
     "@types/node": "^22.0.0",
     "esbuild-plugin-solid": "^0.6.0",

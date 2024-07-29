@@ -37,6 +37,7 @@
     "typedoc": "^0.26.0"
   },
   "devDependencies": {
+    "@material-solid/config": "workspace:^",
     "@types/node": "^22.0.0",
     "tsup": "^8.2.3",
     "typedoc": "^0.26.5",

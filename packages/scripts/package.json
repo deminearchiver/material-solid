@@ -14,10 +14,15 @@
     "dev": "tsup --watch"
   },
   "devDependencies": {
+    "@material-solid/config": "workspace:^",
     "@types/node": "^22.0.0",
     "pkg-types": "^1.1.3",
     "tsup": "^8.2.3",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "execa": "^9.3.0",
+    "tree-kill": "^1.2.2"
   }
 }

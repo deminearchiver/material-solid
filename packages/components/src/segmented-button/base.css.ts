@@ -2,6 +2,7 @@ import { createVar, keyframes, style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { rippleTheme } from "../ripple/theme.css";
 import { THEME } from "@material-solid/vanilla-extract/contract";
+import { fontVariationSettings } from "@material-solid/utils/vanilla-extract";
 
 export const segmentedButtonStyle = style({
   width: "100%",
@@ -134,11 +135,6 @@ const checkmarkFadeOut = keyframes({
     strokeWidth: 0,
   },
 });
-const fontVariationSettings = (settings: Record<string, string | number>) => {
-  return Object.entries(settings)
-    .map(([axis, value]) => `"${axis}" ${value}`)
-    .join(", ");
-}
 
 const visibleVariations = fontVariationSettings({
   wght: 400,

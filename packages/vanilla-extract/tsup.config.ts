@@ -1,20 +1,17 @@
 import { defineConfig } from "tsup";
 
-export default defineConfig([
-  {
-    entry: {
-      "index": "./src/index.ts",
-      "contract": "./src/contract/index.ts"
+export default defineConfig(
+  async initialOptions => ({
+    ...initialOptions,
+    entry: ["src/**/*.ts"],
+    clean: false,
+    dts: initialOptions.watch ? false : true,
+    onSuccess: "tsc",
+    splitting: false,
+    bundle: false,
+    format: (initialOptions.watch ?? false) ? "esm" : ["cjs", "esm"],
+    treeshake: {
+      preset: "safest",
     },
-    external: [/^\.\/[\w-_]+\.css$/],
-    clean: true,
-    dts: true,
-    format: ["cjs", "esm"],
-  },
-  {
-    entry: ["./src/**/*.css.ts"],
-    clean: true,
-    dts: true,
-    format: ["cjs", "esm"],
-  },
-]);
+  })
+);

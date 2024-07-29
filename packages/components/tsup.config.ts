@@ -3,7 +3,7 @@ import { solidPlugin } from "esbuild-plugin-solid";
 import { fdir } from "fdir";
 import { join } from "path";
 import type { PackageJsonExports } from "pkg-types";
-import { writePackageJson } from "@material-solid/scripts";
+import { runCommand, writePackageJson } from "@material-solid/scripts";
 
 const entryPointsCrawler = new fdir()
   .withRelativePaths()
@@ -42,15 +42,15 @@ export default defineConfig(
   async initialOptions => {
     const watching = initialOptions.watch ?? false;
     const options: Options = {
-      watch: initialOptions.watch,
+      ...initialOptions,
       entry: ["./src/**/*.{ts,tsx}"],
       platform: "browser",
       target: "esnext",
-      clean: true,
-      format: watching ? "esm" : ["cjs", "esm"],
+      clean: false,
+      format: ["esm", "cjs"],
       splitting: false,
       bundle: false,
-      dts: true,
+      dts: watching ? false : true,
       treeshake: {
         preset: "safest",
       },
@@ -58,12 +58,6 @@ export default defineConfig(
         // @ts-expect-error
         solidPlugin({ solid: { generate: "dom" } }),
       ],
-      outExtension: ({ format }) => {
-        return {
-          js: format === "esm" ? ".js" : ".cjs",
-          dts: ".d.ts"
-        };
-      },
       onSuccess: async () => {
         const entryPoints = await getEntryPoints();
 
@@ -73,16 +67,15 @@ export default defineConfig(
           exports[specifier] = {
             import: `${path}.js`,
             require: `${path}.cjs`,
-            types: {
-              default: `${path}.d.ts`,
-              require: `${path}.d.cts`,
-            },
+            types: `${path}.d.ts`,
           };
         }
 
         await writePackageJson({
           exports,
         });
+
+        if(watching) return runCommand("tsc");
       },
     };
     return options;
