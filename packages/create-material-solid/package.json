@@ -1,0 +1,50 @@
+{
+  "name": "create-material-solid",
+  "description": "Rapidly scaffold a new Material Solid project",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "deminearchiver",
+    "url": "https://github.com/deminearchiver"
+  },
+  "keywords": [
+    "material",
+    "material design",
+    "design system",
+    "create",
+    "vite",
+    "solid",
+    "solidjs",
+    "cli"
+  ],
+  "license": "MIT",
+  "homepage": "https://material-solid.pages.dev",
+  "bugs": {
+    "url": "https://github.com/deminearchiver/material-solid/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deminearchiver/material-solid.git",
+    "directory": "packages/create-material-solid"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "bin": "dist/cli.js",
+  "devDependencies": {
+    "@material-solid/scripts": "workspace:^",
+    "@types/node": "^22.0.0",
+    "tsup": "^8.2.3",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^5.3.4",
+    "commander": "^12.1.0",
+    "execa": "^9.3.0"
+  },
+  "scripts": {
+    "build": "tsup"
+  }
+}

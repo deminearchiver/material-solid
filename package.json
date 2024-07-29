@@ -21,6 +21,7 @@
     ":vanilla-extract": "yarn : @material-solid/vanilla-extract",
     ":utils": "yarn : @material-solid/utils",
     ":scripts": "yarn : @material-solid/scripts",
+    ":create": "yarn : create-material-solid",
     "dev": "turbo watch dev --filter=@material-solid/docs..."
   },
   "devDependencies": {
