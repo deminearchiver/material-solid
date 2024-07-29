@@ -31,11 +31,78 @@
   ],
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./string": "./src/string/index.ts",
-    "./clsx": "./src/clsx.ts",
-    "./floating": "./src/floating.ts",
-    "./types": "./src/types.ts"
+    "./clsx": {
+      "import": "./dist/clsx/index.js",
+      "require": "./dist/clsx/index.cjs",
+      "types": {
+        "default": "./dist/clsx/index.d.ts",
+        "require": "./dist/clsx/index.d.cts"
+      }
+    },
+    "./floating": {
+      "import": "./dist/floating/index.js",
+      "require": "./dist/floating/index.cjs",
+      "types": {
+        "default": "./dist/floating/index.d.ts",
+        "require": "./dist/floating/index.d.cts"
+      }
+    },
+    "./math": {
+      "import": "./dist/math/index.js",
+      "require": "./dist/math/index.cjs",
+      "types": {
+        "default": "./dist/math/index.d.ts",
+        "require": "./dist/math/index.d.cts"
+      }
+    },
+    "./multi-provider": {
+      "import": "./dist/multi-provider/index.js",
+      "require": "./dist/multi-provider/index.cjs",
+      "types": {
+        "default": "./dist/multi-provider/index.d.ts",
+        "require": "./dist/multi-provider/index.d.cts"
+      }
+    },
+    "./portal": {
+      "import": "./dist/portal/index.js",
+      "require": "./dist/portal/index.cjs",
+      "types": {
+        "default": "./dist/portal/index.d.ts",
+        "require": "./dist/portal/index.d.cts"
+      }
+    },
+    "./refs": {
+      "import": "./dist/refs/index.js",
+      "require": "./dist/refs/index.cjs",
+      "types": {
+        "default": "./dist/refs/index.d.ts",
+        "require": "./dist/refs/index.d.cts"
+      }
+    },
+    "./string": {
+      "import": "./dist/string/index.js",
+      "require": "./dist/string/index.cjs",
+      "types": {
+        "default": "./dist/string/index.d.ts",
+        "require": "./dist/string/index.d.cts"
+      }
+    },
+    "./types": {
+      "import": "./dist/types/index.js",
+      "require": "./dist/types/index.cjs",
+      "types": {
+        "default": "./dist/types/index.d.ts",
+        "require": "./dist/types/index.d.cts"
+      }
+    },
+    "./vanilla-extract": {
+      "import": "./dist/vanilla-extract/index.js",
+      "require": "./dist/vanilla-extract/index.cjs",
+      "types": {
+        "default": "./dist/vanilla-extract/index.d.ts",
+        "require": "./dist/vanilla-extract/index.d.cts"
+      }
+    }
   },
   "packageManager": "yarn@4.3.1",
   "scripts": {

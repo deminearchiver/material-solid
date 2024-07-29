@@ -39,9 +39,8 @@ import { tabBarStyle } from "./tab-bar.css";
 import { TabIndicator } from "./tab-indicator";
 import { THEME } from "@material-solid/vanilla-extract/contract";
 import {
-  createAccumulatingAnimation,
   getVarName,
-} from "@material-solid/utils";
+} from "@material-solid/utils/vanilla-extract";
 
 export type TabBarVariant = "primary" | "secondary";
 

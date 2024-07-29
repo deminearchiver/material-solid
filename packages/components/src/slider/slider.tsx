@@ -15,7 +15,7 @@ import {
   type ComponentProps,
   For,
 } from "solid-js";
-import { assignRef, type Ref, type RefCallback } from "@material-solid/utils";
+import { assignRef, type Ref, type RefCallback } from "@material-solid/utils/refs";
 
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { createPresence } from "@solid-primitives/presence";

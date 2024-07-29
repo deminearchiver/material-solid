@@ -1,4 +1,4 @@
-import clsxLite from "clsx/lite"
+import clsxLite from "clsx/lite";
 
 export type ClassValue = string | boolean | null | undefined;
 
