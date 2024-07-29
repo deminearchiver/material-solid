@@ -8,7 +8,7 @@ export type RefCallback<T> = (value: T) => void;
  * @example
  * ```tsx
  * import type { Component, ParentComponent } from "solid-js";
- * import { type Ref, assignRef } from "@material-solid/utils"
+ * import { type Ref, assignRef } from "@material-solid/utils/refs"
  *
  * type LoggerElement = {
  *   info: (message: string) => void;

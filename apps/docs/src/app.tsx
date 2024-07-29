@@ -1,7 +1,7 @@
 import { A, Route, Router, type RouteDefinition, type RouteSectionProps } from "@solidjs/router";
 import { For, lazy, Suspense, type Component } from "solid-js";
 import { MetaProvider, Title} from "@solidjs/meta";
-import { MultiProvider } from "@material-solid/utils";
+import { MultiProvider } from "@material-solid/utils/multi-provider";
 import { MaterialSymbolController } from "@material-solid/components/icon";
 import { ThemeProvider } from "./components/theme";
 

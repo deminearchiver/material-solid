@@ -1,4 +1,4 @@
-import { MultiProvider } from "@material-solid/utils";
+import { MultiProvider } from "@material-solid/utils/multi-provider";
 import { MetaProvider, Title } from "@solidjs/meta";
 import { type RouteSectionProps, A } from "@solidjs/router";
 import { type Component, Suspense } from "solid-js";

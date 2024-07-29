@@ -1,7 +1,7 @@
 import { createEffect, createMemo, mergeProps, Show, splitProps, type Component, type JSX } from "solid-js";
 import { useWindowScrollPosition } from "@solid-primitives/scroll";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
-import { normalize, normalizeClamp } from "@material-solid/utils";
+import { normalize, normalizeClamp } from "@material-solid/utils/math";
 import { clamp } from "@solid-primitives/utils";
 import { MaterialSymbolController } from "@material-solid/components/icon";
 import { actionsStyle, dynamicContainerStyle, leadingStyle, staticContainerStyle, staticHeadlineStyle } from "./top-app-bar.css";
