@@ -1,4 +1,4 @@
-name: Docs
+name: Deploy documentation
 on:
   push:
     branches: [main]
@@ -6,7 +6,9 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -35,6 +37,7 @@ jobs:
           path: apps/docs/dist
 
   deploy:
+    name: Deploy
     needs: build
     runs-on: ubuntu-latest
     concurrency:
@@ -43,12 +46,15 @@ jobs:
     environment:
       name: cloudflare-pages
       url: ${{ steps.deploy.outputs.deployment-url }}
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/download-artifact@v4
         with:
           name: docs
           path: dist
+
       - id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
