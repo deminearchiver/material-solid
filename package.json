@@ -22,7 +22,8 @@
     ":utils": "yarn : @material-solid/utils",
     ":scripts": "yarn : @material-solid/scripts",
     ":create": "yarn : create-material-solid",
-    "dev": "turbo watch dev --filter=@material-solid/docs..."
+    "dev": "turbo watch dev --filter=@material-solid/docs...",
+    "build": "turbo build"
   },
   "devDependencies": {
     "@8hobbies/typedoc-plugin-404": "^3.0.0",

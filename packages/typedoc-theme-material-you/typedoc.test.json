@@ -1,0 +1,17 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./src/index.tsx"],
+  "plugin": [
+    "typedoc-theme-material-you"
+  ],
+  "theme": "material-you",
+  "externalSymbolLinkMappings": {
+    "typedoc": {
+      "*": "https://typedoc.org/api"
+    }
+  },
+  "sourceLinkExternal": true,
+  "materialYou": {
+
+  },
+}

@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "name": "typedoc-theme-material-you",
+  "author": {
+    "name": "deminearchiver",
+    "url": "https://github.com/deminearchiver"
+  },
+  "homepage": "https://github.com/deminearchiver/material-solid/tree/main/packages/typedoc-theme-material-you",
+  "bugs": {
+    "url": "https://github.com/deminearchiver/material-solid/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deminearchiver/material-solid.git",
+    "directory": "packages/typedoc-theme-material-you"
+  },
+  "keywords": [
+    "typedoc-plugin",
+    "typedoc-theme",
+    "material",
+    "material design",
+    "design system"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "packageManager": "yarn@4.3.1",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "typedoc --options typedoc.test.json"
+  },
+  "peerDependencies": {
+    "typedoc": "^0.26.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.2.3",
+    "typedoc": "^0.26.5",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@material/material-color-utilities": "^0.3.0",
+    "@material/web": "^2.0.0"
+  }
+}
