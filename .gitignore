@@ -17,3 +17,7 @@ node_modules/
 
 # Local Netlify folder
 .netlify
+
+.turbo
+
+dist

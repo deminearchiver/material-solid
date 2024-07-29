@@ -6,7 +6,6 @@ import { clamp } from "@solid-primitives/utils";
 import { MaterialSymbolController } from "@material-solid/components/icon";
 import { actionsStyle, dynamicContainerStyle, leadingStyle, staticContainerStyle, staticHeadlineStyle } from "./top-app-bar.css";
 
-
 const COLLAPED_HEIGHT = 64;
 
 export type TopAppBarVariant = "small" | "medium" | "large";

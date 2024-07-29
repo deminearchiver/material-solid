@@ -1,4 +1,4 @@
-import { THEME } from "./contract/export";
+import { THEME } from "./contract";
 
 export const emphasizedAccurate = `linear(
   0, 0.00004 0.215%, 0.00015, 0.00034 0.655%, 0.00062 0.88%, 0.00092,

@@ -1,5 +1,5 @@
 import { createThemeContract } from "@vanilla-extract/css";
-import type { THEME } from "./export";
+import type { THEME } from ".";
 
 // Entered manually to allow doc comments
 export const COLOR = createThemeContract({

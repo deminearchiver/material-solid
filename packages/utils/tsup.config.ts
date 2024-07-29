@@ -16,11 +16,7 @@ const getEntryPoints = async () => {
   const EXTENSION_REGEX = /\..+$/;
 
   const paths = await entryPointsCrawler.withPromise();
-  const entryPoints: Record<string, string> = {
-    "./ripple/theme": "./dist/ripple/theme.css",
-    "./icon-button/theme": "./dist/icon-button/theme.css",
-    "./list/theme": "./dist/list/theme.css",
-  };
+  const entryPoints: Record<string, string> = {};
   for(const path of paths) {
     const specifier = `./${path.split(SPLIT_REGEX)[0]}`;
     const base = `./dist/${path.replace(EXTENSION_REGEX, "")}`;

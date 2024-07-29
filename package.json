@@ -16,19 +16,20 @@
   ],
   "scripts": {
     ":": "yarn workspace",
+    ":docs": "yarn : @material-solid/docs",
     ":components": "yarn : @material-solid/components",
     ":vanilla-extract": "yarn : @material-solid/vanilla-extract",
     ":utils": "yarn : @material-solid/utils",
-    ":dev": "yarn : @material-solid/dev",
-    "dev": "yarn :dev dev",
-    ":docs": "yarn : @material-solid/docs"
+    ":scripts": "yarn : @material-solid/scripts",
+    "dev": "turbo watch dev --filter=@material-solid/docs..."
   },
   "devDependencies": {
     "@8hobbies/typedoc-plugin-404": "^3.0.0",
+    "turbo": "^2.0.9",
     "typedoc": "^0.26.5",
     "typedoc-plugin-coverage": "^3.3.0",
     "typedoc-plugin-extras": "^3.1.0",
-    "typedoc-plugin-mdn-links": "^3.2.5",
+    "typedoc-plugin-mdn-links": "^3.2.6",
     "typedoc-plugin-missing-exports": "^3.0.0",
     "typescript": "^5.5.4"
   },

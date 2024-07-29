@@ -1,31 +1,20 @@
-// import { defineConfig } from "tsup";
-// import * as preset from "tsup-preset-solid";
-// import { vanillaExtractPlugin as vanillaExtract } from "@vanilla-extract/esbuild-plugin";
+import { defineConfig } from "tsup";
 
-// const presetOptions: preset.PresetOptions = {
-//   entries: [
-//     {
-//       name: "theme",
-//       entry: "./theme/index.ts",
-//     },
-//     {
-//       name: "contract",
-//       entry: "./contract/contract.css.ts",
-//     },
-//   ],
-//   cjs: true,
-//   drop_console: true,
-//   esbuild_plugins: [
-//     vanillaExtract({
-//       identifiers: "short",
-//     })
-//   ],
-// };
-
-// export default defineConfig({
-//   esbuildPlugins: [
-//     vanillaExtract({
-//       identifiers: "short",
-//     }),
-//   ],
-// });
+export default defineConfig([
+  {
+    entry: {
+      "index": "./src/index.ts",
+      "contract": "./src/contract/index.ts"
+    },
+    external: [/^\.\/[\w-_]+\.css$/],
+    clean: true,
+    dts: true,
+    format: ["cjs", "esm"],
+  },
+  {
+    entry: ["./src/**/*.css.ts"],
+    clean: true,
+    dts: true,
+    format: ["cjs", "esm"],
+  },
+]);

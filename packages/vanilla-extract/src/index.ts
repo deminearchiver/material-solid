@@ -3,13 +3,12 @@
  */
 
 import { Hct, SchemeAndroid, SchemeContent, SchemeExpressive, SchemeFidelity, SchemeFruitSalad, SchemeMonochrome, SchemeNeutral, SchemeRainbow, SchemeTonalSpot, SchemeVibrant, type DynamicScheme } from "@material/material-color-utilities";
-import { THEME, type MaterialThemeContract, type MaterialTypefaceThemeContract } from "./contract/export";
-import type { MapTree, MaterialTheme, MaterialThemeOptions, SchemeVariant } from "./types";
+import { THEME, type MaterialThemeContract, type MaterialTypefaceThemeContract } from "./contract";
+import type { CSSVarFunction, MapTree, MaterialTheme, MaterialThemeOptions, SchemeVariant } from "./types";
 import { getSchemeColors } from "./color";
 import type { Simplify, SimplifyLeaf } from "@material-solid/utils/types";
 import { DEFAULT_DURATION, DEFAULT_EASING, DEFAULT_SHAPE, DEFAULT_TYPOGRAPHY } from "./defaults";
 import { createThemeContract } from "@vanilla-extract/css";
-import type { CSSVarFunction } from "../theme/utils";
 
 interface SchemeConstructor {
   new (sourceColorHct: Hct, isDark: boolean, contrastLevel: number): DynamicScheme;

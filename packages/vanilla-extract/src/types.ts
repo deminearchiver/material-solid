@@ -1,7 +1,9 @@
 import type { Hct } from "@material/material-color-utilities";
-import type { MaterialDurationThemeContract, MaterialEasingThemeContract, MaterialTextThemeContract, MaterialThemeContract, MaterialTypefaceThemeContract } from "./contract/export";
+import type { MaterialDurationThemeContract, MaterialEasingThemeContract, MaterialTextThemeContract, MaterialThemeContract, MaterialTypefaceThemeContract } from "./contract";
 import type { Simplify, SimplifyLeaf } from "@material-solid/utils/types";
-import type { CSSVarFunction } from "../theme/utils";
+
+export type CSSVarFunction = `var(--${string})` | `var(--${string}, ${string | number})`;
+
 
 export type SchemeVariant =
   | "monochrome"
