@@ -14,8 +14,10 @@
     "material design",
     "design system",
     "components",
-    "web components",
-    "lit"
+    "solid",
+    "solidjs",
+    "ui",
+    "library"
   ],
   "license": "MIT",
   "homepage": "https://material-solid.pages.dev",

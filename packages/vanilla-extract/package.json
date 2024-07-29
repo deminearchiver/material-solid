@@ -12,9 +12,9 @@
     "material",
     "material design",
     "design system",
-    "components",
-    "web components",
-    "lit"
+    "vanilla-extract",
+    "css",
+    "design-tokens"
   ],
   "license": "MIT",
   "homepage": "https://material-solid.pages.dev",

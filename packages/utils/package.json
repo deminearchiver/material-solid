@@ -9,12 +9,11 @@
     "url": "https://github.com/deminearchiver"
   },
   "keywords": [
-    "material",
-    "material design",
-    "design system",
+    "solid",
+    "solidjs",
     "components",
-    "web components",
-    "lit"
+    "headless",
+    "primitives"
   ],
   "license": "MIT",
   "homepage": "https://material-solid.pages.dev",
