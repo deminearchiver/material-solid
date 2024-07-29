@@ -14,8 +14,8 @@ jobs:
           node-version: 20
           cache: yarn
 
-      - name: Install workspace dependencies
-        run: yarn workspaces focus @material-solid/docs
+      - name: Install dependencies
+        run: yarn install
 
       - name: Build
         run: yarn turbo build --filter=@material-solid/docs...
