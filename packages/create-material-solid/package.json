@@ -30,7 +30,8 @@
     "directory": "packages/create-material-solid"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "src/**/*"
   ],
   "bin": "dist/cli.js",
   "devDependencies": {

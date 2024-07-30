@@ -2,6 +2,4 @@
   "extends": [
     "@material-solid/config/tsconfig/base",
   ],
-  "references": [{ "path": "./tsconfig.build.json" }],
-  "include": ["src"],
 }

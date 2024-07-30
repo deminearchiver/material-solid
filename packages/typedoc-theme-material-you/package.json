@@ -25,7 +25,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "src/**/*"
   ],
   "packageManager": "yarn@4.3.1",
   "scripts": {

@@ -26,59 +26,55 @@
     "directory": "packages/components"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "src/**/*"
   ],
   "type": "module",
   "exports": {
     "./clsx": {
       "import": "./dist/clsx/index.js",
       "require": "./dist/clsx/index.cjs",
-      "types": "./dist/clsx/index.d.ts"
+      "types": "./src/clsx/index.ts"
     },
     "./floating": {
       "import": "./dist/floating/index.js",
       "require": "./dist/floating/index.cjs",
-      "types": "./dist/floating/index.d.ts"
+      "types": "./src/floating/index.ts"
     },
     "./math": {
       "import": "./dist/math/index.js",
       "require": "./dist/math/index.cjs",
-      "types": "./dist/math/index.d.ts"
+      "types": "./src/math/index.ts"
     },
     "./multi-provider": {
       "import": "./dist/multi-provider/index.js",
       "require": "./dist/multi-provider/index.cjs",
-      "types": "./dist/multi-provider/index.d.ts"
+      "types": "./src/multi-provider/index.ts"
     },
     "./portal": {
       "import": "./dist/portal/index.js",
       "require": "./dist/portal/index.cjs",
-      "types": "./dist/portal/index.d.ts"
+      "types": "./src/portal/index.ts"
     },
     "./presence": {
       "import": "./dist/presence/index.js",
       "require": "./dist/presence/index.cjs",
-      "types": "./dist/presence/index.d.ts"
+      "types": "./src/presence/index.ts"
     },
     "./refs": {
       "import": "./dist/refs/index.js",
       "require": "./dist/refs/index.cjs",
-      "types": "./dist/refs/index.d.ts"
-    },
-    "./string": {
-      "import": "./dist/string/index.js",
-      "require": "./dist/string/index.cjs",
-      "types": "./dist/string/index.d.ts"
+      "types": "./src/refs/index.ts"
     },
     "./types": {
       "import": "./dist/types/index.js",
       "require": "./dist/types/index.cjs",
-      "types": "./dist/types/index.d.ts"
+      "types": "./src/types/index.ts"
     },
     "./vanilla-extract": {
       "import": "./dist/vanilla-extract/index.js",
       "require": "./dist/vanilla-extract/index.cjs",
-      "types": "./dist/vanilla-extract/index.d.ts"
+      "types": "./src/vanilla-extract/index.ts"
     }
   },
   "packageManager": "yarn@4.3.1",

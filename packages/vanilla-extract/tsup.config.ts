@@ -1,17 +1,16 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "@material-solid/config/tsup";
 
-export default defineConfig(
-  async initialOptions => ({
-    ...initialOptions,
-    entry: ["src/**/*.ts"],
-    clean: false,
-    dts: initialOptions.watch ? false : true,
-    onSuccess: "tsc",
-    splitting: false,
-    bundle: false,
-    format: (initialOptions.watch ?? false) ? "esm" : ["cjs", "esm"],
-    treeshake: {
-      preset: "safest",
-    },
-  })
-);
+export default defineConfig(options => ({
+  ...options,
+  entry: [
+    "src/**/*.ts",
+    "1src/**/*.test.ts",
+  ],
+  format: ["esm", "cjs"],
+  clean: false,
+  splitting: false,
+  bundle: false,
+  treeshake: {
+    preset: "safest",
+  },
+})).build();

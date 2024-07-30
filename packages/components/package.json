@@ -30,94 +30,95 @@
     "directory": "packages/components"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "src/**/*"
   ],
   "type": "module",
   "exports": {
     "./button": {
       "import": "./dist/button/index.js",
       "require": "./dist/button/index.cjs",
-      "types": "./dist/button/index.d.ts"
+      "types": "./src/button/index.ts"
     },
     "./card": {
       "import": "./dist/card/index.js",
       "require": "./dist/card/index.cjs",
-      "types": "./dist/card/index.d.ts"
+      "types": "./src/card/index.ts"
     },
     "./checkbox": {
       "import": "./dist/checkbox/index.js",
       "require": "./dist/checkbox/index.cjs",
-      "types": "./dist/checkbox/index.d.ts"
+      "types": "./src/checkbox/index.ts"
     },
     "./focus": {
       "import": "./dist/focus/index.js",
       "require": "./dist/focus/index.cjs",
-      "types": "./dist/focus/index.d.ts"
+      "types": "./src/focus/index.ts"
     },
     "./icon": {
       "import": "./dist/icon/index.js",
       "require": "./dist/icon/index.cjs",
-      "types": "./dist/icon/index.d.ts"
+      "types": "./src/icon/index.ts"
     },
     "./icon-button": {
       "import": "./dist/icon-button/index.js",
       "require": "./dist/icon-button/index.cjs",
-      "types": "./dist/icon-button/index.d.ts"
+      "types": "./src/icon-button/index.ts"
     },
     "./icon-button/theme": {
       "import": "./dist/icon-button/theme.css.js",
       "require": "./dist/icon-button/theme.css.cjs",
-      "types": "./dist/icon-button/theme.css.d.ts"
+      "types": "./src/icon-button/theme.css.ts"
     },
     "./list": {
       "import": "./dist/list/index.js",
       "require": "./dist/list/index.cjs",
-      "types": "./dist/list/index.d.ts"
+      "types": "./src/list/index.ts"
     },
     "./list/theme": {
       "import": "./dist/list/theme.css.js",
       "require": "./dist/list/theme.css.cjs",
-      "types": "./dist/list/theme.css.d.ts"
+      "types": "./src/list/theme.css.ts"
     },
     "./ripple": {
       "import": "./dist/ripple/index.js",
       "require": "./dist/ripple/index.cjs",
-      "types": "./dist/ripple/index.d.ts"
+      "types": "./src/ripple/index.ts"
     },
     "./ripple/theme": {
       "import": "./dist/ripple/theme.css.js",
       "require": "./dist/ripple/theme.css.cjs",
-      "types": "./dist/ripple/theme.css.d.ts"
+      "types": "./src/ripple/theme.css.ts"
     },
     "./segmented-button": {
       "import": "./dist/segmented-button/index.js",
       "require": "./dist/segmented-button/index.cjs",
-      "types": "./dist/segmented-button/index.d.ts"
+      "types": "./src/segmented-button/index.ts"
     },
     "./slider": {
       "import": "./dist/slider/index.js",
       "require": "./dist/slider/index.cjs",
-      "types": "./dist/slider/index.d.ts"
+      "types": "./src/slider/index.ts"
     },
     "./splash": {
       "import": "./dist/splash/index.js",
       "require": "./dist/splash/index.cjs",
-      "types": "./dist/splash/index.d.ts"
+      "types": "./src/splash/index.ts"
     },
     "./switch": {
       "import": "./dist/switch/index.js",
       "require": "./dist/switch/index.cjs",
-      "types": "./dist/switch/index.d.ts"
+      "types": "./src/switch/index.ts"
     },
     "./tabs": {
       "import": "./dist/tabs/index.js",
       "require": "./dist/tabs/index.cjs",
-      "types": "./dist/tabs/index.d.ts"
+      "types": "./src/tabs/index.ts"
     },
     "./tooltip": {
       "import": "./dist/tooltip/index.js",
       "require": "./dist/tooltip/index.cjs",
-      "types": "./dist/tooltip/index.d.ts"
+      "types": "./src/tooltip/index.ts"
     }
   },
   "packageManager": "yarn@4.3.1",

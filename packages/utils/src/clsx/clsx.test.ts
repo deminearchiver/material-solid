@@ -9,3 +9,4 @@ it("empty string", () => {
   expect(clsx()).toBe("");
 
 });
+

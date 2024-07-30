@@ -3,10 +3,45 @@
   "name": "@material-solid/config",
   "type": "module",
   "exports": {
-    "./tsconfig/*": "./tsconfig/*.json"
+    "./tsconfig/*": "./tsconfig/*.json",
+    "./tsup": {
+      "import": "./dist/tsup/index.js",
+      "require": "./dist/tsup/index.cjs",
+      "types": "./tsup/index.ts"
+    }
+  },
+  "packageManager": "yarn@4.3.1",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
+  },
+  "dependencies": {
+    "tsup": "^8.2.3"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "^2.0.4",
+    "@types/node": "^22.0.0",
+    "esbuild-plugin-solid": "^0.6.0",
+    "fdir": "^6.2.0",
+    "picomatch": "^4.0.2",
+    "pkg-types": "^1.1.3",
     "vitest": "^2.0.4"
+  },
+  "peerDependencies": {
+    "esbuild-plugin-solid": "*",
+    "fdir": "6.x",
+    "picomatch": "4.x"
+  },
+  "peerDependenciesMeta": {
+    "esbuild-plugin-solid": {
+      "optional": true
+    },
+    "fdir": {
+      "optional": true
+    },
+    "picomatch": {
+      "optional": true
+    }
   }
 }

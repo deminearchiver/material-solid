@@ -1,11 +1,9 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "@material-solid/config/tsup";
 
-export default defineConfig(
-  initialOptions => ({
-    ...initialOptions,
-    entry: ["src/cli.ts"],
-    format: "cjs",
-    clean: false,
-    minify: true,
-  })
-);
+export default defineConfig(options => ({
+  ...options,
+  entry: ["src/cli.ts"],
+  clean: false,
+  format: "cjs",
+  minify: true,
+})).build();

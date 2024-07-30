@@ -27,19 +27,20 @@
     "directory": "packages/components"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "src/**/*"
   ],
   "type": "module",
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "types": "./src/index.ts"
     },
     "./contract": {
       "import": "./dist/contract/index.js",
       "require": "./dist/contract/index.cjs",
-      "types": "./dist/contract/index.d.ts"
+      "types": "./src/contract/index.ts"
     }
   },
   "packageManager": "yarn@4.3.1",
