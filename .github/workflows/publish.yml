@@ -10,12 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/cache@v4
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
+      - name: Turbo cache
+        uses: ./.github/actions/turbo
 
       - uses: actions/setup-node@v4
         with:
@@ -28,6 +24,16 @@ jobs:
         with:
           name: components
           path: |
-            packages/components/dist/
-            packages/vanilla-extract/dist/
-            packages/utils/dist/
+            packages/components/
+            packages/vanilla-extract/
+            packages/utils/
+            !packages/*/.turbo
+            !packages/*/tsup.config.ts
+            !packages/*/typedoc.json
+            !packages/*/tsconfig.json
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
