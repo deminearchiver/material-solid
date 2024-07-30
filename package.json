@@ -49,6 +49,7 @@
     "webdriverio": "^8.39.1"
   },
   "dependencies": {
+    "@changesets/cli": "^2.27.7",
     "typedoc-material-theme": "^1.1.0"
   }
 }
