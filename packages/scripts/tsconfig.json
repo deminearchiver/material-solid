@@ -1,11 +1,7 @@
 {
   "extends": [
     "@material-solid/config/tsconfig/base",
-    "@material-solid/config/tsconfig/dts",
   ],
   "references": [{ "path": "./tsconfig.build.json" }],
-  "compilerOptions": {
-    "declarationDir": "./dist",
-  },
   "include": ["src"],
 }

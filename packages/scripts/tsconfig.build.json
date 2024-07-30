@@ -6,5 +6,5 @@
   "compilerOptions": {
     "composite": true,
   },
-  "include": ["tsup.config.ts"],
+  "include": ["build.config.ts"],
 }

@@ -2,7 +2,7 @@ import { keyframes } from "@vanilla-extract/css";
 import { THEME } from "@material-solid/vanilla-extract/contract";
 import { recipe } from "@vanilla-extract/recipes";
 
-const duration = "600ms";
+const DURATION_MS = 500;
 
 const growAnimation = keyframes({
   from: {
@@ -20,30 +20,47 @@ const shrinkAnimation = keyframes({
 
 export const focusStyle = recipe({
   base: {
-    animationName: `${growAnimation}, ${shrinkAnimation}`,
-    animationDelay: `0s, calc(${duration} * 0.25)`,
-    animationDuration: `calc(${duration} * 0.25), calc(${duration} * 0.75)`,
-    animationTimingFunction: THEME.easing.emphasized,
     position: "absolute",
-    display: "none",
+
+    // display: "none",
     pointerEvents: "none",
     boxSizing: "border-box",
     borderRadius: "inherit",
     inset: -2,
-    color: THEME.color.secondary,
-    outline: `3px solid currentColor`,
+
+    outlineStyle: "solid",
+    outlineColor: THEME.color.secondary,
+
     zIndex: 1,
+
     "@media": {
       "(prefers-reduced-motion)": {
         animation: "none",
+        transition: "none",
       }
     }
   },
   variants: {
     visible: {
+      false: {
+        outlineWidth: 0,
+
+        // transitionProperty: "outline-width",
+        // transitionDuration: THEME.duration.short1,
+        // transitionTimingFunction: THEME.easing.standardAccelerate,
+      },
       true: {
         display: "flex",
+        outlineWidth: 3,
+
+        animationName: `${growAnimation}, ${shrinkAnimation}`,
+        animationDelay: `0s, ${DURATION_MS * 0.25}ms`,
+        animationDuration: `${DURATION_MS * 0.25}ms, ${DURATION_MS * 0.75}ms`,
+        animationTimingFunction: `${THEME.easing.standardDecelerate}, ${THEME.easing.standard}`,
       },
     },
   },
+  defaultVariants: {
+    visible: false,
+  }
 });

@@ -6,12 +6,16 @@ const CWD = process.cwd();
 const DEFAULT_PKG_PATH = join(CWD, "package.json");
 
 export const writePackageJson = async (
-  fields: PackageJson,
+  fields: PackageJson | ((packageJson: PackageJson) => PackageJson),
   filename: string = DEFAULT_PKG_PATH,
   space?: string | number,
 ) => {
+
   const buffer = await readFile(filename, "utf-8")
   const pkg: PackageJson = JSON.parse(buffer)
+  if(typeof fields === "function") {
+    fields = fields(pkg);
+  }
   for(const key in fields) {
     pkg[key] = fields[key];
   }

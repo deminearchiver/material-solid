@@ -3,26 +3,39 @@
   "name": "@material-solid/scripts",
   "version": "0.0.0",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs",
-    "types": "./dist/index.d.ts"
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
   },
   "packageManager": "yarn@4.3.1",
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch"
+    "build": "unbuild",
+    "dev": "tsc -w",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@material-solid/config": "workspace:^",
-    "@types/node": "^22.0.0",
-    "pkg-types": "^1.1.3",
-    "tsup": "^8.2.3",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@vitest/coverage-v8": "^2.0.4",
+    "rollup": "^4.19.1",
     "tsx": "^4.16.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "unbuild": "^2.0.0",
+    "vitest": "^2.0.4"
   },
   "dependencies": {
     "execa": "^9.3.0",
-    "tree-kill": "^1.2.2"
+    "tree-kill": "^1.2.2",
+    "tsup": "^8.2.3"
   }
 }

@@ -37,15 +37,20 @@
     "@material-solid/config": "workspace:^",
     "@material-solid/scripts": "workspace:^",
     "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^2.0.4",
     "tsup": "^8.2.3",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.4"
   },
   "dependencies": {
-    "@inquirer/prompts": "^5.3.4",
+    "@inquirer/prompts": "^5.3.5",
     "commander": "^12.1.0",
     "execa": "^9.3.0"
   },
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "coverage": "vitest run --coverage"
   }
 }

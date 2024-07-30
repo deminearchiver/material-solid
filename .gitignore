@@ -12,12 +12,13 @@
 #!.yarn/cache
 .pnp.*
 
-node_modules/
-/docs
 
-# Local Netlify folder
 .netlify
 
+node_modules
 .turbo
+.vercel
 
+/docs
 dist
+

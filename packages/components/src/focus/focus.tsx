@@ -3,6 +3,9 @@ import { focusStyle } from "./focus.css";
 import { createEventListenerMap } from "@solid-primitives/event-listener";
 import { type MaybeAccessor, access } from "@solid-primitives/utils";
 import clsx from "clsx/lite";
+import { mergeRefs } from "@solid-primitives/refs";
+import { getVarName } from "@material-solid/utils/vanilla-extract";
+import { THEME } from "@material-solid/vanilla-extract/contract";
 
 export type FocusProps =
   & Omit<
@@ -23,6 +26,8 @@ export const Focus: Component<FocusProps> = (props) => {
     ["ref", "for",  "onFocusChanged", "visible", "class"],
   );
 
+  let ref!: HTMLElement;
+
   const [visible, setVisible] = createSignal(false);
 
   createEventListenerMap(
@@ -36,15 +41,35 @@ export const Focus: Component<FocusProps> = (props) => {
     }
   );
 
-  createEffect(() => {
-    local.onFocusChanged?.(visible());
-  });
+  createEffect(
+    () => {
+      const value = visible();
+      local.onFocusChanged?.(value);
+
+      if(!value) {
+        console.log("ANIMATE");
+        ref.animate(
+          [{
+            "outline-width": 0,
+          }],
+          {
+            fill: "forwards",
+            duration: 200,
+            easing: getComputedStyle(document.documentElement)
+              .getPropertyValue(getVarName(THEME.easing.standardAccelerate)),
+          },
+        );
+      }
+    }
+  );
 
   return (
     <div
-      ref={local.ref as HTMLDivElement}
+      ref={mergeRefs(element => ref = element, local.ref)}
       class={clsx(
-        focusStyle({ visible: local.visible ?? visible() }),
+        focusStyle({
+          visible: local.visible ?? visible(),
+        }),
         local.class,
       )}
       {...others} />

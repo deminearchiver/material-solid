@@ -31,7 +31,9 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "test": "typedoc --options typedoc.test.json"
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "coverage": "vitest run --coverage"
   },
   "peerDependencies": {
     "typedoc": "^0.26.0"
@@ -39,9 +41,11 @@
   "devDependencies": {
     "@material-solid/config": "workspace:^",
     "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^2.0.4",
     "tsup": "^8.2.3",
     "typedoc": "^0.26.5",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.4"
   },
   "dependencies": {
     "@material/material-color-utilities": "^0.3.0",

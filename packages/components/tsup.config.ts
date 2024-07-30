@@ -62,6 +62,7 @@ export default defineConfig(
         const entryPoints = await getEntryPoints();
 
         const exports: PackageJsonExports = {};
+
         for(const specifier in entryPoints) {
           const path = entryPoints[specifier];
           exports[specifier] = {
@@ -71,9 +72,14 @@ export default defineConfig(
           };
         }
 
-        await writePackageJson({
-          exports,
-        });
+        await writePackageJson(
+          packageJson => ({
+            publishConfig: {
+              ...packageJson.publishConfig ?? {},
+              exports
+            },
+          })
+        );
 
         if(watching) return runCommand("tsc");
       },
