@@ -1,9 +1,6 @@
 name: Turbo Cache
 description: Persist Turbo cache
 
-inputs:
-outputs:
-
 runs:
   using: composite
   steps:
