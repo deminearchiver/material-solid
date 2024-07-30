@@ -1,4 +1,4 @@
-import { defineConfig, withPackageJson, withSolid } from "@material-solid/config/tsup";
+import { defineConfig, withPackageJson, withSolid, withWatch } from "@material-solid/config/tsup";
 
 export default defineConfig(options => ({
   ...options,
@@ -6,11 +6,11 @@ export default defineConfig(options => ({
     "src/**/*.{ts,tsx}",
     "!src/**/*.test.{ts,tsx}",
   ],
-  clean: false,
   format: ["esm", "cjs"],
   splitting: false,
   bundle: false,
 }))
+  .mixin(withWatch())
   .mixin(withSolid())
   .mixin(
     withPackageJson({

@@ -1,10 +1,11 @@
-import { defineConfig } from "@material-solid/config/tsup";
+import { defineConfig, withWatch } from "@material-solid/config/tsup";
 
 export default defineConfig(options => ({
-    ...options,
-    entry: ["src/index.ts"],
-    clean: false,
-    format: ["esm", "cjs"],
-    platform: "node",
-})).build();
+  ...options,
+  entry: ["src/index.ts"],
+  format: ["esm", "cjs"],
+  platform: "node",
+}))
+  .mixin(withWatch())
+  .build();
 

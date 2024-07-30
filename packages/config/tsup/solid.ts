@@ -4,16 +4,16 @@ export const withSolid = async (): Promise<ConfigMixin<"solid">> => {
   const { solidPlugin } = await import("esbuild-plugin-solid");
   return {
     name: "solid",
-    apply: async options => {
-      options.platform ||= "browser";
-      options.target ||= "esnext";
+    apply: async overrideOptions => {
+      overrideOptions.platform ||= "browser";
+      overrideOptions.target ||= "esnext";
 
-      options.esbuildPlugins ||= [];
-      options.esbuildPlugins.push(
+      overrideOptions.esbuildPlugins ||= [];
+      overrideOptions.esbuildPlugins.push(
         // @ts-expect-error
         solidPlugin({ solid: { generate: "dom" } }),
       );
-      return options;
+      return overrideOptions;
     },
   };
 }

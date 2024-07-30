@@ -7,7 +7,7 @@ export default defineConfig(
       "src/index.tsx",
       "src/**/*.css"
     ],
-    clean: false,
+    clean: true,
     format: "cjs",
     noExternal: [
       "@material/material-color-utilities"

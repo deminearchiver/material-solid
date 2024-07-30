@@ -4,6 +4,7 @@ import type { ConfigMixin, MixinContext } from "./mixin";
 export * from "./mixin";
 export * from "./package-json";
 export * from "./solid";
+export * from "./watch";
 
 export type ConfigBuilder<Mixins extends readonly ConfigMixin[] = []> = {
   mixin: <T extends ConfigMixin>(mixin: T | Promise<T>) => ConfigBuilder<[...Mixins, T]>;

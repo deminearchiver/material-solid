@@ -45,6 +45,7 @@
   },
   "packageManager": "yarn@4.3.1",
   "scripts": {
+    "clean": "rimraf node_modules dist",
     "build": "tsup",
     "dev": "tsup --watch",
     "test": "vitest run",
@@ -63,6 +64,7 @@
     "@material-solid/config": "workspace:^",
     "@material-solid/scripts": "workspace:^",
     "@vitest/coverage-v8": "^2.0.4",
+    "rimraf": "^6.0.1",
     "tsup": "^8.2.3",
     "typescript": "^5.5.4",
     "vitest": "^2.0.4"

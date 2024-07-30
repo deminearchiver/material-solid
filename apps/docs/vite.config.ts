@@ -1,13 +1,16 @@
 import { defineConfig } from "vite";
-
 import { resolve } from "path";
-
 import solid from "vite-plugin-solid";
 import { vanillaExtractPlugin as vanillaExtract } from "@vanilla-extract/vite-plugin";
 import mdx from "@mdx-js/rollup";
 import remarkGfm from "remark-gfm";
 import { remarkAlert } from "remark-github-blockquote-alert";
 import remarkDirective from "remark-directive";
+import type { UserConfig as VitestUserConfig } from "vitest";
+
+declare module "vite" {
+  export interface UserConfig extends VitestUserConfig {}
+}
 
 export default defineConfig({
   plugins: [
