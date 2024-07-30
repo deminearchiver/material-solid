@@ -11,15 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Cache turbo build setup
-        uses: actions/cache@v4
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
-
+      - uses: ./.github/actions/turbo
       - uses: actions/setup-node@v4
         with:
           node-version: 20.x
