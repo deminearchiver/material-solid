@@ -777,6 +777,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@darkroom.engineering/tempus@npm:^0.0.46":
+  version: 0.0.46
+  resolution: "@darkroom.engineering/tempus@npm:0.0.46"
+  checksum: 10c0/20c48ff5b6a1a0dc1b9af253de3b06ac7d66c6ffefa86a0b2efe06f2a9a96135fd1e7b7ac72e8d347489564521e8ac7aa12e13cb60a1ffd0908cca78b764c584
+  languageName: node
+  linkType: hard
+
 "@emotion/hash@npm:^0.9.0":
   version: 0.9.1
   resolution: "@emotion/hash@npm:0.9.1"
@@ -1799,6 +1806,7 @@ __metadata:
     clsx: "npm:^2.1.1"
     component-register: "npm:^0.8.5"
     hastscript: "npm:^9.0.0"
+    lenis: "npm:^1.1.9"
     lightningcss: "npm:^1.25.1"
     mdast-util-directive: "npm:^3.0.0"
     mdast-util-mdx-jsx: "npm:^3.1.2"
@@ -6512,6 +6520,23 @@ __metadata:
   dependencies:
     readable-stream: "npm:^2.0.5"
   checksum: 10c0/ea4e509a5226ecfcc303ba6782cc269be8867d372b9bcbd625c88955df1987ea1a20da4643bf9270336415a398d33531ebf0d5f0d393b9283dc7c98bfcbd7b69
+  languageName: node
+  linkType: hard
+
+"lenis@npm:^1.1.9":
+  version: 1.1.9
+  resolution: "lenis@npm:1.1.9"
+  dependencies:
+    "@darkroom.engineering/tempus": "npm:^0.0.46"
+  peerDependencies:
+    react: ">=17.0.0"
+    react-dom: ">=17.0.0"
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 10c0/14915413173aeb92719e64e2310239029d5a4ac7790b4c50cead34209c4f4007335ea4b2d84f06122d370232389313e25e2d2842c6d9974ed7ca7c1d78820436
   languageName: node
   linkType: hard
 

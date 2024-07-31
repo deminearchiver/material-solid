@@ -36,6 +36,7 @@
     "@vanilla-extract/recipes": "^0.5.3",
     "@vanilla-extract/sprinkles": "^1.6.2",
     "clsx": "^2.1.1",
+    "lenis": "^1.1.9",
     "motion": "^10.18.0",
     "normalize.css": "^8.0.1",
     "pathe": "^1.1.2",
