@@ -1,0 +1,25 @@
+name: cloc
+on:
+  workflow_dispatch:
+
+jobs:
+  cloc:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dirname: [apps, packages]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install cloc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cloc
+      - name: Run cloc
+        run: |
+          cloc ${{ matrix.dirname }}/ --json --report-file cloc/${{ matrix.dirname }}.json
+          cloc ${{ matrix.dirname }}/ --yaml --report-file cloc/${{ matrix.dirname }}.yml
+          cloc ${{ matrix.dirname }}/ --md --report-file cloc/${{ matrix.dirname }}.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cloc-report-${{ matrix.dirname }}
+          path: cloc/

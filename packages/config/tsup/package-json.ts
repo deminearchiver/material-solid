@@ -4,71 +4,104 @@ import { join } from "path";
 import { join as posixJoin } from "path/posix";
 import { readFile, writeFile } from "fs/promises";
 
-type Specifier = `./${string}`;
+type Specifier = "." | `./${string}`;
 type ConditionalImport = "import" | "require" | "types";
 
-export type WithPackageJsonOptions = {
-  cwd?: string;
-  base: "" | (string & {});
-  glob: string;
-  additionalEntries?: Record<Specifier, string>;
-  /**
-   * Not implemented
-   */
-  output?: Partial<Record<ConditionalImport, string>>;
-}
+type ImportsMap = Record<Specifier, string>;
+
+
+export type WithPackageJsonOptions =
+  & {
+    cwd?: string;
+    base: "" | (string & {});
+  }
+  & (
+    | {
+      crawl: false;
+      additionalEntries: Partial<ImportsMap>;
+    }
+    | {
+      crawl?: true;
+      glob: string;
+      additionalEntries?: Partial<ImportsMap>;
+    }
+  );
 
 export const withPackageJson = async (
   options: WithPackageJsonOptions
 ): Promise<ConfigMixin<"package-json">> => {
+  const crawl = options.crawl ?? true;
   const { fdir } = await import("fdir");
 
   const cwd = options.cwd ?? process.cwd();
   const SPLIT_REGEX = /\/+/;
   const EXTENSION_REGEX = /\..+$/;
 
-
-  const getEntries = async () => {
-    const crawler = new fdir()
-      .withPathSeparator("/")
-      .withRelativePaths()
-      .glob(options.glob)
-      .crawl(join(cwd, options.base ?? ""));
-
-    const paths = await crawler.withPromise();
-    const entryPoints: Record<string, string> = options.additionalEntries ?? {};
-    for(const path of paths) {
-      const specifier = `./${path.split(SPLIT_REGEX)[0]}`;
-      const base = path.replace(EXTENSION_REGEX, "");
-      entryPoints[specifier] = base;
-    }
-    return Object.keys(entryPoints)
+  const sort = <T extends string, U>(entries: Partial<Record<T, U>>) =>
+    Object.keys(entries)
       .sort((a, b) => a.localeCompare(b))
-      .reduce<typeof entryPoints>(
+      .reduce<typeof entries>(
         (sorted, key) => {
-          sorted[key] = entryPoints[key];
+          sorted[key as T] = entries[key as T];
           return sorted;
         },
         {}
-      ) as Record<Specifier, string>;
+      ) as Record<T, U>;
+
+  const getEntries = async (): Promise<ImportsMap> => {
+    const entryPoints: Partial<ImportsMap> = options.additionalEntries ?? {};
+
+    if(options.crawl) {
+      const crawler = new fdir()
+        .withPathSeparator("/")
+        .withRelativePaths()
+        .glob(options.glob)
+        .crawl(join(cwd, options.base ?? ""));
+
+      const paths = await crawler.withPromise();
+      for(const path of paths) {
+        const specifier: Specifier = `./${path.split(SPLIT_REGEX)[0]}`;
+        const base = path.replace(EXTENSION_REGEX, "");
+        entryPoints[specifier] = base;
+      }
+    }
+    return sort(entryPoints);
   }
 
   return {
     name: "package-json",
     apply: async overrideOptions => {
+      const dev = overrideOptions.watch ?? false;
+
+      const previous = typeof overrideOptions.onSuccess === "function" ? overrideOptions.onSuccess : undefined;
       overrideOptions.onSuccess = async () => {
+        const result = await previous?.();
+
+        console.log("[@package-json] Writing package.json");
+
         const entries = await getEntries();
         const exports: PackageJsonExports = {};
         for(const specifier in entries) {
           const path = entries[specifier as Specifier];
+          const src = `./${posixJoin(options.base, path)}.ts`;
           exports[specifier] = {
-            import: `./dist/${path}.js`,
-            require: `./dist/${path}.cjs`,
-            types: `./${posixJoin(options.base, path)}.ts`,
+            ...(
+              dev
+              ? { default: src }
+              : {
+                  import: `./dist/${path}.js`,
+                  require: `./dist/${path}.cjs`,
+                }
+            ),
+            types: src,
           };
         }
 
         await writePackageJson({ exports });
+
+        console.log("[@package-json] Writting package.json!");
+
+        return result;
       }
       return overrideOptions;
     },

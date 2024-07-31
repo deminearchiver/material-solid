@@ -14,7 +14,6 @@
   "scripts": {
     "clean": "rimraf node_modules dist",
     "build": "tsup",
-    "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest watch"
   },

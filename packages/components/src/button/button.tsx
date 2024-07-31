@@ -185,6 +185,7 @@ const Button = <
       type={isButton() ? "button" : undefined}
       role={!isButton() ? "button" : undefined}
       aria-disabled={local.disabled}
+
       {...others}>
         <Focus for={ref} />
         <Ripple for={ref} />

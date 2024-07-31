@@ -1,4 +1,4 @@
-import { defineConfig, withWatch } from "@material-solid/config/tsup";
+import { defineConfig, withPackageJson, withWatch } from "@material-solid/config/tsup";
 
 export default defineConfig(options => ({
   ...options,
@@ -14,4 +14,14 @@ export default defineConfig(options => ({
   },
 }))
   .mixin(withWatch())
+  .mixin(
+    withPackageJson({
+      crawl: false,
+      base: "src",
+      additionalEntries: {
+        ".": "index",
+        "./contract": "contract/index"
+      },
+    })
+  )
   .build();
