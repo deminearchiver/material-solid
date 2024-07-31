@@ -33,11 +33,13 @@
   "type": "module",
   "exports": {
     ".": {
-      "default": "./src/index.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
       "types": "./src/index.ts"
     },
     "./contract": {
-      "default": "./src/contract/index.ts",
+      "import": "./dist/contract/index.js",
+      "require": "./dist/contract/index.cjs",
       "types": "./src/contract/index.ts"
     }
   },

@@ -21,7 +21,7 @@ export type WithPackageJsonOptions =
       additionalEntries: Partial<ImportsMap>;
     }
     | {
-      crawl?: true;
+      crawl?: undefined;
       glob: string;
       additionalEntries?: Partial<ImportsMap>;
     }
@@ -30,8 +30,9 @@ export type WithPackageJsonOptions =
 export const withPackageJson = async (
   options: WithPackageJsonOptions
 ): Promise<ConfigMixin<"package-json">> => {
-  const crawl = options.crawl ?? true;
   const { fdir } = await import("fdir");
+
+  const crawl = options.crawl ?? true;
 
   const cwd = options.cwd ?? process.cwd();
   const SPLIT_REGEX = /\/+/;
@@ -51,10 +52,11 @@ export const withPackageJson = async (
   const getEntries = async (): Promise<ImportsMap> => {
     const entryPoints: Partial<ImportsMap> = options.additionalEntries ?? {};
 
-    if(options.crawl) {
+    if(crawl) {
       const crawler = new fdir()
         .withPathSeparator("/")
         .withRelativePaths()
+        // @ts-expect-error
         .glob(options.glob)
         .crawl(join(cwd, options.base ?? ""));
 
