@@ -89,8 +89,13 @@ const ComponentComponent: Component<ComponentComponentProps> = (props) => {
 export const App = () => {
   return (
     <Router root={Layout}>
-      <Route path="/" component={lazy(() => import("~/routes"))} />
-      <Route path="/components" component={lazy(() => import("~/routes/components"))}>
+      <Route path="*404" component={lazy(() => import("~/routes/404"))} />
+      <Route path="/" component={lazy(() => import("~/routes/home"))} />
+      <Route path="/docs" component={lazy(() => import("~/routes/docs/layout"))}>
+        <Route path="/" component={lazy(() => import("~/routes/docs"))} />
+        <Route path="/roadmap" component={lazy(() => import("~/routes/docs/roadmap"))} />
+      </Route>
+      {/* <Route path="/components" component={lazy(() => import("~/routes/components"))}>
         <Route path="/" />
         <For each={Object.entries(components)}>{
           ([name, Component]) => (
@@ -99,7 +104,7 @@ export const App = () => {
               component={Component} />
           )
         }</For>
-      </Route>
+      </Route> */}
     </Router>
   );
 }

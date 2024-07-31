@@ -1,7 +1,7 @@
-import { createEffect, createSignal, mergeProps, splitProps, type Component, type JSX } from "solid-js"
+import { createEffect, createSignal, mergeProps, splitProps, type Component, type JSX, type ParentComponent } from "solid-js"
 import { createPresence } from "@material-solid/utils/presence";
 import { Ripple } from "@material-solid/components/ripple";
-import { containerStyle, iconStyle, indicatorStyle, labelStyle } from "./drawer-item.css";
+import { containerStyle, headlineStyle, iconStyle, indicatorStyle, labelStyle } from "./drawer-item.css";
 import { MaterialSymbolController } from "@material-solid/components/icon";
 import { mergeRefs } from "@solid-primitives/refs";
 import { clsx } from "@material-solid/utils/clsx";
@@ -67,5 +67,14 @@ export const DrawerItem: Component<DrawerItemProps> = (props) => {
         </span>
         {local.trailing}
     </button>
+  );
+}
+
+
+export const DrawerHeadline: ParentComponent = (props) => {
+  return (
+    <h3 class={headlineStyle}>
+      {props.children}
+    </h3>
   );
 }

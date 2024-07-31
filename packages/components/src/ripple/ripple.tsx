@@ -1,5 +1,5 @@
 import { type Component, type JSX, createSignal, splitProps, createEffect } from "solid-js";
-import { rippleStyle, surfaceStyle } from "./ripple.css";
+import { hostStyle, surfaceStyle } from "./ripple.css";
 import { createEventListenerMap } from "@solid-primitives/event-listener";
 import { type MaybeAccessor } from "@solid-primitives/utils";
 import { mergeRefs } from "@solid-primitives/refs";
@@ -26,9 +26,9 @@ export type RippleProps = {
 } & JSX.HTMLAttributes<HTMLElement>;
 
 export const Ripple: Component<RippleProps> = (props) => {
-  const [localProps, otherProps] = splitProps(
+  const [local, others] = splitProps(
     props,
-    ["ref", "disabled", "for"],
+    ["ref", "class", "disabled", "for"],
   );
 
   let ref!: HTMLElement;
@@ -54,7 +54,7 @@ export const Ripple: Component<RippleProps> = (props) => {
   const isTouch = ({ pointerType }: PointerEvent) => pointerType === "touch";
 
   const shouldReactToEvent = (event: PointerEvent) => {
-    if (localProps.disabled || !event.isPrimary) return false;
+    if (local.disabled || !event.isPrimary) return false;
 
     const startEvent = rippleStartEvent();
     if (
@@ -126,7 +126,7 @@ export const Ripple: Component<RippleProps> = (props) => {
     setRippleSize(`${initialSize}px`);
   }
   const onContextmenu = () => {
-    if (localProps.disabled) return;
+    if (local.disabled) return;
 
     setCheckBoundsAfterContextMenu(true);
     endPressAnimation();
@@ -200,7 +200,7 @@ export const Ripple: Component<RippleProps> = (props) => {
 
 
   const onClick = () => {
-    if(localProps.disabled) return;
+    if(local.disabled) return;
 
     if (state() === "waitingForClick") {
       void endPressAnimation();
@@ -286,9 +286,9 @@ export const Ripple: Component<RippleProps> = (props) => {
 
   return (
     <div
-      {...otherProps}
-      ref={mergeRefs(localProps.ref, element => ref = element)}
-      class={clsx(rippleStyle, otherProps.class)}>
+      ref={mergeRefs(element => ref = element, local.ref)}
+      class={clsx(hostStyle, local.class)}
+      {...others}>
       <div
         ref={surfaceRef as HTMLDivElement}
         class={surfaceStyle({

@@ -3,6 +3,7 @@
     "@material-solid/config/tsconfig/base",
     "@material-solid/config/tsconfig/solid",
   ],
+  "references": [{ "path": "./tsconfig.build.json" }],
   "compilerOptions": {
     "paths": {
       "~/*": ["./src/*"]

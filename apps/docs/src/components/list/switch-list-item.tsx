@@ -1,5 +1,5 @@
 import { ListItem } from "@material-solid/components/list";
-import { Switch } from "@material-solid/components/switch";
+import { Switch } from "../../../../../packages/components/src/switchold";
 import { splitProps, type Component, type JSX } from "solid-js";
 
 export type SwitchListItemProps = {

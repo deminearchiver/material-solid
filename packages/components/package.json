@@ -110,6 +110,11 @@
       "require": "./dist/switch/index.cjs",
       "types": "./src/switch/index.ts"
     },
+    "./switchold": {
+      "import": "./dist/switchold/index.js",
+      "require": "./dist/switchold/index.cjs",
+      "types": "./src/switchold/index.ts"
+    },
     "./tabs": {
       "import": "./dist/tabs/index.js",
       "require": "./dist/tabs/index.cjs",

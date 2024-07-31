@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import { remarkAlert } from "remark-github-blockquote-alert";
 import remarkDirective from "remark-directive";
 import type { UserConfig as VitestUserConfig } from "vitest";
+import devtools from "solid-devtools/vite";
 
 declare module "vite" {
   export interface UserConfig extends VitestUserConfig {}
@@ -23,6 +24,14 @@ export default defineConfig({
       ],
     }),
     vanillaExtract(),
+        // devtools({
+    //   autoname: true,
+    //   locator: {
+    //     targetIDE: "vscode",
+    //     componentLocation: true,
+    //     jsxLocation: true,
+    //   },
+    // }),
     solid(),
   ],
   css: {

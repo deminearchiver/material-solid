@@ -3,19 +3,14 @@ import { rippleTheme } from "./theme.css";
 import { recipe } from "@vanilla-extract/recipes";
 
 const sharedStyles = style({
+  WebkitTapHighlightColor: "transparent",
   borderRadius: "inherit",
   inset: 0,
   position: "absolute",
   overflow: "hidden",
 });
 
-// const sharedPseudoStyles = {
-//   content: "",
-//   opacity: 0,
-//   position: "absolute",
-// } as const;
-
-export const rippleStyle = style([
+export const hostStyle = style([
   sharedStyles,
   {
     display: "flex",
@@ -30,66 +25,34 @@ export const rippleStyle = style([
   },
 ]);
 
-// export const surfaceStyle = recipe([
-//   sharedStyles,
-//   {
-//     WebkitTapHighlightColor: "transparent",
-//     "::before": {
-//       content: "",
-//       opacity: 0,
-//       position: "absolute",
-
-//       backgroundColor: rippleTheme.hoverColor,
-//       inset: 0,
-//       transition: "opacity 15ms linear, background-color 15ms linear"
-//     },
-//     "::after": {
-//       content: "",
-//       opacity: 0,
-//       position: "absolute",
-
-//       background: `radial-gradient(
-//         closest-side,
-//         ${rippleTheme.pressedColor} max(calc(100% - 70px), 65%),
-//         transparent 100%
-//       )`,
-//       transformOrigin: "center center",
-//       transition: "opacity 375ms linear",
-//     },
-//   }
-// ]);
-
 export const surfaceStyle = recipe({
-  base: {
-    borderRadius: "inherit",
-    inset: 0,
-    position: "absolute",
-    overflow: "hidden",
-    WebkitTapHighlightColor: "transparent",
+  base: [
+    sharedStyles,
+    {
+      "::before": {
+        content: "",
+        opacity: 0,
+        position: "absolute",
+        inset: 0,
 
-    "::before": {
-      content: "",
-      opacity: 0,
-      position: "absolute",
+        backgroundColor: rippleTheme.hoverColor,
+        transition: "opacity 15ms linear, background-color 15ms linear",
+      },
+      "::after": {
+        content: "",
+        opacity: 0,
+        position: "absolute",
 
-      backgroundColor: rippleTheme.hoverColor,
-      inset: 0,
-      transition: "opacity 15ms linear, background-color 15ms linear",
+        background: `radial-gradient(
+              closest-side,
+              ${rippleTheme.pressedColor} max(calc(100% - 70px), 65%),
+              transparent 100%
+            )`,
+        transformOrigin: "center center",
+        transition: "opacity 375ms linear",
+      },
     },
-    "::after": {
-      content: "",
-      opacity: 0,
-      position: "absolute",
-
-      background: `radial-gradient(
-            closest-side,
-            ${rippleTheme.pressedColor} max(calc(100% - 70px), 65%),
-            transparent 100%
-          )`,
-      transformOrigin: "center center",
-      transition: "opacity 375ms linear",
-    },
-  },
+  ],
   variants: {
     hovered: {
       true: {

@@ -155,3 +155,13 @@ export const labelStyle = style({
   flexGrow: 1,
   ...THEME.text.label.large,
 });
+
+export const headlineStyle = style({
+  height: 56,
+  display: "flex",
+  alignItems: "center",
+  paddingInline: 16,
+
+  ...THEME.text.title.small,
+  color: THEME.color.onSurfaceVariant,
+});

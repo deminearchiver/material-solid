@@ -1,100 +1,79 @@
-import { type Component, type JSX, createSignal, splitProps, createMemo, type ParentComponent, children, createEffect } from "solid-js";
-import { switchDisabledStyle, switchHandleContainerStyle, switchHandleStyle, switchIconsStyle, switchInputStyle, switchSelectedStyle, switchStyle, switchTrackStyle, switchUnselectedStyle } from "./switch.css";
-import { Ripple} from "../ripple";
-import { resolveFirst } from "@solid-primitives/refs";
-import clsx from "clsx/lite";
-import { Focus } from "../focus";
+import { createContext, createEffect, on, splitProps, useContext, type Component, type JSX } from "solid-js"
+import { handleContainerStyle, handleStyle, inputStyle, switchStyle, trackStyle } from "./switch.css";
 
-export interface SwitchProps extends JSX.HTMLAttributes<HTMLElement> {
-  selected: boolean;
-  onChanged: (value: boolean) => void;
-  required?: boolean;
-  disabled?: boolean;
+const SwitchContext = createContext();
+const useSwitchContext = () => useContext(SwitchContext);
+
+export type SwitchProps = {
+  onChanged?: (value: boolean) => void;
+  value: boolean;
+
+  unselectedIcon?: JSX.Element;
+  selectedIcon?: JSX.Element;
 }
 
-export const Switch: ParentComponent<SwitchProps> = (props) => {
-  const [localProps, otherProps] = splitProps(
-    props,
-    [
-      "selected",
-      "onChanged",
-      "required",
-      "disabled",
-      "children",
-      "class",
-      "classList",
-    ]
-  );
-  const resolved = resolveFirst(() => localProps.children);
+export const Switch: Component<SwitchProps> = (props) => {
+  const [, local] = splitProps(props, []);
 
   let inputRef!: HTMLInputElement;
 
+  let handleRef!: HTMLElement;
+
+  createEffect(on(
+    () => local.value,
+    (selected, prev) => {
+      if(prev === undefined) return;
+      handleRef.animate(
+        [{
+          width: "32px",
+          height: "20px",
+          offset: 0.5
+        }],
+        {
+          duration: 300,
+          fill: "none",
+          easing: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+        }
+      )
+
+      // handleRef.animate(
+      //   {
+      //     width: handleRef.style.width,
+      //   }
+      // );
+    },
+  ));
+
   return (
-    <div
-      class={clsx(switchStyle, localProps.class)}
-      onKeyDown={event => {
-        const ignoreEvent = event.defaultPrevented || event.key !== "Enter";
-        if (ignoreEvent || localProps.disabled) return;
-        inputRef.click();
-      }}
-      classList={{
-        [switchSelectedStyle]: props.selected,
-        [switchUnselectedStyle]: !props.selected,
-        [switchDisabledStyle]: props.disabled,
-        ...localProps.classList,
-      }}
-      {...otherProps as JSX.HTMLAttributes<HTMLDivElement>}>
+    <div class={switchStyle()}>
       <input
         ref={inputRef}
-        class={switchInputStyle}
-        disabled={props.disabled}
-        required={props.required}
-        checked={props.selected}
-        role="switch"
-        onChange={event => props.onChanged(event.currentTarget.checked)}
-        onInput={event => props.onChanged(event.currentTarget.checked)}
+        class={inputStyle}
         type="checkbox"
-        aria-hidden="true" />
-      <div class={switchTrackStyle({
-        selected: props.selected,
-      })}>
-        <div
-          class={
-            switchHandleContainerStyle({
-              selected: props.selected,
-            })
-          }>
-            <div
-              style={{
-                position: "absolute",
-                width: "40px",
-                height: "40px",
-                "border-radius": "4px",
-              }}>
-                <Focus
-                  for={inputRef} />
-            </div>
-            <div
-              style={{
-                position: "absolute",
-                width: "40px",
-                height: "40px",
-                "border-radius": "inherit",
-              }}>
-                <Ripple
-                  for={inputRef} />
-            </div>
-            <div
-              class={switchHandleStyle({
-                selected: props.selected,
-                icon: !!resolved(),
-              })}>
-                <div class={switchIconsStyle({ selected: props.selected })}>
-                  {resolved()}
-              </div>
+        role="switch"
+        checked={local.value} />
+      <div
+        class={
+          trackStyle({
+            selected: local.value,
+          })
+        }>
+          <div
+            class={
+              handleContainerStyle({
+                selected: local.value,
+              })
+            }>
+
+            <div ref={handleRef as HTMLDivElement} class={
+              handleStyle({
+                selected: local.value
+              })
+            }>
+
             </div>
           </div>
       </div>
     </div>
-  );
+  )
 }

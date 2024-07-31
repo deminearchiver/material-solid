@@ -53,7 +53,7 @@
     "vitest": "^2.0.4"
   },
   "dependencies": {
-    "@inquirer/prompts": "^5.3.5",
+    "@inquirer/prompts": "^5.3.6",
     "commander": "^12.1.0",
     "execa": "^9.3.0"
   }

@@ -1,64 +1,59 @@
-import { style } from "@vanilla-extract/css";
-import { recipe } from "@vanilla-extract/recipes";
-import { rippleTheme } from "../ripple/theme.css";
 import { THEME } from "@material-solid/vanilla-extract/contract";
+import { keyframes, style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
-export const switchStyle = style({
-  WebkitTapHighlightColor: "transparent",
-  position: "relative",
-  display: "inline-flex",
-  alignItems: "center",
-  flexShrink: 0,
-  width: 52,
-  height: 32,
-  borderRadius: THEME.shape.full,
-  cursor: "pointer",
-});
+export const switchStyle = recipe({
+  base: {
+    WebkitTapHighlightColor: "transparent",
 
-export const switchUnselectedStyle = style({
-  vars: {
-    [rippleTheme.hoverColor]: THEME.color.onSurface,
-    [rippleTheme.pressedColor]: THEME.color.onSurface,
+    position: "relative",
+    flexShrink: 0,
+    width: 52,
+    height: 32,
+
+    display: "inline-flex",
+    alignItems: "center",
+
+    borderRadius: THEME.shape.full,
   },
 });
-export const switchSelectedStyle = style({
-  vars: {
-    [rippleTheme.hoverColor]: THEME.color.primary,
-    [rippleTheme.pressedColor]: THEME.color.primary,
-  },
-});
-export const switchDisabledStyle = style({});
 
-export const switchInputStyle = style({
+export const inputStyle = style({
   appearance: "none",
+  outline: "none",
+
   position: "absolute",
   width: "100%",
   height: 48,
+  margin: 0,
   zIndex: 1,
   cursor: "inherit",
-  outline: "none",
 });
 
-export const switchTrackStyle = recipe({
+export const trackStyle = recipe({
   base: {
     position: "absolute",
-    width: "100%",
-    height: "100%",
-    borderRadius: "inherit",
+    inset: 0,
+
     display: "flex",
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
+
+    borderRadius: "inherit",
+
+
     "::before": {
       content: "",
-      display: "flex",
       position: "absolute",
+      inset: 0,
+
+      borderWidth: 2,
+      borderStyle: "solid",
       borderRadius: "inherit",
-      width: "100%",
-      height: "100%",
-      backgroundColor: THEME.color.surfaceContainerHighest,
-      transitionProperty: "opacity, background-color",
-      transitionTimingFunction: "linear",
+
+      transitionProperty: "background-color, border-color, opacity",
       transitionDuration: "67ms",
+      transitionTimingFunction: "linear",
     },
   },
   variants: {
@@ -66,121 +61,158 @@ export const switchTrackStyle = recipe({
       false: {
         "::before": {
           backgroundColor: THEME.color.surfaceContainerHighest,
-          border: `2px solid ${THEME.color.outline}`,
+          borderColor: THEME.color.outline,
         },
       },
       true: {
         "::before": {
           backgroundColor: THEME.color.primary,
+          borderColor: THEME.color.primary,
+        }
+
+      },
+    },
+    disabled: {
+      true: {
+        "::before": {
+
         },
       },
-    }
-  }
+    },
+  },
+  defaultVariants: {
+    selected: false,
+  },
 });
 
+const a1 = keyframes({
+  "0%": {
+    marginInlineEnd: 20,
+  },
+  "100%": {
+    marginInlineStart: 20,
+  },
+});
+const a2 = keyframes({
+  "0%": {
+    width: 28,
+    height: 28,
+  },
+  "50%": {
+    width: 32,
+    height: 20,
+  },
+  "100%": {
+    width: 24,
+    height: 24,
+  },
+});
 
-
-export const switchHandleContainerStyle = recipe({
+export const handleContainerStyle = recipe({
   base: {
     position: "relative",
+
     display: "flex",
     placeItems: "center",
     placeContent: "center",
-    transition: `margin 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275)`,
-    borderRadius: "inherit",
+
+    transition: "margin-inline 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+    // animation: `${a1} 1000ms linear both alternate infinite`
   },
   variants: {
     selected: {
       false: {
-        marginInlineEnd: 52 - 32,
+        marginInlineEnd: 20,
       },
       true: {
-        marginInlineStart: 52 - 32,
+        marginInlineStart: 20,
       },
     },
-  },
-})
+  }
+});
 
-export const switchHandleStyle = recipe({
+export const handleStyle = recipe({
   base: {
-    borderRadius: "inherit",
-    transformOrigin: "center center",
+    zIndex: 0,
+
+    display: "flex",
+    placeItems: "center",
+    placeContent: "center",
+
+    borderRadius: THEME.shape.full,
+
     transitionProperty: "width, height",
     transitionDuration: "250ms",
     transitionTimingFunction: THEME.easing.standard,
-    zIndex: 0,
 
     "::before": {
       content: "",
       position: "absolute",
-      display: "flex",
       inset: 0,
+
       borderRadius: "inherit",
-      transition: "background-color 67ms linear 0s",
+      transition: "background-color 67ms linear",
     },
+
     selectors: {
-      [`${switchStyle}:active &`]: {
+      [`${switchStyle.classNames.base}:active &`]: {
         width: 28,
         height: 28,
         transitionDuration: "100ms",
         transitionTimingFunction: "linear",
       },
-    },
+    }
   },
   variants: {
     selected: {
       false: {
         width: 16,
         height: 16,
+
         "::before": {
           backgroundColor: THEME.color.outline,
         },
         selectors: {
-          [`${switchStyle}:hover &::before`]: {
-            "backgroundColor": THEME.color.onSurfaceVariant,
+          [`${switchStyle.classNames.base}:active &::before`]: {
+            backgroundColor: THEME.color.onSurfaceVariant,
           },
         },
       },
       true: {
         width: 24,
         height: 24,
+
         "::before": {
           backgroundColor: THEME.color.onPrimary,
         },
+
         selectors: {
-          [`${switchStyle}:hover &::before`]: {
-            "backgroundColor": THEME.color.primaryContainer,
+          [`${switchStyle.classNames.base}:active &::before`]: {
+            backgroundColor: THEME.color.primaryContainer,
           },
         },
-      },
-    },
-    icon: {
-      false: {},
-      true: {
-        width: 24,
-        height: 24,
       },
     },
   },
 });
 
-export const switchIconsStyle = recipe({
-  base: {
-    position: "relative",
-    width: "100%",
-    height: "100%",
-    display: "grid",
-    placeItems: "center",
-    placeContent: "center",
+const animation = keyframes({
+  "0%": {
+    left: 0,
   },
-  variants: {
-    selected: {
-      false: {
-        color: THEME.color.surfaceContainerHighest,
-      },
-      true: {
-        color: THEME.color.onPrimaryContainer,
-      },
-    }
-  }
-});
+  "50%": { // 6 with padding, 8 without
+    left: 6,
+    right: 6
+  },
+  "100%": {
+    right: 0,
+  },
+})
+
+// Animation:
+
+// Hover: 28px
+// Unselected: 16px
+// Selected: 24px
+
+// Stretch: height 20px padding 8px

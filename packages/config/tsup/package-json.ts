@@ -24,17 +24,17 @@ export const withPackageJson = async (
   const { fdir } = await import("fdir");
 
   const cwd = options.cwd ?? process.cwd();
-  const crawler = new fdir()
-    .withPathSeparator("/")
-    .withRelativePaths()
-    .glob(options.glob)
-    .crawl(join(cwd, options.base ?? ""));
-
   const SPLIT_REGEX = /\/+/;
   const EXTENSION_REGEX = /\..+$/;
 
 
   const getEntries = async () => {
+    const crawler = new fdir()
+      .withPathSeparator("/")
+      .withRelativePaths()
+      .glob(options.glob)
+      .crawl(join(cwd, options.base ?? ""));
+
     const paths = await crawler.withPromise();
     const entryPoints: Record<string, string> = options.additionalEntries ?? {};
     for(const path of paths) {

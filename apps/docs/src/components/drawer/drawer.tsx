@@ -3,8 +3,8 @@ import { containerStyle } from "./drawer.css"
 
 export const Drawer: ParentComponent = (props) => {
   return (
-    <aside class={containerStyle}>
+    <ul class={containerStyle}>
       {props.children}
-    </aside>
+    </ul>
   )
 }

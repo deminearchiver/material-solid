@@ -11,7 +11,7 @@ import { clsx } from "@material-solid/utils/clsx";
 import { useTheme, type ThemeBrightness } from ".";
 import { SliderListItem, SwitchListItem } from "../list";
 import { ListItem } from "@material-solid/components/list";
-import { Switch } from "@material-solid/components/switch";
+import { Switch } from "../../../../../packages/components/src/switchold";
 
 import { createFloating } from "@material-solid/utils/floating";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
