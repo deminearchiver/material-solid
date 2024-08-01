@@ -33,19 +33,18 @@
   "devDependencies": {
     "@8hobbies/typedoc-plugin-404": "^3.0.0",
     "@material-solid/config": "workspace:^",
-    "@solidjs/testing-library": "^0.8.9",
-    "@vitest/browser": "^2.0.4",
-    "@vitest/coverage-v8": "^2.0.4",
+    "@vitest/browser": "^2.0.5",
+    "@vitest/coverage-v8": "^2.0.5",
     "playwright": "^1.45.3",
     "rimraf": "^6.0.1",
-    "turbo": "^2.0.10",
+    "turbo": "^2.0.11",
     "typedoc": "^0.26.5",
     "typedoc-plugin-coverage": "^3.3.0",
     "typedoc-plugin-extras": "^3.1.0",
     "typedoc-plugin-mdn-links": "^3.2.6",
     "typedoc-plugin-missing-exports": "^3.0.0",
     "typescript": "^5.5.4",
-    "vitest": "^2.0.4",
+    "vitest": "^2.0.5",
     "webdriverio": "^8.39.1"
   },
   "dependencies": {

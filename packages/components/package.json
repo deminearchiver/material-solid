@@ -165,9 +165,9 @@
     "@material-solid/scripts": "workspace:^",
     "@solidjs/testing-library": "^0.8.9",
     "@types/cssesc": "^3.0.2",
-    "@types/node": "^22.0.0",
-    "@vitest/browser": "^2.0.4",
-    "@vitest/coverage-v8": "^2.0.4",
+    "@types/node": "^22.0.2",
+    "@vitest/browser": "^2.0.5",
+    "@vitest/coverage-v8": "^2.0.5",
     "defu": "^6.1.4",
     "esbuild-plugin-solid": "^0.6.0",
     "fdir": "^6.2.0",
@@ -176,6 +176,6 @@
     "rimraf": "^6.0.1",
     "tsup": "^8.2.3",
     "typescript": "^5.5.4",
-    "vitest": "^2.0.4"
+    "vitest": "^2.0.5"
   }
 }

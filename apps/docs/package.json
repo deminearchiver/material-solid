@@ -21,6 +21,7 @@
     "@material-solid/utils": "workspace:^",
     "@material-solid/vanilla-extract": "workspace:^",
     "@solid-primitives/event-listener": "^2.3.3",
+    "@solid-primitives/jsx-tokenizer": "^1.0.10",
     "@solid-primitives/media": "^2.2.9",
     "@solid-primitives/platform": "^0.1.2",
     "@solid-primitives/presence": "^0.0.6",
@@ -47,11 +48,11 @@
     "@material-solid/config": "workspace:^",
     "@mdx-js/rollup": "^3.0.1",
     "@solidjs/testing-library": "^0.8.9",
-    "@types/node": "^22.0.0",
+    "@types/node": "^22.0.2",
     "@types/unist": "^3.0.2",
     "@vanilla-extract/vite-plugin": "^4.0.13",
-    "@vitest/browser": "^2.0.4",
-    "@vitest/coverage-v8": "^2.0.4",
+    "@vitest/browser": "^2.0.5",
+    "@vitest/coverage-v8": "^2.0.5",
     "component-register": "^0.8.5",
     "hastscript": "^9.0.0",
     "lightningcss": "^1.25.1",
@@ -68,7 +69,7 @@
     "unist-util-visit": "^5.0.0",
     "vite": "^5.3.5",
     "vite-plugin-solid": "^2.10.2",
-    "vitest": "^2.0.4",
-    "wrangler": "^3.67.1"
+    "vitest": "^2.0.5",
+    "wrangler": "^3.68.0"
   }
 }
