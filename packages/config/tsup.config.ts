@@ -8,4 +8,5 @@ export default defineConfig(options => ({
   platform: "node",
   target: "esnext",
   format: ["esm", "cjs"],
+  dts: true,
 }));

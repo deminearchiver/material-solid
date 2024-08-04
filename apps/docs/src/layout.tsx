@@ -5,6 +5,7 @@ import { type Component, Suspense } from "solid-js";
 import { MDXProvider } from "solid-jsx";
 import { ThemeProvider } from "./components/theme";
 import { MaterialSymbolController } from "@material-solid/components/icon";
+import { Lenis } from "./components/lenis";
 
 export const Layout: Component<RouteSectionProps> = (props) => {
   return (
@@ -12,6 +13,7 @@ export const Layout: Component<RouteSectionProps> = (props) => {
       providers={[
         MetaProvider,
         ThemeProvider,
+        Lenis,
         [MaterialSymbolController, { defaultVariant: "rounded" }],
       ]}>
         <Title>Material Solid</Title>

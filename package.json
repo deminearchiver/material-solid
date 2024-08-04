@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "type": "module",
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "yarn@4.4.0",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -24,9 +24,10 @@
     ":scripts": "yarn : @material-solid/scripts",
     ":create": "yarn : create-material-solid",
     "docs:dev": "turbo dev --filter=@material-solid/docs...",
-    "docs:build": "turbo build --filter=@material-solid/docs...",
+    "docs:build": "turbo build --filter=@material-solid/docs",
     "packages:build": "turbo build --filter=./packages/*",
     "build": "turbo build",
+    "preview": "turbo preview --filter=@material-solid/docs",
     "test": "turbo test",
     "test:watch": "turbo test:watch"
   },

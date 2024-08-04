@@ -34,50 +34,50 @@
     "./clsx": {
       "import": "./dist/clsx/index.js",
       "require": "./dist/clsx/index.cjs",
-      "types": "./src/clsx/index.ts"
+      "types": "./dist/clsx/index.d.ts"
     },
     "./floating": {
       "import": "./dist/floating/index.js",
       "require": "./dist/floating/index.cjs",
-      "types": "./src/floating/index.ts"
+      "types": "./dist/floating/index.d.ts"
     },
     "./math": {
       "import": "./dist/math/index.js",
       "require": "./dist/math/index.cjs",
-      "types": "./src/math/index.ts"
+      "types": "./dist/math/index.d.ts"
     },
     "./multi-provider": {
       "import": "./dist/multi-provider/index.js",
       "require": "./dist/multi-provider/index.cjs",
-      "types": "./src/multi-provider/index.ts"
+      "types": "./dist/multi-provider/index.d.ts"
     },
     "./portal": {
       "import": "./dist/portal/index.js",
       "require": "./dist/portal/index.cjs",
-      "types": "./src/portal/index.ts"
+      "types": "./dist/portal/index.d.ts"
     },
     "./presence": {
       "import": "./dist/presence/index.js",
       "require": "./dist/presence/index.cjs",
-      "types": "./src/presence/index.ts"
+      "types": "./dist/presence/index.d.ts"
     },
     "./refs": {
       "import": "./dist/refs/index.js",
       "require": "./dist/refs/index.cjs",
-      "types": "./src/refs/index.ts"
+      "types": "./dist/refs/index.d.ts"
     },
     "./types": {
       "import": "./dist/types/index.js",
       "require": "./dist/types/index.cjs",
-      "types": "./src/types/index.ts"
+      "types": "./dist/types/index.d.ts"
     },
     "./vanilla-extract": {
       "import": "./dist/vanilla-extract/index.js",
       "require": "./dist/vanilla-extract/index.cjs",
-      "types": "./src/vanilla-extract/index.ts"
+      "types": "./dist/vanilla-extract/index.d.ts"
     }
   },
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "yarn@4.4.0",
   "scripts": {
     "clean": "rimraf node_modules dist",
     "build": "tsup",
@@ -103,14 +103,14 @@
     "@material-solid/config": "workspace:^",
     "@material-solid/scripts": "workspace:^",
     "@solidjs/testing-library": "^0.8.9",
-    "@types/node": "^22.0.2",
+    "@types/node": "^22.1.0",
     "@vitest/browser": "^2.0.5",
     "@vitest/coverage-v8": "^2.0.5",
     "esbuild-plugin-solid": "^0.6.0",
     "fdir": "^6.2.0",
     "pkg-types": "^1.1.3",
     "rimraf": "^6.0.1",
-    "tsup": "^8.2.3",
+    "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   }

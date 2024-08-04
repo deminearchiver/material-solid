@@ -17,7 +17,7 @@
       "cache": false,
       "persistent": true
     },
-    "@material-solid/docs#dev": {
+    "@material-solid/docs#preview": {
       "dependsOn": ["^build"],
       "persistent": true,
       "cache": false

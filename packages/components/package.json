@@ -38,95 +38,95 @@
     "./button": {
       "import": "./dist/button/index.js",
       "require": "./dist/button/index.cjs",
-      "types": "./src/button/index.ts"
+      "types": "./dist/button/index.d.ts"
     },
     "./card": {
       "import": "./dist/card/index.js",
       "require": "./dist/card/index.cjs",
-      "types": "./src/card/index.ts"
+      "types": "./dist/card/index.d.ts"
     },
     "./checkbox": {
       "import": "./dist/checkbox/index.js",
       "require": "./dist/checkbox/index.cjs",
-      "types": "./src/checkbox/index.ts"
+      "types": "./dist/checkbox/index.d.ts"
     },
     "./focus": {
       "import": "./dist/focus/index.js",
       "require": "./dist/focus/index.cjs",
-      "types": "./src/focus/index.ts"
+      "types": "./dist/focus/index.d.ts"
     },
     "./icon": {
       "import": "./dist/icon/index.js",
       "require": "./dist/icon/index.cjs",
-      "types": "./src/icon/index.ts"
+      "types": "./dist/icon/index.d.ts"
     },
     "./icon-button": {
       "import": "./dist/icon-button/index.js",
       "require": "./dist/icon-button/index.cjs",
-      "types": "./src/icon-button/index.ts"
+      "types": "./dist/icon-button/index.d.ts"
     },
     "./icon-button/theme": {
       "import": "./dist/icon-button/theme.css.js",
       "require": "./dist/icon-button/theme.css.cjs",
-      "types": "./src/icon-button/theme.css.ts"
+      "types": "./dist/icon-button/theme.css.d.ts"
     },
     "./list": {
       "import": "./dist/list/index.js",
       "require": "./dist/list/index.cjs",
-      "types": "./src/list/index.ts"
+      "types": "./dist/list/index.d.ts"
     },
     "./list/theme": {
       "import": "./dist/list/theme.css.js",
       "require": "./dist/list/theme.css.cjs",
-      "types": "./src/list/theme.css.ts"
+      "types": "./dist/list/theme.css.d.ts"
     },
     "./ripple": {
       "import": "./dist/ripple/index.js",
       "require": "./dist/ripple/index.cjs",
-      "types": "./src/ripple/index.ts"
+      "types": "./dist/ripple/index.d.ts"
     },
     "./ripple/theme": {
       "import": "./dist/ripple/theme.css.js",
       "require": "./dist/ripple/theme.css.cjs",
-      "types": "./src/ripple/theme.css.ts"
+      "types": "./dist/ripple/theme.css.d.ts"
     },
     "./segmented-button": {
       "import": "./dist/segmented-button/index.js",
       "require": "./dist/segmented-button/index.cjs",
-      "types": "./src/segmented-button/index.ts"
+      "types": "./dist/segmented-button/index.d.ts"
     },
     "./slider": {
       "import": "./dist/slider/index.js",
       "require": "./dist/slider/index.cjs",
-      "types": "./src/slider/index.ts"
+      "types": "./dist/slider/index.d.ts"
     },
     "./splash": {
       "import": "./dist/splash/index.js",
       "require": "./dist/splash/index.cjs",
-      "types": "./src/splash/index.ts"
+      "types": "./dist/splash/index.d.ts"
     },
     "./switch": {
       "import": "./dist/switch/index.js",
       "require": "./dist/switch/index.cjs",
-      "types": "./src/switch/index.ts"
+      "types": "./dist/switch/index.d.ts"
     },
     "./switchold": {
       "import": "./dist/switchold/index.js",
       "require": "./dist/switchold/index.cjs",
-      "types": "./src/switchold/index.ts"
+      "types": "./dist/switchold/index.d.ts"
     },
     "./tabs": {
       "import": "./dist/tabs/index.js",
       "require": "./dist/tabs/index.cjs",
-      "types": "./src/tabs/index.ts"
+      "types": "./dist/tabs/index.d.ts"
     },
     "./tooltip": {
       "import": "./dist/tooltip/index.js",
       "require": "./dist/tooltip/index.cjs",
-      "types": "./src/tooltip/index.ts"
+      "types": "./dist/tooltip/index.d.ts"
     }
   },
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "yarn@4.4.0",
   "scripts": {
     "clean": "rimraf node_modules dist",
     "build": "tsup",
@@ -157,7 +157,7 @@
     "clsx": "^2.1.1",
     "cssesc": "^3.0.0",
     "dedent": "^1.5.3",
-    "material-symbols": "^0.21.2",
+    "material-symbols": "^0.21.3",
     "solid-js": "^1.8.19"
   },
   "devDependencies": {
@@ -165,7 +165,7 @@
     "@material-solid/scripts": "workspace:^",
     "@solidjs/testing-library": "^0.8.9",
     "@types/cssesc": "^3.0.2",
-    "@types/node": "^22.0.2",
+    "@types/node": "^22.1.0",
     "@vitest/browser": "^2.0.5",
     "@vitest/coverage-v8": "^2.0.5",
     "defu": "^6.1.4",
@@ -174,7 +174,7 @@
     "picomatch": "^4.0.2",
     "pkg-types": "^1.1.3",
     "rimraf": "^6.0.1",
-    "tsup": "^8.2.3",
+    "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   }

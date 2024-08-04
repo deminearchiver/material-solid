@@ -90,7 +90,7 @@ export const App = () => {
   return (
     <Router root={Layout}>
       <Route path="*404" component={lazy(() => import("~/routes/404"))} />
-      <Route path="/" component={lazy(() => import("~/routes/home"))} />
+      <Route path="/" component={lazy(() => import("~/pages/home"))} />
       <Route path="/docs" component={lazy(() => import("~/routes/docs/layout"))}>
         <Route path="/" component={lazy(() => import("~/routes/docs"))} />
         <Route path="/roadmap" component={lazy(() => import("~/routes/docs/roadmap"))} />

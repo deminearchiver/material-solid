@@ -7,10 +7,13 @@
     "./tsup": {
       "import": "./dist/tsup/index.js",
       "require": "./dist/tsup/index.cjs",
-      "types": "./tsup/index.ts"
+      "types": {
+        "import": "./dist/tsup/index.d.ts",
+        "require": "./dist/tsup/index.d.cts"
+      }
     }
   },
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "yarn@4.4.0",
   "scripts": {
     "clean": "rimraf node_modules dist",
     "build": "tsup",
@@ -18,10 +21,10 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
-    "tsup": "^8.2.3"
+    "tsup": "^8.2.4"
   },
   "devDependencies": {
-    "@types/node": "^22.0.2",
+    "@types/node": "^22.1.0",
     "esbuild-plugin-solid": "^0.6.0",
     "fdir": "^6.2.0",
     "picomatch": "^4.0.2",

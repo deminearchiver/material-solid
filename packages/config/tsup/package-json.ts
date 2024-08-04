@@ -75,6 +75,8 @@ export const withPackageJson = async (
     apply: async overrideOptions => {
       const dev = overrideOptions.watch ?? false;
 
+      overrideOptions.dts = true;
+
       const previous = typeof overrideOptions.onSuccess === "function" ? overrideOptions.onSuccess : undefined;
       overrideOptions.onSuccess = async () => {
         const result = await previous?.();
@@ -85,17 +87,22 @@ export const withPackageJson = async (
         const exports: PackageJsonExports = {};
         for(const specifier in entries) {
           const path = entries[specifier as Specifier];
-          const src = `./${posixJoin(options.base, path)}.ts`;
+
+          const ts = `./${posixJoin(options.base, path)}.ts`;
+          const js = `./dist/${path}.js`;
+          const cjs = `./dist/${path}.cjs`;
+          const mjs = `./dist/${path}.mjs`;
+          const dts = `./dist/${path}.d.ts`;
+
+          const formats = (overrideOptions.format ?? "cjs");
+          const resolvedFormats = Array.isArray(formats) ? formats : [formats];
+
+          const first = resolvedFormats.at(0) ?? "cjs";
+
           exports[specifier] = {
-            ...(
-              dev
-              ? { default: src }
-              : {
-                  import: `./dist/${path}.js`,
-                  require: `./dist/${path}.cjs`,
-                }
-            ),
-            types: src,
+            import: first === "esm" ? js : mjs,
+            require: first === "cjs" ? js : cjs,
+            types: dts,
           };
         }
 

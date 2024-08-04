@@ -35,15 +35,15 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.cjs",
-      "types": "./src/index.ts"
+      "types": "./dist/index.d.ts"
     },
     "./contract": {
       "import": "./dist/contract/index.js",
       "require": "./dist/contract/index.cjs",
-      "types": "./src/contract/index.ts"
+      "types": "./dist/contract/index.d.ts"
     }
   },
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "yarn@4.4.0",
   "scripts": {
     "clean": "rimraf node_modules dist",
     "build": "tsup",
@@ -65,7 +65,7 @@
     "@material-solid/scripts": "workspace:^",
     "@vitest/coverage-v8": "^2.0.5",
     "rimraf": "^6.0.1",
-    "tsup": "^8.2.3",
+    "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   }

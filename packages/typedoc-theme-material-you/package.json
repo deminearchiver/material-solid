@@ -28,7 +28,7 @@
     "dist/**/*",
     "src/**/*"
   ],
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "yarn@4.4.0",
   "scripts": {
     "clean": "rimraf node_modules dist",
     "build": "tsup",
@@ -42,10 +42,10 @@
   },
   "devDependencies": {
     "@material-solid/config": "workspace:^",
-    "@types/node": "^22.0.2",
+    "@types/node": "^22.1.0",
     "@vitest/coverage-v8": "^2.0.5",
     "rimraf": "^6.0.1",
-    "tsup": "^8.2.3",
+    "tsup": "^8.2.4",
     "typedoc": "^0.26.5",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
