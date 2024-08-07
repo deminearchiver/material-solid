@@ -136,7 +136,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.6.8",
+    "@floating-ui/dom": "^1.6.9",
     "@material-solid/utils": "workspace:^",
     "@material-solid/vanilla-extract": "workspace:^",
     "@solid-primitives/context": "^0.2.3",

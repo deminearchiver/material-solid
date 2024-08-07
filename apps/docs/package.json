@@ -10,11 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.6.8",
+    "@floating-ui/dom": "^1.6.9",
     "@fontsource-variable/fira-code": "^5.0.18",
     "@fontsource-variable/manrope": "^5.0.20",
-    "@fontsource-variable/material-symbols-rounded": "^5.0.36",
-    "@fontsource-variable/material-symbols-sharp": "^5.0.36",
+    "@fontsource-variable/material-symbols-rounded": "^5.0.37",
+    "@fontsource-variable/material-symbols-sharp": "^5.0.37",
     "@fontsource-variable/roboto-flex": "^5.0.15",
     "@giscus/solid": "^3.0.0",
     "@material-solid/components": "workspace:^",
@@ -56,9 +56,9 @@
     "@vanilla-extract/vite-plugin": "^4.0.13",
     "@vitest/browser": "^2.0.5",
     "@vitest/coverage-v8": "^2.0.5",
-    "component-register": "^0.8.5",
+    "component-register": "^0.8.6",
     "hastscript": "^9.0.0",
-    "lightningcss": "^1.25.1",
+    "lightningcss": "^1.26.0",
     "mdast-util-directive": "^3.0.0",
     "mdast-util-mdx-jsx": "^3.1.2",
     "remark-directive": "^3.0.0",
@@ -73,6 +73,6 @@
     "vite": "^5.3.5",
     "vite-plugin-solid": "^2.10.2",
     "vitest": "^2.0.5",
-    "wrangler": "^3.68.0"
+    "wrangler": "^3.69.1"
   }
 }

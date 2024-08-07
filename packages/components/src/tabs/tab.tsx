@@ -4,18 +4,25 @@ import { mergeRefs } from "@solid-primitives/refs";
 import { type ResizeHandler, createResizeObserver } from "@solid-primitives/resize-observer";
 import { Focus } from "../focus";
 import { Ripple } from "../ripple";
-import type { TabBarVariant } from "./tab-bar";
+import { useTabBar, type TabBarVariant } from "./tab-bar";
 import { tabContentStyle, tabStyle } from "./tab.css";
 import { TabIndicator } from "./tab-indicator";
+
+import { assignRef, type Ref } from "@material-solid/utils/refs";
+
+export type TabElement =
+  & HTMLButtonElement
+  & {
+    getContentRect(): DOMRect;
+  }
 
 export type TabProps =
   & Omit<
     JSX.ButtonHTMLAttributes<HTMLButtonElement>,
-    "role" | "children"
+    "ref" | "role" | "children"
   >
-  & TabTokenProps
   & {
-    variant: TabBarVariant;
+    ref?: Ref<TabElement>;
     active: boolean;
   };
 
@@ -28,18 +35,34 @@ export const Tab: ParentComponent<TabProps> = (props) => {
     mergedProps,
     [
       "ref",
-      "variant",
       "active",
-      "icon",
-      "label",
       "children",
     ],
   );
 
   let ref!: HTMLButtonElement;
+  let contentRef!: HTMLElement;
+
+  const { variant } = useTabBar()!;
+
+
+  const forwardRef = (element: HTMLButtonElement) => {
+    Object.defineProperty(
+      element, "getContentRect",
+      {
+        configurable: true,
+        value: () => contentRef.getBoundingClientRect(),
+      },
+    )
+    assignRef(
+      local.ref,
+      element as TabElement,
+    );
+  }
+
   return (
     <button
-      ref={mergeRefs(element => ref = element, local.ref)}
+      ref={mergeRefs(element => ref = element, forwardRef)}
       class={
         tabStyle({
           active: local.active
@@ -49,15 +72,14 @@ export const Tab: ParentComponent<TabProps> = (props) => {
       {...others}>
         <Focus for={ref} />
         <Ripple for={ref} />
-        <div class={
-          tabContentStyle({
-            variant: local.variant,
-          })
-        }>
-          {local.icon}
-          {local.label}
-          {local.children}
-        </div>
+        <div
+          ref={contentRef as HTMLDivElement}
+          class={
+            tabContentStyle({
+              variant: variant(),
+            })
+          }
+          children={local.children}/>
     </button>
   )
 }

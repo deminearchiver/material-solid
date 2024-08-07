@@ -9,7 +9,8 @@ export const tabStyle = recipe({
     outline: "none",
 
     position: "relative",
-    height: 48,
+    // height: 48,
+    height: 64,
     // flexGrow: 1,
 
     display: "flex",

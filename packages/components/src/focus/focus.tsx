@@ -41,28 +41,6 @@ export const Focus: Component<FocusProps> = (props) => {
     }
   );
 
-  createEffect(
-    () => {
-      const value = visible();
-      local.onFocusChanged?.(value);
-
-      if(!value) {
-        console.log("ANIMATE");
-        ref.animate(
-          [{
-            "outline-width": 0,
-          }],
-          {
-            fill: "forwards",
-            duration: 200,
-            easing: getComputedStyle(document.documentElement)
-              .getPropertyValue(getVarName(THEME.easing.standardAccelerate)),
-          },
-        );
-      }
-    }
-  );
-
   return (
     <div
       ref={mergeRefs(element => ref = element, local.ref)}
