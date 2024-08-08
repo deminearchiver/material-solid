@@ -55,11 +55,10 @@ export type TabBarVariant = "primary" | "secondary";
 
 export type TabBarData = {
   variant: Accessor<TabBarVariant>;
+  withIcons: Accessor<boolean>;
 }
 const TabBarContext = createContext<TabBarData>();
 export const useTabBar = () => useContext(TabBarContext);
-
-
 
 
 export type TabBarProps = {
@@ -71,155 +70,32 @@ export type TabBarBaseProps = {
   variant: TabBarVariant;
 } & TabBarProps;
 
-type Direction = "left" | "right";
-
-export type AnimationState = {
-  flightInProgress: boolean;
-}
-
-// const TabBarBase: FlowComponent<TabBarBaseProps> = (props) => {
-//   const [local, others] = splitProps(props, [
-//     "variant",
-//     "onPositionChanged",
-//     "position",
-//     "children",
-//   ]);
-
-
-//   const tokens = resolveTokens(TabToken, () => local.children);
-
-//   let ref!: HTMLElement;
-
-
-//   let indicatorRef!: HTMLElement;
-//   let shuttleRef!: HTMLElement;
-
-//   const [flight, setFlight] = createSignal(false);
-//   const [force, setForce] = createSignal(false);
-
-//   const mount = createMemo(() => force() || !flight());
-
-//   const [position, setPosition] = createSignal(local.position);
-//   const isActive = createSelector(position);
-
-//   const [animation, setAnimation] = createSignal<Animation>();
-//   function onFinish(this: Animation) {
-//     if(this === animation()) {
-//       setFlight(false);
-//       setAnimation();
-//     }
-//   }
-
-//   createEffect(on(
-//     () => local.position,
-//     async (nextPosition, prevPosition) => {
-//       prevPosition ??= nextPosition;
-
-//       const direction: Direction = nextPosition > prevPosition ? "right" : "left";
-
-//       setForce(true);
-//       const [prevRect, nextRect] = await new Promise<DOMRect[]>(
-//         resolve => {
-//           queueMicrotask(() => {
-//             const prevRect = indicatorRef.getBoundingClientRect();
-//             setPosition(nextPosition);
-//             queueMicrotask(() => {
-//               const nextRect = indicatorRef.getBoundingClientRect();
-//               resolve([prevRect, nextRect]);
-//             });
-//           });
-//         },
-//       );
-
-//       setForce(false);
-
-//       const tabBarRect = ref.getBoundingClientRect();
-//       const prevLeft = prevRect.left - tabBarRect.left;
-//       const prevRight = tabBarRect.width - (prevLeft + prevRect.width);
-
-//       const nextLeft = nextRect.left - tabBarRect.left;
-//       const nextRight = tabBarRect.width - (nextLeft + nextRect.width);
-
-//       setFlight(true);
-
-//       animation()?.removeEventListener("finish", onFinish);
-
-//       const leftKeyframes = { left: [`${prevLeft}px`, `${nextLeft}px`] };
-//       const rightKeyframes = { right: [`${prevRight}px`, `${nextRight}px`] };
-
-//       const easing = getComputedStyle(document.documentElement)
-//         .getPropertyValue(getVarName(THEME.easing.emphasized));
-//       const fill = "both";
-//       const duration = 600;
-//       const delay = local.variant === "primary" ? 50 : 0;
-
-//       if(delay > 0) shuttleRef.animate(
-//         nextPosition > prevPosition ? rightKeyframes : leftKeyframes,
-//         { duration, fill, easing },
-//       );
-//       const nextAnimation = shuttleRef.animate(
-//         delay > 0
-//           ? nextPosition > prevPosition ? leftKeyframes : rightKeyframes
-//           : { ...leftKeyframes, ...rightKeyframes },
-//         {
-//           delay,
-//           duration: duration - delay,
-//           fill, easing,
-//         },
-//       );
-//       setAnimation(nextAnimation);
-//       nextAnimation.addEventListener("finish", onFinish, { once: true });
-
-//       return nextPosition;
-//     },
-//   ));
-
-//   return (
-//     <div
-//       ref={ref as HTMLDivElement}
-//       class={tabBarStyle}
-//       role="tablist">
-//         <TabBarContext.Provider
-//           value={{
-//             variant: () => local.variant,
-//           }}>
-//             <Show when={flight()}>
-//               <TabIndicator
-//                 ref={shuttleRef}
-//                 variant={local.variant} />
-//             </Show>
-//             <For each={tokens()}>
-//               {({ data: tab }, index) => (
-//                 <Tab
-//                   onClick={() => local.onPositionChanged?.(index())}
-//                   active={isActive(index())}>
-//                     {tab.icon}
-//                     {tab.label}
-//                     <Show when={mount() && isActive(index())}>
-//                       <TabIndicator
-//                         ref={indicatorRef}
-//                         variant={local.variant} />
-//                     </Show>
-//                 </Tab>
-//               )}
-//             </For>
-//         </TabBarContext.Provider>
-//     </div>
-//   );
-// };
-
-
-type IndicatorAnimation = {
-  from: DOMRect;
-  to: DOMRect;
-  animation: Animation;
-}
-
 
 type IndicatorPosition = {
   from: DOMRect;
   to: DOMRect;
 }
+
+type IndicatorAnimationDirection = "left" | "right";
+
+type IndicatorAnimation =
+  & {
+    direction?: IndicatorAnimationDirection;
+    at: (index: number) => Animation | undefined;
+    forEach: (callback: (value: Animation, index: number) => void) => void;
+  }
+  & (
+    | {
+      direction?: undefined;
+      both: Animation;
+    }
+    | {
+      direction: IndicatorAnimationDirection;
+      left: Animation;
+      right: Animation;
+    }
+  );
+
 
 const TabBarBase: FlowComponent<TabBarBaseProps> = (props) => {
   const [local, others] = splitProps(props, [
@@ -229,19 +105,13 @@ const TabBarBase: FlowComponent<TabBarBaseProps> = (props) => {
     "children",
   ]);
 
-
   const tokens = resolveTokens(TabToken, () => local.children);
+  const isActive = createSelector(() => local.position);
 
   let ref!: HTMLElement;
-
-
   let indicatorRef!: HTMLElement;
 
-  const isActive = createSelector(() => local.position);
   const [refs, setRefs] = createStore<TabElement[]>([]);
-
-  // const [animations, setAnimations] = createStore<IndicatorAnimation[]>([]);
-
 
   const globalToLocal = (parent: DOMRect, child: DOMRect): DOMRect => {
     return new DOMRect(
@@ -251,20 +121,104 @@ const TabBarBase: FlowComponent<TabBarBaseProps> = (props) => {
       child.height,
     );
   }
-  const animations = new Map<Animation, IndicatorPosition>();
 
-  function onFinish(this: Animation) {
-    animations.delete(this);
+
+  type AnimateIndicatorOptions = {
+    fromLeft: number;
+    fromRight: number;
+    toLeft?: number;
+    toRight?: number;
+    direction?: "left" | "right";
+    options?: Omit<KeyframeAnimationOptions, "duration">;
+    onFinish?: () => void;
+  };
+  const animateIndicator = (
+    {
+      fromLeft,
+      fromRight,
+      toLeft = 0,
+      toRight = 0,
+      direction,
+      options = {},
+      onFinish,
+    }: AnimateIndicatorOptions,
+  ): IndicatorAnimation => {
+    const keyframes = {
+      left: [`${fromLeft}px`, `${toLeft}px`],
+      right: [`${fromRight}px`, `${toRight}px`],
+    };
+
+    const longDuration = 1000;
+
+    if(direction) {
+      const shortDuration = 800;
+      const left = indicatorRef.animate(
+        { left: keyframes.left },
+        {
+          ...options,
+          duration: direction === "left" ? shortDuration : longDuration,
+        }
+      );
+      const right = indicatorRef.animate(
+        { right: keyframes.right },
+        {
+          ...options,
+          duration: direction === "right" ? shortDuration : longDuration,
+        }
+      );
+
+      if(onFinish) {
+        let finished = false;
+        const finishListener = () => {
+          if(finished) {
+            onFinish?.();
+          } else finished = true;
+        }
+
+        left.addEventListener("finish", finishListener);
+        right.addEventListener("finish", finishListener);
+      }
+
+      return {
+        direction, left, right,
+        at: (index) => {
+          if(index === 0) return left;
+          if(index === 1) return right;
+        },
+        forEach: (callback) => {
+          callback(left, 0);
+          callback(right, 1);
+        },
+      }
+    } else {
+      const both = indicatorRef.animate(
+        keyframes,
+        {
+          ...options,
+          duration: longDuration,
+        },
+      );
+      if(onFinish) both.addEventListener("finish", onFinish);
+      return {
+        both,
+        at: (index) => index === 0 ? both : undefined,
+        forEach: (callback) => callback(both, 0),
+      };
+    }
   }
+
+  const edgeAnimations = new Map<IndicatorPosition, IndicatorAnimation>();
 
   createEffect(on(
     () => local.position,
-    (nextPosition, prevPosition) => {
-      const isFirst = prevPosition === undefined;
+    (nextIndex, prevIndex) => {
+      const isFirst = prevIndex === undefined;
       if(isFirst) return;
 
-      const prevTab = refs[prevPosition];
-      const nextTab = refs[nextPosition];
+      const direction = nextIndex > prevIndex ? "right" : "left";
+
+      const prevTab = refs[prevIndex];
+      const nextTab = refs[nextIndex];
 
       const prevRect = prevTab.getContentRect();
       const nextRect = nextTab.getContentRect();
@@ -277,23 +231,27 @@ const TabBarBase: FlowComponent<TabBarBaseProps> = (props) => {
       const easing = getComputedStyle(document.documentElement)
         .getPropertyValue(getVarName(THEME.easing.emphasized));
 
-      const nextAnimation = indicatorRef.animate(
-        {
-          left: [`${left}px`, "0px"],
-          right: [`${right}px`, "0px"],
-        },
-        {
-          easing,
-          duration: 600,
-          fill: "forwards",
-          composite: "accumulate",
-        }
-      );
+      const options = {
+        easing,
+        fill: "none",
+        composite: "accumulate",
+      } satisfies KeyframeAnimationOptions;
 
-      const adjustedAnimations = [...animations.entries()].map(
-        ([oldAnimation, { from, to }]) => {
-          const relativeFrom = globalToLocal(nextRect, from);
-          const relativeTo = globalToLocal(nextRect, to);
+      const nextPosition: IndicatorPosition = { from: prevRect, to: nextRect };
+      const nextAnimations = animateIndicator({
+        direction,
+        fromLeft: left,
+        fromRight: right,
+        options,
+        onFinish: () => {
+          edgeAnimations.delete(nextPosition);
+        },
+      });
+
+      edgeAnimations.forEach(
+        ({ direction, at }, position) => {
+          const relativeFrom = globalToLocal(nextRect, position.from);
+          const relativeTo = globalToLocal(nextRect, position.to);
 
           const prevLeft = relativeFrom.left - left;
           const prevRight = nextRect.width - relativeFrom.right - right;
@@ -301,38 +259,34 @@ const TabBarBase: FlowComponent<TabBarBaseProps> = (props) => {
           const nextLeft = relativeTo.left - left;
           const nextRight = nextRect.width - relativeTo.right - right;
 
-          const newAnimation = indicatorRef.animate(
-            {
-              left: [`${prevLeft}px`, `${nextLeft}px`],
-              right: [`${prevRight}px`, `${nextRight}px`],
+          const newAnimations = animateIndicator({
+            direction: direction,
+            fromLeft: prevLeft,
+            fromRight: prevRight,
+            toLeft: nextLeft,
+            toRight: nextRight,
+            options,
+            onFinish: () => {
+              edgeAnimations.delete(position);
             },
-            {
-              easing,
-              duration: 600,
-              fill: "forwards",
-              composite: "accumulate",
-            },
+          });
+
+          newAnimations.forEach(
+            (newAnimation, index) => {
+              const oldAnimation = at(index)!;
+              newAnimation.startTime = oldAnimation.startTime;
+              newAnimation.currentTime = oldAnimation.currentTime;
+              oldAnimation.cancel();
+            }
           );
 
-          newAnimation.startTime = oldAnimation.startTime;
-          newAnimation.currentTime = oldAnimation.currentTime;
+          edgeAnimations.set(position, newAnimations);
+        },
+      )
 
-          oldAnimation.removeEventListener("finish", onFinish);
-          oldAnimation.cancel();
-          newAnimation.addEventListener("finish", onFinish);
-
-          // newAnimation.play();
-
-          return [newAnimation, { from, to }] as const;
-        }
-      );
-      animations.clear();
-      adjustedAnimations.forEach(([key, value]) => animations.set(key, value));
-
-      nextAnimation.addEventListener("finish", onFinish);
-      animations.set(
-        nextAnimation,
-        { from: prevRect, to: nextRect },
+      edgeAnimations.set(
+        nextPosition,
+        nextAnimations,
       );
     }
   ));
@@ -345,6 +299,7 @@ const TabBarBase: FlowComponent<TabBarBaseProps> = (props) => {
         <TabBarContext.Provider
           value={{
             variant: () => local.variant,
+            withIcons: () => tokens().some(token => !!token.data.icon),
           }}>
             <Refs ref={elements => setRefs(reconcile(elements as TabElement[]))}>
               <For each={tokens()}>

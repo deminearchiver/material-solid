@@ -1,6 +1,7 @@
 import { THEME } from "@material-solid/vanilla-extract/contract";
 import { rippleTheme } from "../ripple/theme.css";
 import { recipe } from "@vanilla-extract/recipes";
+import { style } from "@vanilla-extract/css";
 
 export const tabStyle = recipe({
   base: {
@@ -9,10 +10,6 @@ export const tabStyle = recipe({
     outline: "none",
 
     position: "relative",
-    // height: 48,
-    height: 64,
-    // flexGrow: 1,
-
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -48,7 +45,7 @@ export const tabStyle = recipe({
 export const tabContentStyle = recipe({
   base: {
     position: "relative",
-    height: "100%",
+    height: 48,
 
     display: "flex",
     alignItems: "center",
@@ -65,5 +62,24 @@ export const tabContentStyle = recipe({
         gap: 8,
       },
     },
+    withIcon: {
+      false: {},
+      true: {},
+    }
   },
+  compoundVariants: [
+    {
+      variants: {
+        variant: "primary",
+        withIcon: true,
+      },
+      style: {
+        height: 64,
+      }
+    }
+  ]
+});
+
+export const focusStyle = style({
+  borderRadius: THEME.shape.extraSmall,
 });

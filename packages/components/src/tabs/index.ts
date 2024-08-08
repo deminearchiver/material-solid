@@ -7,3 +7,6 @@ export {
   type TabTokenProps as TabProps,
   TabToken as Tab,
 } from "./tab-token";
+
+
+export * from "./tab-bar-view";

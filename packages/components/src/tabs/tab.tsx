@@ -43,7 +43,7 @@ export const Tab: ParentComponent<TabProps> = (props) => {
   let ref!: HTMLButtonElement;
   let contentRef!: HTMLElement;
 
-  const { variant } = useTabBar()!;
+  const { variant, withIcons } = useTabBar()!;
 
 
   const forwardRef = (element: HTMLButtonElement) => {
@@ -70,13 +70,14 @@ export const Tab: ParentComponent<TabProps> = (props) => {
       }
       role="tab"
       {...others}>
-        <Focus for={ref} />
+        {/* <Focus for={ref} /> */}
         <Ripple for={ref} />
         <div
           ref={contentRef as HTMLDivElement}
           class={
             tabContentStyle({
               variant: variant(),
+              withIcon: withIcons(),
             })
           }
           children={local.children}/>
