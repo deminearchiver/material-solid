@@ -42,6 +42,14 @@ globalStyle(
 );
 
 globalStyle(
+  "p, li, figcaption",
+  {
+    textWrap: "pretty",
+  },
+);
+
+
+globalStyle(
   `ul[role="list"], ol[role="list"]`,
   {
     listStyle: "none",
@@ -63,3 +71,4 @@ globalStyle(
     isolation: "isolate",
   },
 );
+

@@ -1,5 +1,5 @@
 import { createContext, createEffect, createSignal, onCleanup, splitProps, useContext, type Accessor, type ParentComponent, type Signal } from "solid-js"
-import Lenis, { type LenisEvents, type LenisOptions } from "lenis";
+import Lenis, { type LenisOptions, type ScrollCallback } from "lenis";
 import { createRaf } from "~/utils";
 
 
@@ -49,7 +49,7 @@ export { LenisProvider as Lenis };
 
 
 
-export const createScroll = (callback: LenisEvents["scroll"]) => {
+export const createScroll = (callback: ScrollCallback) => {
   const { lenis } = useLenis()!;
 
   createEffect(() => {
