@@ -1,7 +1,7 @@
 {
   "name": "create-material-solid",
   "description": "Rapidly scaffold a new Material Solid project",
-  "version": "0.0.1",
+  "version": "0.0.0-indev.0",
   "publishConfig": {
     "access": "public"
   },

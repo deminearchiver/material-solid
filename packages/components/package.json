@@ -1,7 +1,7 @@
 {
   "name": "@material-solid/components",
   "description": "Material Components for SolidJS",
-  "version": "0.0.1",
+  "version": "0.0.0-indev.0",
   "publishConfig": {
     "access": "public"
   },
@@ -177,5 +177,6 @@
     "tsup": "^8.3.0",
     "typescript": "^5.6.2",
     "vitest": "^2.1.1"
-  }
+  },
+  "stableVersion": "0.0.1"
 }

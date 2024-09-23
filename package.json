@@ -25,7 +25,7 @@
     ":create": "yarn : create-material-solid",
     "docs:dev": "turbo dev --filter=@material-solid/docs...",
     "docs:build": "turbo build --filter=@material-solid/docs",
-    "packages:build": "turbo build --filter=./packages/*",
+    "packages:build": "turbo build --filter=\"./packages/*\"",
     "build": "turbo build",
     "preview": "turbo preview --filter=@material-solid/docs",
     "test": "turbo test",

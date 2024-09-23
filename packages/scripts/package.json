@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@material-solid/scripts",
-  "version": "0.0.1",
+  "version": "0.0.0-indev.0",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
