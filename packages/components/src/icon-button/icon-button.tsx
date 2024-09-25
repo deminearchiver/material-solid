@@ -47,7 +47,7 @@ export const IconButton: ParentComponent<IconButtonProps> = (props) => {
   return (
     <Dynamic
       component={tag()}
-      ref={mergeRefs(setRef, local.ref as HTMLElement)}
+      ref={mergeRefs(setRef as any, local.ref as any)}
       class={
         clsx(
           iconButtonStyle({

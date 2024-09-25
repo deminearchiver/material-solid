@@ -170,7 +170,7 @@ const Button = <
     // @ts-ignore
     <Dynamic
       component={tag()}
-      ref={mergeRefs(setRef, local.ref as HTMLElement)}
+      ref={mergeRefs(setRef, local.ref as any)}
       class={
         clsx(
           buttonStyle({

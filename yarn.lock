@@ -756,13 +756,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workers-shared@npm:0.5.3":
-  version: 0.5.3
-  resolution: "@cloudflare/workers-shared@npm:0.5.3"
+"@cloudflare/workers-shared@npm:0.5.4":
+  version: 0.5.4
+  resolution: "@cloudflare/workers-shared@npm:0.5.4"
   dependencies:
     mime: "npm:^3.0.0"
     zod: "npm:^3.22.3"
-  checksum: 10c0/89b795e0657d4311732be6d4ff2aacd0b920959f0de3d1d866194715d03bf9e0094f52e48c4cd5f4fc75a4f8211293043784c52d74c473def3860eda28eb66ea
+  checksum: 10c0/bc439b5ad8264804b8e9a9c39636cadd35d23947d0dfff7daf405e74230ec4716a245771b940bc96c9e10c9cb91d4a487767b44fefccc6caeaa6829fdb19f68c
   languageName: node
   linkType: hard
 
@@ -1898,7 +1898,7 @@ __metadata:
     "@solid-primitives/utils": "npm:^6.2.3"
     "@solidjs/testing-library": "npm:^0.8.9"
     "@types/cssesc": "npm:^3.0.2"
-    "@types/node": "npm:^22.5.5"
+    "@types/node": "npm:^22.7.0"
     "@vanilla-extract/css": "npm:^1.15.5"
     "@vanilla-extract/dynamic": "npm:^2.1.2"
     "@vanilla-extract/recipes": "npm:^0.5.5"
@@ -1914,7 +1914,7 @@ __metadata:
     picomatch: "npm:^4.0.2"
     pkg-types: "npm:^1.2.0"
     rimraf: "npm:^6.0.1"
-    solid-js: "npm:^1.8.22"
+    solid-js: "npm:^1.9.1"
     tsup: "npm:^8.3.0"
     typescript: "npm:^5.6.2"
     vitest: "npm:^2.1.1"
@@ -1925,7 +1925,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@material-solid/config@workspace:packages/config"
   dependencies:
-    "@types/node": "npm:^22.5.5"
+    "@types/node": "npm:^22.7.0"
     esbuild-plugin-solid: "npm:^0.6.0"
     fdir: "npm:^6.3.0"
     picomatch: "npm:^4.0.2"
@@ -1979,7 +1979,7 @@ __metadata:
     "@solidjs/meta": "npm:^0.29.4"
     "@solidjs/router": "npm:^0.14.5"
     "@solidjs/testing-library": "npm:^0.8.9"
-    "@types/node": "npm:^22.5.5"
+    "@types/node": "npm:^22.7.0"
     "@types/unist": "npm:^3.0.3"
     "@vanilla-extract/css": "npm:^1.15.5"
     "@vanilla-extract/dynamic": "npm:^2.1.2"
@@ -2003,16 +2003,16 @@ __metadata:
     remark-github-blockquote-alert: "npm:^1.2.1"
     rimraf: "npm:^6.0.1"
     solid-devtools: "npm:^0.30.1"
-    solid-element: "npm:^1.8.1"
-    solid-js: "npm:^1.8.22"
+    solid-element: "npm:^1.9.0"
+    solid-js: "npm:^1.9.1"
     solid-jsx: "npm:^1.1.4"
     typescript: "npm:^5.6.2"
     unified: "npm:^11.0.5"
     unist-util-visit: "npm:^5.0.0"
-    vite: "npm:^5.4.7"
+    vite: "npm:^5.4.8"
     vite-plugin-solid: "npm:^2.10.2"
     vitest: "npm:^2.1.1"
-    wrangler: "npm:^3.78.7"
+    wrangler: "npm:^3.78.9"
   languageName: unknown
   linkType: soft
 
@@ -2036,7 +2036,7 @@ __metadata:
     typedoc-plugin-missing-exports: "npm:^3.0.0"
     typescript: "npm:^5.6.2"
     vitest: "npm:^2.1.1"
-    webdriverio: "npm:^9.0.9"
+    webdriverio: "npm:^9.1.0"
   languageName: unknown
   linkType: soft
 
@@ -2045,8 +2045,8 @@ __metadata:
   resolution: "@material-solid/scripts@workspace:packages/scripts"
   dependencies:
     "@material-solid/config": "workspace:^"
-    "@rollup/plugin-commonjs": "npm:^27.0.0"
-    "@rollup/plugin-node-resolve": "npm:^15.2.4"
+    "@rollup/plugin-commonjs": "npm:^28.0.0"
+    "@rollup/plugin-node-resolve": "npm:^15.3.0"
     "@rollup/plugin-typescript": "npm:^12.1.0"
     "@vitest/coverage-v8": "npm:^2.1.1"
     execa: "npm:^9.4.0"
@@ -2073,7 +2073,7 @@ __metadata:
     "@solid-primitives/static-store": "npm:^0.0.8"
     "@solid-primitives/utils": "npm:^6.2.3"
     "@solidjs/testing-library": "npm:^0.8.9"
-    "@types/node": "npm:^22.5.5"
+    "@types/node": "npm:^22.7.0"
     "@vitest/browser": "npm:^2.1.1"
     "@vitest/coverage-v8": "npm:^2.1.1"
     clsx: "npm:^2.1.1"
@@ -2082,7 +2082,7 @@ __metadata:
     pkg-types: "npm:^1.2.0"
     rimraf: "npm:^6.0.1"
     scule: "npm:^1.3.0"
-    solid-js: "npm:^1.8.22"
+    solid-js: "npm:^1.9.1"
     tsup: "npm:^8.3.0"
     typescript: "npm:^5.6.2"
     vitest: "npm:^2.1.1"
@@ -2378,28 +2378,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-commonjs@npm:^27.0.0":
-  version: 27.0.0
-  resolution: "@rollup/plugin-commonjs@npm:27.0.0"
+"@rollup/plugin-commonjs@npm:^28.0.0":
+  version: 28.0.0
+  resolution: "@rollup/plugin-commonjs@npm:28.0.0"
   dependencies:
     "@rollup/pluginutils": "npm:^5.0.1"
     commondir: "npm:^1.0.1"
     estree-walker: "npm:^2.0.2"
-    glob: "npm:^10.4.1"
+    fdir: "npm:^6.1.1"
     is-reference: "npm:1.2.1"
     magic-string: "npm:^0.30.3"
+    picomatch: "npm:^2.3.1"
   peerDependencies:
     rollup: ^2.68.0||^3.0.0||^4.0.0
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: 10c0/1ea765dcfcfbac7f79531ee7f6ac0468934f9a313cd07f322091ee540508094833531d1ed14f9f4fa1ecea4c9fa65a57ffc861e5c58ae071146ef74368b2e8f6
+  checksum: 10c0/2dd5e56bb61b097697965e48f7bcccab2c6a453a783d1a0c6a599c1bdf9bb07ce8952b9ba88ae190a07c8819f774d72173a633f9f4a914727f2fd28f670fd649
   languageName: node
   linkType: hard
 
-"@rollup/plugin-node-resolve@npm:^15.2.4":
-  version: 15.2.4
-  resolution: "@rollup/plugin-node-resolve@npm:15.2.4"
+"@rollup/plugin-node-resolve@npm:^15.3.0":
+  version: 15.3.0
+  resolution: "@rollup/plugin-node-resolve@npm:15.3.0"
   dependencies:
     "@rollup/pluginutils": "npm:^5.0.1"
     "@types/resolve": "npm:1.20.2"
@@ -2411,7 +2412,7 @@ __metadata:
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: 10c0/d6afc8ac076aafaf30506941982e9b78015c6e48af859f297e697cd9d825f8e542e8546cf8878348f6e7c0731e16fe60d562be09270689aa7e4d2091d86f1d54
+  checksum: 10c0/5f3b11f9f6d00fe9fd3fe1977cc71f6a99c2b13d0ee82ad6822c4c4ecfc98854791c5a505798762f7e2332d9d67568a561e89aa8268ed3b1668563be1845109e
   languageName: node
   linkType: hard
 
@@ -3432,6 +3433,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^22.7.0":
+  version: 22.7.0
+  resolution: "@types/node@npm:22.7.0"
+  dependencies:
+    undici-types: "npm:~6.19.2"
+  checksum: 10c0/127b1ac3eebe8c2b09e3d2de277ee906710c4908b4573cde23b9c7cec1cb1aaf1af8bdabbccdac08d005f820b770e7447b22c8eb56ca63344f4d2e26bcdc29fb
+  languageName: node
+  linkType: hard
+
 "@types/resolve@npm:1.20.2":
   version: 1.20.2
   resolution: "@types/resolve@npm:1.20.2"
@@ -3764,30 +3774,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wdio/config@npm:9.0.8":
-  version: 9.0.8
-  resolution: "@wdio/config@npm:9.0.8"
+"@wdio/config@npm:9.1.0":
+  version: 9.1.0
+  resolution: "@wdio/config@npm:9.1.0"
   dependencies:
-    "@wdio/logger": "npm:9.0.8"
-    "@wdio/types": "npm:9.0.8"
-    "@wdio/utils": "npm:9.0.8"
+    "@wdio/logger": "npm:9.1.0"
+    "@wdio/types": "npm:9.1.0"
+    "@wdio/utils": "npm:9.1.0"
     decamelize: "npm:^6.0.0"
     deepmerge-ts: "npm:^7.0.3"
     glob: "npm:^10.2.2"
     import-meta-resolve: "npm:^4.0.0"
-  checksum: 10c0/fa44c95a4fa65f710be000d9e8a23dcdfeeb9160004c102ce664839a8ff5f5a495790a37318ef46b88c47cd4497e8ce4972d75cdabbfe25cbd4b290aea749bef
+  checksum: 10c0/a9af8a7edf50b882c9226f72a0fc4a288143ff9fcf2e59703ea056bf16a6a7b16e0627c1294ea361510156243d1fd794a36790ebbb82f8c79d53d17beff55835
   languageName: node
   linkType: hard
 
-"@wdio/logger@npm:9.0.8, @wdio/logger@npm:^9.0.0":
-  version: 9.0.8
-  resolution: "@wdio/logger@npm:9.0.8"
+"@wdio/logger@npm:9.1.0":
+  version: 9.1.0
+  resolution: "@wdio/logger@npm:9.1.0"
   dependencies:
     chalk: "npm:^5.1.2"
     loglevel: "npm:^1.6.0"
     loglevel-plugin-prefix: "npm:^0.8.4"
     strip-ansi: "npm:^7.1.0"
-  checksum: 10c0/2f6d3d2ab5c896257ce504179fc530dfa8bf4798e2b059b82062f8be6e9ad080185702c2f50af919ae3840238ed97620810f776f7a9ed5ee3f9feeb0eaa00879
+  checksum: 10c0/1e6466457b6c014c3b15c1385691dbd79fd53112a30a4ac2e8d2b901c9c296dc1893040cec33f27173f548415cb41c46877d3d84f568469d3dc46c7b286cda2e
   languageName: node
   linkType: hard
 
@@ -3800,6 +3810,18 @@ __metadata:
     loglevel-plugin-prefix: "npm:^0.8.4"
     strip-ansi: "npm:^7.1.0"
   checksum: 10c0/79f16731c40a70b92ed531ddd9c8caff8348ab1399b041a64f30ace160ece8b459457d4b275709c8fa06a018fcd0cddc054e4536a1900001d9840a9819d0a182
+  languageName: node
+  linkType: hard
+
+"@wdio/logger@npm:^9.0.0":
+  version: 9.0.8
+  resolution: "@wdio/logger@npm:9.0.8"
+  dependencies:
+    chalk: "npm:^5.1.2"
+    loglevel: "npm:^1.6.0"
+    loglevel-plugin-prefix: "npm:^0.8.4"
+    strip-ansi: "npm:^7.1.0"
+  checksum: 10c0/2f6d3d2ab5c896257ce504179fc530dfa8bf4798e2b059b82062f8be6e9ad080185702c2f50af919ae3840238ed97620810f776f7a9ed5ee3f9feeb0eaa00879
   languageName: node
   linkType: hard
 
@@ -3819,22 +3841,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wdio/types@npm:9.0.8":
-  version: 9.0.8
-  resolution: "@wdio/types@npm:9.0.8"
+"@wdio/types@npm:9.1.0":
+  version: 9.1.0
+  resolution: "@wdio/types@npm:9.1.0"
   dependencies:
     "@types/node": "npm:^20.1.0"
-  checksum: 10c0/72aef68207b4935e6830a3fbbe4bfbf662ccb6850815ac007ce095a5744932b146c4a182731ab66d62b38c8bc5c2416a9a0009c35f42b14b5698c2601e05d091
+  checksum: 10c0/d3b67d6eac3049da3e1dba0b53f194232852ddb763c8b11a0e9aa33838ceaf3aa4612d598438a22941b4193f7e7dcf3f567488656faa45eae52163f81894b0c7
   languageName: node
   linkType: hard
 
-"@wdio/utils@npm:9.0.8":
-  version: 9.0.8
-  resolution: "@wdio/utils@npm:9.0.8"
+"@wdio/utils@npm:9.1.0":
+  version: 9.1.0
+  resolution: "@wdio/utils@npm:9.1.0"
   dependencies:
     "@puppeteer/browsers": "npm:^2.2.0"
-    "@wdio/logger": "npm:9.0.8"
-    "@wdio/types": "npm:9.0.8"
+    "@wdio/logger": "npm:9.1.0"
+    "@wdio/types": "npm:9.1.0"
     decamelize: "npm:^6.0.0"
     deepmerge-ts: "npm:^7.0.3"
     edgedriver: "npm:^5.6.1"
@@ -3845,7 +3867,7 @@ __metadata:
     safaridriver: "npm:^0.1.2"
     split2: "npm:^4.2.0"
     wait-port: "npm:^1.1.0"
-  checksum: 10c0/34e3873faad6200c1b2b8b05156554c7ddd52abe0dde94815d7eae85ed15ea8a3e1532030535c9ab75ac7314c3a9e38f8a11c5d788cc1af6d6d7f2e179103130
+  checksum: 10c0/c2808ebe19b4f17d611f5f9cdf3be0b3e58bf3f254dbedc2620924de3f4851ee900453ef7919ea050eb93a5bfb8850cfcfa3743f266830e39d90c32dbb14590d
   languageName: node
   linkType: hard
 
@@ -4719,7 +4741,7 @@ __metadata:
     "@inquirer/prompts": "npm:^6.0.1"
     "@material-solid/config": "workspace:^"
     "@material-solid/scripts": "workspace:^"
-    "@types/node": "npm:^22.5.5"
+    "@types/node": "npm:^22.7.0"
     "@vitest/coverage-v8": "npm:^2.1.1"
     commander: "npm:^12.1.0"
     execa: "npm:^9.4.0"
@@ -4822,13 +4844,6 @@ __metadata:
   version: 6.0.2
   resolution: "data-uri-to-buffer@npm:6.0.2"
   checksum: 10c0/f76922bf895b3d7d443059ff278c9cc5efc89d70b8b80cd9de0aa79b3adc6d7a17948eefb8692e30398c43635f70ece1673d6085cc9eba2878dbc6c6da5292ac
-  languageName: node
-  linkType: hard
-
-"date-fns@npm:^3.6.0":
-  version: 3.6.0
-  resolution: "date-fns@npm:3.6.0"
-  checksum: 10c0/0b5fb981590ef2f8e5a3ba6cd6d77faece0ea7f7158948f2eaae7bbb7c80a8f63ae30b01236c2923cf89bb3719c33aeb150c715ea4fe4e86e37dcf06bed42fb6
   languageName: node
   linkType: hard
 
@@ -5794,7 +5809,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fdir@npm:^6.3.0":
+"fdir@npm:^6.1.1, fdir@npm:^6.3.0":
   version: 6.3.0
   resolution: "fdir@npm:6.3.0"
   peerDependencies:
@@ -8052,9 +8067,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"miniflare@npm:3.20240909.4":
-  version: 3.20240909.4
-  resolution: "miniflare@npm:3.20240909.4"
+"miniflare@npm:3.20240909.5":
+  version: 3.20240909.5
+  resolution: "miniflare@npm:3.20240909.5"
   dependencies:
     "@cspotcode/source-map-support": "npm:0.8.1"
     acorn: "npm:^8.8.0"
@@ -8070,7 +8085,7 @@ __metadata:
     zod: "npm:^3.22.3"
   bin:
     miniflare: bootstrap.js
-  checksum: 10c0/2c65c8e7d985341e876a95b1d52b02f5ea83172f9c799f49b5fe74f4cdd1ec126d3c73c7a580828828c448ac71f549d8e089095891d6dcda0ff2ee36712d9b35
+  checksum: 10c0/6ded59caeaa23dae2075bdbd081f491e8305f98b2a27573cb09e065d987814b9037a8449fcfc0180bae3bcd942b194f27b596504cc4f25605b647318273f2dfb
   languageName: node
   linkType: hard
 
@@ -9794,25 +9809,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solid-element@npm:^1.8.1":
-  version: 1.8.1
-  resolution: "solid-element@npm:1.8.1"
+"solid-element@npm:^1.9.0":
+  version: 1.9.0
+  resolution: "solid-element@npm:1.9.0"
   dependencies:
     component-register: "npm:~0.8.5"
   peerDependencies:
-    solid-js: ^1.8.18
-  checksum: 10c0/926a0d2e41fcea22a9138eed95f9b8d9bc247f34b0effcfe0477578c7f0ff5366978292dfd3d7b20b963bed228e923322cb1527cea51528acdaf02bc234989b3
+    solid-js: ^1.9.0
+  checksum: 10c0/93097e8a0385757b65ae73e8ef16881b04aa478dcbe5262a8fb0741e129f2deaa1f34d056fbdb7cc9ad4fb8930830dbf0d69025182ea49d941524b9f9c9ea255
   languageName: node
   linkType: hard
 
-"solid-js@npm:^1.8.22":
-  version: 1.8.22
-  resolution: "solid-js@npm:1.8.22"
+"solid-js@npm:^1.9.1":
+  version: 1.9.1
+  resolution: "solid-js@npm:1.9.1"
   dependencies:
     csstype: "npm:^3.1.0"
     seroval: "npm:^1.1.0"
     seroval-plugins: "npm:^1.1.0"
-  checksum: 10c0/bb631114bbf19d072634ac0e22493d4e6427060c2ef6c4c21ff40469ba01bd69e966d997c42c0ff2ffa8d54a4cd4656bfd17618b140de340a95273044307c0a9
+  checksum: 10c0/32209babd637980eae2be6163d788093e43a27b24b11fc590be69696c5ada7b0ec00904a998c09da991e22f116e36b2c2916ce2b0e1bd629cfdcb4d160dd1b77
   languageName: node
   linkType: hard
 
@@ -10583,7 +10598,7 @@ __metadata:
     "@material-solid/config": "workspace:^"
     "@material/material-color-utilities": "npm:^0.3.0"
     "@material/web": "npm:^2.2.0"
-    "@types/node": "npm:^22.5.5"
+    "@types/node": "npm:^22.7.0"
     "@vitest/coverage-v8": "npm:^2.1.1"
     rimraf: "npm:^6.0.1"
     tsup: "npm:^8.3.0"
@@ -11003,9 +11018,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.4.7":
-  version: 5.4.7
-  resolution: "vite@npm:5.4.7"
+"vite@npm:^5.4.8":
+  version: 5.4.8
+  resolution: "vite@npm:5.4.8"
   dependencies:
     esbuild: "npm:^0.21.3"
     fsevents: "npm:~2.3.3"
@@ -11042,7 +11057,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10c0/0ca7ca60f71c61f3855bbabf7e33909bec32933b35914d4d281813c728183e78e7ce5be05735a7671df3a994613d3881f520a32a80715faa92effb28deee9320
+  checksum: 10c0/af70af6d6316a3af71f44ebe3ab343bd66450d4157af73af3b32239e1b6ec43ff6f651d7cc4193b21ed3bff2e9356a3de9e96aee53857f39922e4a2d9fad75a1
   languageName: node
   linkType: hard
 
@@ -11127,35 +11142,35 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webdriver@npm:9.0.8":
-  version: 9.0.8
-  resolution: "webdriver@npm:9.0.8"
+"webdriver@npm:9.1.0":
+  version: 9.1.0
+  resolution: "webdriver@npm:9.1.0"
   dependencies:
     "@types/node": "npm:^20.1.0"
     "@types/ws": "npm:^8.5.3"
-    "@wdio/config": "npm:9.0.8"
-    "@wdio/logger": "npm:9.0.8"
+    "@wdio/config": "npm:9.1.0"
+    "@wdio/logger": "npm:9.1.0"
     "@wdio/protocols": "npm:9.0.8"
-    "@wdio/types": "npm:9.0.8"
-    "@wdio/utils": "npm:9.0.8"
+    "@wdio/types": "npm:9.1.0"
+    "@wdio/utils": "npm:9.1.0"
     deepmerge-ts: "npm:^7.0.3"
     ws: "npm:^8.8.0"
-  checksum: 10c0/7391b7c10b080f1d9956e81c0060b6bf8a80ec99ec945396d161743805b0ff4d158874f30b6aee7f31ced70cd05778aa7d8d6b014fff08a49e472cb30a4ff8ef
+  checksum: 10c0/68ab6c4bc746ae6957f4189abfe3d82d61cdbb80dbf5425b96daeee78fa1b5bdb0716fc911d9a5ca6471088ce41e338da3414e79230f9d3b63e51d7e74a69083
   languageName: node
   linkType: hard
 
-"webdriverio@npm:^9.0.9":
-  version: 9.0.9
-  resolution: "webdriverio@npm:9.0.9"
+"webdriverio@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "webdriverio@npm:9.1.0"
   dependencies:
     "@types/node": "npm:^20.11.30"
     "@types/sinonjs__fake-timers": "npm:^8.1.5"
-    "@wdio/config": "npm:9.0.8"
-    "@wdio/logger": "npm:9.0.8"
+    "@wdio/config": "npm:9.1.0"
+    "@wdio/logger": "npm:9.1.0"
     "@wdio/protocols": "npm:9.0.8"
     "@wdio/repl": "npm:9.0.8"
-    "@wdio/types": "npm:9.0.8"
-    "@wdio/utils": "npm:9.0.8"
+    "@wdio/types": "npm:9.1.0"
+    "@wdio/utils": "npm:9.1.0"
     archiver: "npm:^7.0.1"
     aria-query: "npm:^5.3.0"
     cheerio: "npm:^1.0.0-rc.12"
@@ -11174,13 +11189,13 @@ __metadata:
     rgb2hex: "npm:0.2.5"
     serialize-error: "npm:^11.0.3"
     urlpattern-polyfill: "npm:^10.0.0"
-    webdriver: "npm:9.0.8"
+    webdriver: "npm:9.1.0"
   peerDependencies:
     puppeteer-core: ^22.3.0
   peerDependenciesMeta:
     puppeteer-core:
       optional: true
-  checksum: 10c0/54cb16063b9fbc8b568998242940e75a245dc207a80346d7d7517669f492d9753c7bd9b5ed9b9e45c8ca822dc60f89f81654159fabd0b5eab70cc967cd916a38
+  checksum: 10c0/15070da90e80df1d7bb4b991c8dc9d99b3897b27671492ffde51a7b8983624b65db34d35777b27a9bac7125138eff4d4568b91eb126f7f31a01f69f962a02c59
   languageName: node
   linkType: hard
 
@@ -11289,20 +11304,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wrangler@npm:^3.78.7":
-  version: 3.78.7
-  resolution: "wrangler@npm:3.78.7"
+"wrangler@npm:^3.78.9":
+  version: 3.78.9
+  resolution: "wrangler@npm:3.78.9"
   dependencies:
     "@cloudflare/kv-asset-handler": "npm:0.3.4"
-    "@cloudflare/workers-shared": "npm:0.5.3"
+    "@cloudflare/workers-shared": "npm:0.5.4"
     "@esbuild-plugins/node-globals-polyfill": "npm:^0.2.3"
     "@esbuild-plugins/node-modules-polyfill": "npm:^0.2.2"
     blake3-wasm: "npm:^2.1.5"
     chokidar: "npm:^3.5.3"
-    date-fns: "npm:^3.6.0"
     esbuild: "npm:0.17.19"
     fsevents: "npm:~2.3.2"
-    miniflare: "npm:3.20240909.4"
+    miniflare: "npm:3.20240909.5"
     nanoid: "npm:^3.3.3"
     path-to-regexp: "npm:^6.3.0"
     resolve: "npm:^1.22.8"
@@ -11323,7 +11337,7 @@ __metadata:
   bin:
     wrangler: bin/wrangler.js
     wrangler2: bin/wrangler.js
-  checksum: 10c0/5151351481f82134b72d8aecbea61106c96426141d2755faedc01cc60607ef877120adf04eb6e826e5d799c3a4d2df7d63cb73ee29185a1df1b4da924f0831d3
+  checksum: 10c0/d03f624250f3ed86d32918583fe6f2a98c253a192ad4ca3e7b817b365eb3ce75c9a6e90b3151ccc14f163c815ad8842788e9b33235881d209754297ec876a71c
   languageName: node
   linkType: hard
 

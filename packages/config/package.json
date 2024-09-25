@@ -24,7 +24,7 @@
     "tsup": "^8.3.0"
   },
   "devDependencies": {
-    "@types/node": "^22.5.5",
+    "@types/node": "^22.7.0",
     "esbuild-plugin-solid": "^0.6.0",
     "fdir": "^6.3.0",
     "picomatch": "^4.0.2",

@@ -44,14 +44,14 @@
     "motion": "^10.18.0",
     "normalize.css": "^8.0.1",
     "pathe": "^1.1.2",
-    "solid-element": "^1.8.1",
-    "solid-js": "^1.8.22"
+    "solid-element": "^1.9.0",
+    "solid-js": "^1.9.1"
   },
   "devDependencies": {
     "@material-solid/config": "workspace:^",
     "@mdx-js/rollup": "^3.0.1",
     "@solidjs/testing-library": "^0.8.9",
-    "@types/node": "^22.5.5",
+    "@types/node": "^22.7.0",
     "@types/unist": "^3.0.3",
     "@vanilla-extract/vite-plugin": "^4.0.15",
     "@vitest/browser": "^2.1.1",
@@ -70,9 +70,9 @@
     "typescript": "^5.6.2",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
-    "vite": "^5.4.7",
+    "vite": "^5.4.8",
     "vite-plugin-solid": "^2.10.2",
     "vitest": "^2.1.1",
-    "wrangler": "^3.78.7"
+    "wrangler": "^3.78.9"
   }
 }
