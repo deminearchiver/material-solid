@@ -4,6 +4,7 @@ import { createSignal, type Component } from "solid-js";
 import { TabBar, Tab } from "@material-solid/components/tabs";
 import { MaterialSymbol } from "@material-solid/components/icon";
 import { Title } from "@solidjs/meta";
+import { SearchBar } from "~/components/search";
 
 export const Dev: Component<RouteSectionProps> = (props) => {
   const [pos, setPos] = createSignal(0);
@@ -33,6 +34,8 @@ export const Dev: Component<RouteSectionProps> = (props) => {
         <TabBar.secondary position={pos()} onPositionChanged={setPos}>
           {tabs}
         </TabBar.secondary>
+
+        <SearchBar />
       </main>
     </>
   )

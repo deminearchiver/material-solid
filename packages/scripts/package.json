@@ -1,7 +1,6 @@
 {
   "private": true,
   "name": "@material-solid/scripts",
-  "version": "0.0.0-indev.0",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -25,11 +24,11 @@
     "@rollup/plugin-commonjs": "^28.0.0",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-typescript": "^12.1.0",
-    "@vitest/coverage-v8": "^2.1.1",
+    "@vitest/coverage-v8": "^2.1.2",
     "rimraf": "^6.0.1",
     "tsup": "^8.3.0",
     "typescript": "^5.6.2",
-    "vitest": "^2.1.1"
+    "vitest": "^2.1.2"
   },
   "dependencies": {
     "execa": "^9.4.0",

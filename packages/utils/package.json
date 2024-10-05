@@ -1,6 +1,6 @@
 {
   "name": "@material-solid/utils",
-  "version": "0.0.0-indev.0",
+  "version": "0.0.2",
   "publishConfig": {
     "access": "public"
   },
@@ -88,11 +88,11 @@
   },
   "dependencies": {
     "@solid-primitives/context": "^0.2.3",
-    "@solid-primitives/map": "^0.4.12",
+    "@solid-primitives/map": "^0.4.13",
     "@solid-primitives/presence": "^0.0.6",
     "@solid-primitives/promise": "^1.0.17",
     "@solid-primitives/refs": "^1.0.8",
-    "@solid-primitives/set": "^0.4.12",
+    "@solid-primitives/set": "^0.5.0",
     "@solid-primitives/static-store": "^0.0.8",
     "@solid-primitives/utils": "^6.2.3",
     "clsx": "^2.1.1",
@@ -102,16 +102,16 @@
   "devDependencies": {
     "@material-solid/config": "workspace:^",
     "@material-solid/scripts": "workspace:^",
-    "@solidjs/testing-library": "^0.8.9",
-    "@types/node": "^22.7.0",
-    "@vitest/browser": "^2.1.1",
-    "@vitest/coverage-v8": "^2.1.1",
+    "@solidjs/testing-library": "^0.8.10",
+    "@types/node": "^22.7.4",
+    "@vitest/browser": "^2.1.2",
+    "@vitest/coverage-v8": "^2.1.2",
     "esbuild-plugin-solid": "^0.6.0",
-    "fdir": "^6.3.0",
+    "fdir": "^6.4.0",
     "pkg-types": "^1.2.0",
     "rimraf": "^6.0.1",
     "tsup": "^8.3.0",
     "typescript": "^5.6.2",
-    "vitest": "^2.1.1"
+    "vitest": "^2.1.2"
   }
 }
