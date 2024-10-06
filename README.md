@@ -1,9 +1,9 @@
 > [!NOTE]
 > ### Project status
-> The project is in its early stages of development, that's why it is not yet published on NPM.
-> Although I consider many components to be feature-complete, I'm planning on adding a lot of global features which will most certainly break most of the components.
+> The project is in its early stages of development.
+> Although some components are considered to be feature-complete, I'm planning on adding a lot of global features which will most certainly break most of the components.
 >
-> So, use this library at your own risk!
+> Use this library at your own risk!
 
 ---
 
@@ -45,8 +45,6 @@
   - [Regarding library choices](#regarding-library-choices)
 - [Usage](#usage)
   - [Installation](#installation)
-    - [npm \& pnpm](#npm--pnpm)
-    - [Yarn](#yarn)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -97,31 +95,36 @@ I chose SolidJS over React because the former is more performant, offers fine-gr
 
 ### Installation
 
-The library is not yet published to NPM. You have to add the dependencies from git directly.
+While `@material-solid/components` and `@material-solid/vanilla-extract` are required dependencies, `@material-solid/utils` is optional but contains many useful primitives related to SolidJS and Vanilla Extract, which may improve your developer experience.
 
-#### npm & pnpm
-```json
-{
-  "dependencies": {
-    "@material-solid/components": "https://github.com/deminearchiver/material-solid/tree/main/packages/components",
-    "@material-solid/vanilla-extract": "https://github.com/deminearchiver/material-solid/tree/main/packages/vanilla-extract",
-    "@material-solid/utils": "https://github.com/deminearchiver/material-solid/tree/main/packages/utils"
-  }
-}
-```
+<details>
+  <summary>npm</summary>
 
+  ```sh
+  npm install @material-solid/components @material-solid/vanilla-extract @material-solid/utils
+  ```
+</details>
+<details>
+  <summary>pnpm</summary>
 
-#### Yarn
+  ```sh
+  pnpm install @material-solid/components @material-solid/vanilla-extract @material-solid/utils
+  ```
+</details>
+<details>
+  <summary>Yarn</summary>
 
-```json
-{
-  "dependencies": {
-    "@material-solid/components": "git@github.com:deminearchiver/material-solid.git#workspace=@material-solid/components",
-    "@material-solid/vanilla-extract": "git@github.com:deminearchiver/material-solid.git#workspace=@material-solid/vanilla-extract",
-    "@material-solid/utils": "git@github.com:deminearchiver/material-solid.git#workspace=@material-solid/utils",
-  }
-}
-```
+  ```sh
+  yarn add @material-solid/components @material-solid/vanilla-extract @material-solid/utils
+  ```
+</details>
+<details>
+  <summary>Bun</summary>
+
+  ```sh
+  bun add @material-solid/components @material-solid/vanilla-extract @material-solid/utils
+  ```
+</details>
 
 ## Contributing
 
