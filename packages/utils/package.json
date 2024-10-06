@@ -77,7 +77,7 @@
       "types": "./dist/vanilla-extract/index.d.ts"
     }
   },
-  "packageManager": "yarn@4.4.0",
+  "packageManager": "yarn@4.5.0",
   "scripts": {
     "clean": "rimraf node_modules dist",
     "build": "tsup",
