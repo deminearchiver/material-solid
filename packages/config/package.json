@@ -24,11 +24,11 @@
     "tsup": "^8.3.0"
   },
   "devDependencies": {
-    "@types/node": "^22.7.4",
+    "@types/node": "^22.7.5",
     "esbuild-plugin-solid": "^0.6.0",
     "fdir": "^6.4.0",
     "picomatch": "^4.0.2",
-    "pkg-types": "^1.2.0",
+    "pkg-types": "^1.2.1",
     "rimraf": "^6.0.1",
     "vitest": "^2.1.2"
   },

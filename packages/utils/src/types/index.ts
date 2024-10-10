@@ -15,3 +15,12 @@ export type SimplifyLeaf<T, U> = T extends any
     [K in keyof T]: T[K] extends U ? T[K] : Simplify<T[K]>;
   }
   : T;
+
+
+
+
+
+export type Override<
+  Source = {},
+  Override = {},
+> = Omit<Source, keyof Override> & Override;

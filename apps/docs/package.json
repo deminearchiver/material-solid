@@ -34,7 +34,7 @@
     "@solid-primitives/storage": "^4.2.1",
     "@solid-primitives/utils": "^6.2.3",
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.14.7",
+    "@solidjs/router": "^0.14.8",
     "@vanilla-extract/css": "^1.16.0",
     "@vanilla-extract/dynamic": "^2.1.2",
     "@vanilla-extract/recipes": "^0.5.5",
@@ -45,13 +45,13 @@
     "normalize.css": "^8.0.1",
     "pathe": "^1.1.2",
     "solid-element": "^1.9.0",
-    "solid-js": "^1.9.1"
+    "solid-js": "^1.9.2"
   },
   "devDependencies": {
     "@material-solid/config": "workspace:^",
     "@mdx-js/rollup": "^3.0.1",
     "@solidjs/testing-library": "^0.8.10",
-    "@types/node": "^22.7.4",
+    "@types/node": "^22.7.5",
     "@types/unist": "^3.0.3",
     "@vanilla-extract/vite-plugin": "^4.0.16",
     "@vitest/browser": "^2.1.2",
@@ -67,12 +67,12 @@
     "rimraf": "^6.0.1",
     "solid-devtools": "^0.30.1",
     "solid-jsx": "^1.1.4",
-    "typescript": "^5.6.2",
+    "typescript": "^5.6.3",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
     "vite": "^5.4.8",
     "vite-plugin-solid": "^2.10.2",
     "vitest": "^2.1.2",
-    "wrangler": "^3.80.0"
+    "wrangler": "^3.80.2"
   }
 }

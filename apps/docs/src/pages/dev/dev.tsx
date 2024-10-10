@@ -1,13 +1,15 @@
 import type { RouteSectionProps } from "@solidjs/router";
-import { createSignal, type Component } from "solid-js";
+import { createEffect, createSignal, type Component } from "solid-js";
 
 import { TabBar, Tab } from "@material-solid/components/tabs";
 import { MaterialSymbol } from "@material-solid/components/icon";
 import { Title } from "@solidjs/meta";
 import { SearchBar } from "~/components/search";
 
+import { FilledTextField } from "@material-solid/components/text-field";
+
 export const Dev: Component<RouteSectionProps> = (props) => {
-  const [pos, setPos] = createSignal(0);
+  const [position, setPosition] = createSignal(0);
 
   const tabs = <>
     <Tab
@@ -24,18 +26,27 @@ export const Dev: Component<RouteSectionProps> = (props) => {
       label="Discover" />
   </>;
 
+  const [username, setUsername] = createSignal("");
+
   return (
     <>
       <Title>&lt;dev&gt; Material Solid</Title>
       <main>
-        <TabBar.primary position={pos()} onPositionChanged={setPos}>
+        <TabBar.primary position={position()} onPositionChanged={setPosition}>
           {tabs}
         </TabBar.primary>
-        <TabBar.secondary position={pos()} onPositionChanged={setPos}>
+        <TabBar.secondary position={position()} onPositionChanged={setPosition}>
           {tabs}
         </TabBar.secondary>
 
-        <SearchBar />
+        <div style={{ "padding": "16px", display: "flex", "flex-direction": "column", gap: "16px", }}>
+          <SearchBar />
+
+          <FilledTextField
+            label="Label"
+            value={username()}
+            onInput={event => setUsername(event.currentTarget.value)} />
+        </div>
       </main>
     </>
   )

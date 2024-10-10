@@ -1,7 +1,7 @@
 {
   "name": "@material-solid/components",
   "description": "Material Components for SolidJS",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "publishConfig": {
     "access": "public"
   },
@@ -49,6 +49,11 @@
       "import": "./dist/checkbox/index.js",
       "require": "./dist/checkbox/index.cjs",
       "types": "./dist/checkbox/index.d.ts"
+    },
+    "./field": {
+      "import": "./dist/field/index.js",
+      "require": "./dist/field/index.cjs",
+      "types": "./dist/field/index.d.ts"
     },
     "./focus": {
       "import": "./dist/focus/index.js",
@@ -120,6 +125,11 @@
       "require": "./dist/tabs/index.cjs",
       "types": "./dist/tabs/index.d.ts"
     },
+    "./text-field": {
+      "import": "./dist/text-field/index.js",
+      "require": "./dist/text-field/index.cjs",
+      "types": "./dist/text-field/index.d.ts"
+    },
     "./tooltip": {
       "import": "./dist/tooltip/index.js",
       "require": "./dist/tooltip/index.cjs",
@@ -158,24 +168,24 @@
     "cssesc": "^3.0.0",
     "dedent": "^1.5.3",
     "material-symbols": "^0.24.0",
-    "solid-js": "^1.9.1"
+    "solid-js": "^1.9.2"
   },
   "devDependencies": {
     "@material-solid/config": "workspace:^",
     "@material-solid/scripts": "workspace:^",
     "@solidjs/testing-library": "^0.8.10",
     "@types/cssesc": "^3.0.2",
-    "@types/node": "^22.7.4",
+    "@types/node": "^22.7.5",
     "@vitest/browser": "^2.1.2",
     "@vitest/coverage-v8": "^2.1.2",
     "defu": "^6.1.4",
     "esbuild-plugin-solid": "^0.6.0",
     "fdir": "^6.4.0",
     "picomatch": "^4.0.2",
-    "pkg-types": "^1.2.0",
+    "pkg-types": "^1.2.1",
     "rimraf": "^6.0.1",
     "tsup": "^8.3.0",
-    "typescript": "^5.6.2",
+    "typescript": "^5.6.3",
     "vitest": "^2.1.2"
   },
   "stableVersion": "0.0.1"

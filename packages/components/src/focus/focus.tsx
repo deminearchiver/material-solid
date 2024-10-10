@@ -3,30 +3,27 @@ import { focusStyle } from "./focus.css";
 import { createEventListenerMap } from "@solid-primitives/event-listener";
 import { type MaybeAccessor, access } from "@solid-primitives/utils";
 import clsx from "clsx/lite";
-import { mergeRefs } from "@solid-primitives/refs";
-import { getVarName } from "@material-solid/utils/vanilla-extract";
-import { THEME } from "@material-solid/vanilla-extract/contract";
 
-export type FocusProps =
-  & Omit<
-    JSX.HTMLAttributes<HTMLElement>,
-    | keyof JSX.CustomEventHandlersLowerCase<HTMLElement>
-    | keyof JSX.CustomEventHandlersCamelCase<HTMLElement>
-    | "children"
-  >
-  & {
-    for: MaybeAccessor<HTMLElement>;
-    onFocusChanged?: (value: boolean) => void;
-    visible?: boolean;
-  };
+export namespace Focus {
+  export type Props =
+    & Omit<
+      JSX.HTMLAttributes<HTMLElement>,
+      | keyof JSX.CustomEventHandlersLowerCase<HTMLElement>
+      | keyof JSX.CustomEventHandlersCamelCase<HTMLElement>
+      | "children"
+    >
+    & {
+      for: MaybeAccessor<HTMLElement>;
+      onFocusChanged?: (value: boolean) => void;
+      visible?: boolean;
+    };
+}
 
-export const Focus: Component<FocusProps> = (props) => {
+export const Focus: Component<Focus.Props> = (props) => {
   const [local, others] = splitProps(
     props,
     ["ref", "for",  "onFocusChanged", "visible", "class"],
   );
-
-  let ref!: HTMLElement;
 
   const [visible, setVisible] = createSignal(false);
 
@@ -43,7 +40,7 @@ export const Focus: Component<FocusProps> = (props) => {
 
   return (
     <div
-      ref={mergeRefs(element => ref = element, local.ref)}
+      ref={local.ref as HTMLDivElement}
       class={clsx(
         focusStyle({
           visible: local.visible ?? visible(),
